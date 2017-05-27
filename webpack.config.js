@@ -24,5 +24,8 @@ module.exports = {
       filename: '../index.html',
       template: 'template.html'
     })
-  ]
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx', '.css', '.scss', '.sass']
+  }
 };

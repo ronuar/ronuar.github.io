@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+import Geography from './components/geography';
+
 import 'normalize.css';
 
-render(<span>dddd</span>, document.getElementById('root'));
+render(<Geography />, document.getElementById('root'));
