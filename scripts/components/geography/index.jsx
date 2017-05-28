@@ -64,7 +64,7 @@ class Geography extends Component {
   }
 
   render() {
-    const { innerWidth, innerHeight } = window;
+    // const { innerWidth, innerHeight } = window;
     const { mountains } = this.state;
 
     const rays = [];
@@ -72,11 +72,7 @@ class Geography extends Component {
 
     return (
       <div className="geography-container">
-        <svg
-          className="mountains"
-          viewBox={`0 0 ${innerWidth} ${innerHeight}`}
-          preserveAspectRatio="xMidYMax meet"
-        >
+        <svg className="mountains">
           {this.renderMountains()}
         </svg>
         <div className="sun">

@@ -2,11 +2,16 @@ body {
   overflow: hidden;
 }
 
+body, html, #root {
+  width: 100%;
+  min-height: 100%;
+}
+
 .geography-container {
   .mountains {
-    position: relative;
     width: 100vw;
     height: 100vh;
+    position: relative;
     background: linear-gradient(#08b1da, #88eefa);
 
     g {
