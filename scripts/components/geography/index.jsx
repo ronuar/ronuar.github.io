@@ -65,6 +65,10 @@ class Geography extends Component {
 
   render() {
     const { innerWidth, innerHeight } = window;
+    const { mountains } = this.state;
+
+    const rays = [];
+    for (let i = 0; i < 10; i++) rays.push(<div key={i} className="ray"></div>);
 
     return (
       <div className="geography-container">
@@ -75,6 +79,21 @@ class Geography extends Component {
         >
           {this.renderMountains()}
         </svg>
+        <div className="sun">
+          <div className="rays">
+            {rays}
+          </div>
+        </div>
+        {mountains.length !== 0
+          ? null
+          : (
+            <div className="phrase">
+              Свернув горы,
+              <div>ты<span> сможешь</span></div>
+              <div>покорить и <span>ЕГЭ</span></div>
+            </div>
+          )
+        }
       </div>
     );
   }
