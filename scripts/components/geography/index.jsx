@@ -62,19 +62,22 @@ class Geography extends Component {
   }
 
   render() {
-    const { innerWidth, innerHeight } = window;
     const { mountains } = this.state;
+    const { onSubjectsClick } = this.props;
 
     const rays = [];
     for (let i = 0; i < 10; i++) rays.push(<div key={i} className="ray"></div>);
 
     return (
       <div className="geography-container">
-        <svg
-          className="mountains"
-          width={innerWidth}
-          height={innerHeight}
-        >
+        <div className="header">
+          <div className="hint">Кликалка по горам</div>
+          <button className="to-subjects" onClick={onSubjectsClick}>
+            Предметы
+            <img src="../../../images/menu.svg" />
+          </button>
+        </div>
+        <svg className="mountains">
           {this.renderMountains()}
         </svg>
         <div className="sun" />
@@ -83,8 +86,8 @@ class Geography extends Component {
           : (
             <div className="phrase">
               Свернув горы,
-              <div>ты<span> сможешь</span></div>
-              <div>покорить и <span>ЕГЭ</span></div>
+              <div>сможешь</div>
+              <div>покорит<mark>ь</mark> и EГЭ</div>
             </div>
           )
         }
@@ -92,7 +95,5 @@ class Geography extends Component {
     );
   }
 }
-
-Geography.propTypes = {};
 
 export default Geography;

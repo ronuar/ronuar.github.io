@@ -1,9 +1,12 @@
 .geography-container {
   position: relative;
+  text-align: center;
+
   .mountains {
-    width: 100vw;
-    height: 100vh;
     position: relative;
+    width: 80vw;
+    height: 80vh;
+    border-radius: 20px;
     background: linear-gradient(#08b1da, #88eefa);
 
     g {
@@ -24,17 +27,18 @@
   .phrase {
     position: absolute;
     top: 40%;
-    left: 50%;
+    left: 47%;
     margin-left: -158px;
-    padding: 0 40px;
+    padding: 0 60px;
     font-size: 60px;
     color: white;
     font-family: Oswald;
     animation: fade-in 1s ease forwards;
 
-    span {
+    mark {
       color: #3183ad;
       font-weight: 100;
+      background: transparent;
     }
 
     @media (max-width: 600px) {
@@ -44,8 +48,8 @@
 
   .sun {
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 100px;
+    right: 170px;
     margin: auto;
     width: 70px;
     height: 70px;
@@ -53,6 +57,42 @@
     background: white;
     box-shadow: 0 0 40px 15px white;
     animation: shine 2s ease infinite both;
+  }
+
+  .header {
+    height: 60px;
+    line-height: 60px;
+  }
+
+  .to-subjects {
+    float: right;
+    padding: 0;
+    margin-right: 10%;
+    line-height: 60px;
+    font-family: inherit;
+    background: transparent;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    outline: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    img {
+      width: 40px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+  }
+
+  .hint {
+    float: left;
+    margin-left: 10%;
+    text-transform: uppercase;
+    font-size: 20px;
   }
 
   @keyframes shine {

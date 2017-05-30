@@ -12,7 +12,7 @@ export default {
         key: Math.random(),
         x, x2, y, middle,
         color: COLORS[i % 5],
-        points: `${x},${innerHeight} ${x2},${innerHeight} ${middle},${y}`,
+        points: `${x},${innerHeight * 0.8} ${x2},${innerHeight * 0.8} ${middle},${y}`,
         snowPoints: `${middle},${y} ${snowLeft},${y + height} ${borderDots} ${snowRight},${y + height}`
       });
     }
@@ -24,16 +24,18 @@ export default {
     const x = Math.round(Math.random() * windowWidth/2 - windowWidth * 0.1);
     const x2 = x + Math.round(Math.random() * (1000 - 400) + 400);
 
-    const y = Math.round(Math.random() * (windowHeight * 0.8 - windowHeight * 0.5)) + windowHeight * 0.5;
+    const y = Math.round(Math.random() * (windowHeight * 0.6 - windowHeight * 0.2)) + windowHeight * 0.2;
     const middle = ((x2 - x) / 2 + x);
 
     return { x, x2, y, middle };
   },
 
   getSnowPositionInfo(windowHeight, { x, x2, y, middle }) {
-    const height = Math.round(Math.random() * (windowHeight - y) * 0.3 + (windowHeight - y) * 0.2);
-    const snowLeft = Math.round(middle - (middle - x) / ((windowHeight - y) / height));
-    const snowRight = Math.round(middle + (x2 - middle) / ((windowHeight - y) / height));
+    const workHeight = windowHeight * 0.8;
+
+    const height = Math.round(Math.random() * (workHeight - y) * 0.3 + (workHeight - y) * 0.2);
+    const snowLeft = Math.round(middle - (middle - x) / ((workHeight - y) / height));
+    const snowRight = Math.round(middle + (x2 - middle) / ((workHeight - y) / height));
 
     const snowKeysLength = Math.floor(Math.random() * 7) + 2;
     let borderDots = "";

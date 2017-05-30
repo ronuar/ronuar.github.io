@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+import Geography from './geography';
+
+const subjectsContainers = {
+  geography: <Geography />
+};
+
 const data = [
   { key: 'pusher' },
   { key: 'geography', color: '#ed4941', title: 'География' },
@@ -14,7 +20,7 @@ const data = [
   { key: 'literature', color: '#01CC90', title: 'Литература' },
   { key: 'pusher' },
   { key: 'ru', color: '#FF642D', title: 'Русский язык' },
-  { key: 'pusher' },
+  { key: 'letters' },
   { key: 'pusher' },
   { key: 'english', color: '#4371F4', title: 'Английский язык' },
   { key: 'biology', color: '#78C82A', title: 'Биология' },
@@ -24,14 +30,36 @@ const data = [
 ];
 
 class SubjectsHexagon extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      subject: null
+    };
+
+    this.onSubjectSelect = subject => () => this.setState({ subject });
+  }
+
   render() {
+    const { subject } = this.state;
+
+    if (subject) return React.cloneElement(subjectsContainers[subject], { onSubjectsClick: this.onSubjectSelect(null) });
+
     return (
       <ul className="clr subjects">
-        {data.map(({ key, color, title }) => {
-          if (key === 'pusher') return <li className="pusher" />;
+        {data.map(({ key, color, title }, index) => {
+          if (key === 'pusher') return <li key={index} className="pusher" />;
+          if (key === 'letters') return (
+            <li className="letters">
+              <div>
+                <img src={`../../images/figure.png`} />
+                <h2>Буквы</h2>
+              </div>
+            </li>
+          );
 
           return (
-            <li className={key}>
+            <li key={key} className={key} onClick={this.onSubjectSelect(key)}>
               <div style={{ background: color }}>
                 <img src={`../../images/${key}.svg`} alt={key} />
                 <h2>{title}</h2>
