@@ -20,7 +20,7 @@ export default {
     return mountains;
   },
   // return Math.random() * (max - min) + min;
-  getMountainPositionInfo(windowWidth, windowHeight, ratio) {
+  getMountainPositionInfo(windowWidth, windowHeight) {
     const x = Math.round(Math.random() * windowWidth/2 - windowWidth * 0.1);
     const x2 = x + Math.round(Math.random() * (1000 - 400) + 400);
 

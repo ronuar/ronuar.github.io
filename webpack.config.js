@@ -17,6 +17,16 @@ module.exports = {
         test: /\.(css|scss|sass)(\?.+)?$/,
         loader: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
       },
+      {
+        test: /\.(png|jpg|gif)(\?.+)?$/,
+        loader: {
+          loader: 'url-loader',
+          query: {
+            limit: 1024,
+            name: '[name].[ext]'
+          }
+        }
+      },
     ]
   },
   plugins: [

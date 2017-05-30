@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import geographyUtils from '../../utils/geographyUtils';
 
-import '../../../styles/geography.scss';
-
 const COLORS = ["#397d69", "#11b8dd", "#696978", "#47654d", "#498c60", "#134351"];
 const COUNT = 8;
 
@@ -64,7 +62,7 @@ class Geography extends Component {
   }
 
   render() {
-    // const { innerWidth, innerHeight } = window;
+    const { innerWidth, innerHeight } = window;
     const { mountains } = this.state;
 
     const rays = [];
@@ -72,14 +70,14 @@ class Geography extends Component {
 
     return (
       <div className="geography-container">
-        <svg className="mountains">
+        <svg
+          className="mountains"
+          width={innerWidth}
+          height={innerHeight}
+        >
           {this.renderMountains()}
         </svg>
-        <div className="sun">
-          <div className="rays">
-            {rays}
-          </div>
-        </div>
+        <div className="sun" />
         {mountains.length !== 0
           ? null
           : (

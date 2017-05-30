@@ -1,0 +1,82 @@
+.geography-container {
+  position: relative;
+  .mountains {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(#08b1da, #88eefa);
+
+    g {
+      cursor: pointer;
+      transition: all 0.5s ease;
+
+      &.is-hidden {
+        opacity: 0;
+        transform: translateY(100px);
+      }
+    }
+  }
+
+  .snow {
+    fill: white;
+  }
+
+  .phrase {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-left: -158px;
+    padding: 0 40px;
+    font-size: 60px;
+    color: white;
+    font-family: Oswald;
+    animation: fade-in 1s ease forwards;
+
+    span {
+      color: #3183ad;
+      font-weight: 100;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 50px;
+    }
+  }
+
+  .sun {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 40px 15px white;
+    animation: shine 2s ease infinite both;
+  }
+
+  @keyframes shine {
+    0% {
+      box-shadow: 0 0 40px 15px white;
+    }
+
+    50% {
+      box-shadow: 0 0 40px 20px white;
+    }
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateY(0);
+    }
+    70% {
+      opacity: 0.7;
+      transform: translateY(-200px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-100px);
+    }
+  }
+}
