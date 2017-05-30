@@ -110,6 +110,48 @@
   }
 }
 
+.physics:hover {
+  img {
+    animation: physics 0.5s ease;
+  }
+}
+
+.literature:hover {
+  img {
+    animation: literature 0.5s ease;
+  }
+}
+
+.ru:hover {
+  img {
+    animation: ru 0.5s ease;
+  }
+}
+
+.english:hover {
+  img {
+    animation: english 0.5s ease;
+  }
+}
+
+.biology:hover {
+  img {
+    animation: biology 0.5s ease;
+  }
+}
+
+.chemistry:hover {
+  img {
+    animation: chemistry 0.5s ease;
+  }
+}
+
+.history:hover {
+  img {
+    animation: history 0.5s ease;
+  }
+}
+
 @keyframes informatics {
   30% {
     transform: translateX(-10%);
@@ -158,6 +200,104 @@
 
   100% {
     transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes physics {
+  30% {
+    transform: translate(12%, -12%);
+  }
+
+  50% {
+    transform: translate(-10%, 10%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes literature {
+  10% {
+    transform: rotate(5deg);
+  }
+
+  30% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  70% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes ru {
+  50% {
+    transform: skew(-20deg);
+  }
+
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+@keyframes english {
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes biology {
+  70% {
+    transform: rotate(60deg) scale(1.2);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes chemistry {
+  20% {
+    transform: translate(10%, 10%);
+  }
+
+  40% {
+    transform: translate(-10%, 10%);
+  }
+
+  65% {
+    transform: translate(-10%, -10%);
+  }
+
+  80% {
+    transform: translate(10%, -10%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes history {
+  50% {
+    transform: rotate(20deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 }
 
