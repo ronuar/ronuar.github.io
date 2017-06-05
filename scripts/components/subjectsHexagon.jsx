@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import store from 'store';
 
 import Geography from './geography';
+import LettersHendecagon from './lettersHendecagon';
 
 const subjectsContainers = {
   geography: <Geography />
@@ -8,7 +10,7 @@ const subjectsContainers = {
 
 const data = [
   { key: 'pusher' },
-  { key: 'geography', color: '#ed4941', title: 'География' },
+  { key: 'geography', color: '#ed4941', title: 'География', letter: 'ь' },
   { key: 'informatics', color: '#02d565', title: 'Информатика' },
   { key: 'pusher' },
   { key: 'math', color: '#5c47d8', title: 'Математика' },
@@ -45,18 +47,13 @@ class SubjectsHexagon extends Component {
 
     if (subject) return React.cloneElement(subjectsContainers[subject], { onSubjectsClick: this.onSubjectSelect(null) });
 
+    const lettersSubjects = data.map(({ key, letter, color }) => ({ key, letter, color }));
+
     return (
       <ul className="clr subjects">
         {data.map(({ key, color, title }, index) => {
           if (key === 'pusher') return <li key={index} className="pusher" />;
-          if (key === 'letters') return (
-            <li className="letters">
-              <div>
-                <img src={`../../images/figure.png`} />
-                <h2>Буквы</h2>
-              </div>
-            </li>
-          );
+          if (key === 'letters') return <LettersHendecagon key="letters" lettersSubjects={lettersSubjects} />;
 
           return (
             <li key={key} className={key} onClick={this.onSubjectSelect(key)}>

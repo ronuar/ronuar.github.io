@@ -1,0 +1,59 @@
+.letter {
+  font-size: 52px;
+  text-transform: uppercase;
+
+  &[data-subject="geography"] {
+    top: 40px;
+    left: 146px;
+  }
+
+  &[data-subject="informatics"] {
+    top: 54px;
+    left: 228px;
+  }
+
+  &[data-subject="math"] {
+    top: 104px;
+    right: 48px;
+  }
+
+  &[data-subject="com"] {
+    top: 180px;
+    right: 30px;
+  }
+
+  &[data-subject="physics"] {
+    top: 258px;
+    right: 45px;
+  }
+
+  &[data-subject="literature"] {
+    top: 310px;
+    right: 110px;
+  }
+
+  &[data-subject="ru"] {
+    top: 320px;
+    right: 190px;
+  }
+
+  &[data-subject="english"] {
+    top: 288px;
+    left: 66px;
+  }
+
+  &[data-subject="biology"] {
+    top: 218px;
+    left: 26px;
+  }
+
+  &[data-subject="chemistry"] {
+    top: 148px;
+    left: 26px;
+  }
+
+  &[data-subject="history"] {
+    top: 76px;
+    left: 68px;
+  }
+}

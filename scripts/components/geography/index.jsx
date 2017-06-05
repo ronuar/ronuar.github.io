@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import geographyUtils from '../../utils/geographyUtils';
+import WinPhrase from './winPhrase';
 
 const COLORS = ["#397d69", "#11b8dd", "#696978", "#47654d", "#498c60", "#134351"];
 const COUNT = 8;
@@ -81,16 +82,7 @@ class Geography extends Component {
           {this.renderMountains()}
         </svg>
         <div className="sun" />
-        {mountains.length !== 0
-          ? null
-          : (
-            <div className="phrase">
-              Свернув горы,
-              <div>сможешь</div>
-              <div>покорит<mark>ь</mark> и EГЭ</div>
-            </div>
-          )
-        }
+        {mountains.length !== 0 ? null : <WinPhrase />}
       </div>
     );
   }
