@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 
 import Geography from './geography';
 import Physics from './physics';
+import Mathematics from './mathematics';
+import Informatics from './informatics';
 import LettersHendecagon from './lettersHendecagon';
 
 const subjectsContainers = {
   geography: <Geography />,
-  physics: <Physics />
+  physics: <Physics />,
+  math: <Mathematics />,
+  informatics: <Informatics />
 };
 
 const data = [
   { key: 'pusher' },
   { key: 'geography', color: '#ed4941', title: 'География', letter: 'ь' },
-  { key: 'informatics', color: '#02d565', title: 'Информатика' },
+  { key: 'informatics', color: '#02d565', title: 'Информатика', letter: 'е' },
   { key: 'pusher' },
   { key: 'math', color: '#5c47d8', title: 'Математика' },
   { key: 'pusher' },
