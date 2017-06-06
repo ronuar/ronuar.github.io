@@ -18,6 +18,7 @@ class Physics extends Component {
       balls: physicsUtils.initBalls(this.container.width, this.container.height)
     };
 
+    this.componentWillUnmount = () => clearInterval(this.intervalId);
     this.moveBalls = this.moveBalls.bind(this);
     this.onBallClick = this.onBallClick.bind(this);
 

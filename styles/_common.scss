@@ -5,6 +5,7 @@ body {
 .layout {
   position: relative;
   text-align: center;
+  animation: fade-left 0.7s ease both;
 
   .header {
     height: 60px;
@@ -49,5 +50,17 @@ body {
     border-radius: 20px;
     margin: auto;
     overflow: hidden;
+  }
+}
+
+@keyframes fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-40%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
