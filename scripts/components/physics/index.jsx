@@ -14,13 +14,19 @@ class Physics extends Component {
       stopped: false
     };
 
-    this.state = {
-      balls: physicsUtils.initBalls(this.container.width, this.container.height)
-    };
-
+    this.componentDidMount = () => this.init();
+    this.onReplay = () => this.init();
     this.componentWillUnmount = () => clearInterval(this.intervalId);
+    this.onBallClick = id => () => this.setState({ balls: physicsUtils.slowDownBalls(this.state.balls, id) });
+
+    this.init = this.init.bind(this);
     this.moveBalls = this.moveBalls.bind(this);
-    this.onBallClick = this.onBallClick.bind(this);
+  }
+
+  init() {
+    clearInterval(this.intervalId);
+
+    this.setState({ stopped: false, balls: physicsUtils.initBalls(this.container.width, this.container.height) });
 
     this.intervalId = setInterval(this.moveBalls, 16);
   }
@@ -39,21 +45,23 @@ class Physics extends Component {
     });
   }
 
-  onBallClick(id) {
-    return () => {
-      this.setState({ balls: physicsUtils.slowDownBalls(this.state.balls, id) });
-    }
-  }
-
   render() {
+    if (!this.state) return null;
+
     const { balls, stopped } = this.state;
     const { onSubjectsClick } = this.props;
 
     return (
-      <GameLayout className={classNames("physics-layout", { 'is-finish': stopped })} title="Остановка времени" onSubjectsClick={onSubjectsClick}>
+      <GameLayout
+        className={classNames("physics-layout", { 'is-finish': stopped })}
+        title="Остановка времени"
+        onSubjectsClick={onSubjectsClick}
+        onReplay={this.onReplay}
+      >
         <div className="balls-container">
           {balls.map(({ size, color, x, y, id }) => (
             <span
+              key={id}
               className="ball"
               style={{
                 width: `${size}px`,

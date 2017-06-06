@@ -10,29 +10,33 @@ body {
   .header {
     height: 60px;
     line-height: 60px;
-  }
 
-  .to-subjects {
-    float: right;
-    padding: 0;
-    margin-right: 10%;
-    line-height: 60px;
-    font-family: inherit;
-    background: transparent;
-    border: none;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    outline: none;
+    button {
+      float: right;
+      padding: 0;
+      margin-right: 20px;
+      line-height: 60px;
+      font-family: inherit;
+      background: transparent;
+      border: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      outline: none;
 
-    &:hover {
-      opacity: 0.8;
+      &:hover {
+        opacity: 0.8;
+      }
+
+      img {
+        width: 40px;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
     }
 
-    img {
-      width: 40px;
-      margin-left: 10px;
-      vertical-align: middle;
+    .to-subjects-btn {
+      margin-right: 10%;
     }
   }
 

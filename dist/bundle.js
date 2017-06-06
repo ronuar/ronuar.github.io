@@ -10366,7 +10366,8 @@ var GameLayout = function GameLayout(_ref) {
   var title = _ref.title,
       children = _ref.children,
       className = _ref.className,
-      onSubjectsClick = _ref.onSubjectsClick;
+      onSubjectsClick = _ref.onSubjectsClick,
+      onReplay = _ref.onReplay;
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
     'div',
     { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()('layout', className) },
@@ -10380,9 +10381,15 @@ var GameLayout = function GameLayout(_ref) {
       ),
       __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'button',
-        { className: 'to-subjects', onClick: onSubjectsClick },
+        { className: 'to-subjects-btn', onClick: onSubjectsClick },
         '\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044B',
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/menu.svg' })
+      ),
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'button',
+        { className: 'refresh-btn', onClick: onReplay },
+        '\u0417\u0430\u043D\u043E\u0432\u043E',
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/refresh.svg' })
       )
     ),
     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -10397,7 +10404,8 @@ GameLayout.propTypes = {
   className: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string,
   title: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string.isRequired,
   children: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node.isRequired,
-  onSubjectsClick: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func.isRequired
+  onSubjectsClick: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func.isRequired,
+  onReplay: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func.isRequired
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (GameLayout);
@@ -24290,20 +24298,29 @@ var Geography = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Geography.__proto__ || Object.getPrototypeOf(Geography)).call(this, props));
 
-    var _window = window,
-        innerWidth = _window.innerWidth,
-        innerHeight = _window.innerHeight;
-
-    _this.state = {
-      mountains: __WEBPACK_IMPORTED_MODULE_1__utils_geographyUtils__["a" /* default */].generateMountains(innerWidth, innerHeight, COUNT, COLORS)
+    _this.componentDidMount = function () {
+      return _this.init();
     };
-
+    _this.onReplay = function () {
+      return _this.init();
+    };
+    _this.init = _this.init.bind(_this);
     _this.onHide = _this.onHide.bind(_this);
     _this.onClick = _this.onClick.bind(_this);
     return _this;
   }
 
   _createClass(Geography, [{
+    key: 'init',
+    value: function init() {
+      var _window = window,
+          innerWidth = _window.innerWidth,
+          innerHeight = _window.innerHeight;
+
+
+      this.setState({ mountains: __WEBPACK_IMPORTED_MODULE_1__utils_geographyUtils__["a" /* default */].generateMountains(innerWidth, innerHeight, COUNT, COLORS) });
+    }
+  }, {
     key: 'onHide',
     value: function onHide(key) {
       this.setState(function (prevState) {
@@ -24343,6 +24360,8 @@ var Geography = function (_Component) {
     value: function renderMountains() {
       var _this3 = this;
 
+      if (!this.state) return null;
+
       var mountains = this.state.mountains;
 
 
@@ -24374,6 +24393,8 @@ var Geography = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      if (!this.state) return null;
+
       var mountains = this.state.mountains;
       var onSubjectsClick = this.props.onSubjectsClick;
 
@@ -24383,7 +24404,12 @@ var Geography = function (_Component) {
         rays.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { key: i, className: 'ray' }));
       }return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_2__gameLayout__["a" /* default */],
-        { className: 'geography-layout', title: '\u041A\u043B\u0438\u043A\u0430\u043B\u043A\u0430 \u043F\u043E \u0433\u043E\u0440\u0430\u043C', onSubjectsClick: onSubjectsClick },
+        {
+          className: 'geography-layout',
+          title: '\u041A\u043B\u0438\u043A\u0430\u043B\u043A\u0430 \u043F\u043E \u0433\u043E\u0440\u0430\u043C',
+          onSubjectsClick: onSubjectsClick,
+          onReplay: this.onReplay
+        },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'svg',
           { className: 'mountains' },
@@ -24550,18 +24576,36 @@ var Physics = function (_Component) {
       stopped: false
     };
 
-    _this.state = {
-      balls: __WEBPACK_IMPORTED_MODULE_2__utils_physicsUtils__["a" /* default */].initBalls(_this.container.width, _this.container.height)
+    _this.componentDidMount = function () {
+      return _this.init();
+    };
+    _this.onReplay = function () {
+      return _this.init();
+    };
+    _this.componentWillUnmount = function () {
+      return clearInterval(_this.intervalId);
+    };
+    _this.onBallClick = function (id) {
+      return function () {
+        return _this.setState({ balls: __WEBPACK_IMPORTED_MODULE_2__utils_physicsUtils__["a" /* default */].slowDownBalls(_this.state.balls, id) });
+      };
     };
 
+    _this.init = _this.init.bind(_this);
     _this.moveBalls = _this.moveBalls.bind(_this);
-    _this.onBallClick = _this.onBallClick.bind(_this);
-
-    _this.intervalId = setInterval(_this.moveBalls, 16);
     return _this;
   }
 
   _createClass(Physics, [{
+    key: 'init',
+    value: function init() {
+      clearInterval(this.intervalId);
+
+      this.setState({ stopped: false, balls: __WEBPACK_IMPORTED_MODULE_2__utils_physicsUtils__["a" /* default */].initBalls(this.container.width, this.container.height) });
+
+      this.intervalId = setInterval(this.moveBalls, 16);
+    }
+  }, {
     key: 'moveBalls',
     value: function moveBalls() {
       var _this2 = this;
@@ -24584,18 +24628,11 @@ var Physics = function (_Component) {
       });
     }
   }, {
-    key: 'onBallClick',
-    value: function onBallClick(id) {
-      var _this3 = this;
-
-      return function () {
-        _this3.setState({ balls: __WEBPACK_IMPORTED_MODULE_2__utils_physicsUtils__["a" /* default */].slowDownBalls(_this3.state.balls, id) });
-      };
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
+
+      if (!this.state) return null;
 
       var _state = this.state,
           balls = _state.balls,
@@ -24605,7 +24642,12 @@ var Physics = function (_Component) {
 
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_3__gameLayout__["a" /* default */],
-        { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("physics-layout", { 'is-finish': stopped }), title: '\u041E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430 \u0432\u0440\u0435\u043C\u0435\u043D\u0438', onSubjectsClick: onSubjectsClick },
+        {
+          className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("physics-layout", { 'is-finish': stopped }),
+          title: '\u041E\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u0430 \u0432\u0440\u0435\u043C\u0435\u043D\u0438',
+          onSubjectsClick: onSubjectsClick,
+          onReplay: this.onReplay
+        },
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           'div',
           { className: 'balls-container' },
@@ -24616,6 +24658,7 @@ var Physics = function (_Component) {
                 y = _ref2.y,
                 id = _ref2.id;
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('span', {
+              key: id,
               className: 'ball',
               style: {
                 width: size + 'px',
@@ -24624,7 +24667,7 @@ var Physics = function (_Component) {
                 top: y,
                 left: x
               },
-              onClick: _this4.onBallClick(id)
+              onClick: _this3.onBallClick(id)
             });
           })
         ),
@@ -24911,7 +24954,7 @@ exports = module.exports = __webpack_require__(55)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  font-family: 'PT Sans Narrow'; }\n\n.layout {\n  position: relative;\n  text-align: center; }\n  .layout .header {\n    height: 60px;\n    line-height: 60px; }\n  .layout .to-subjects {\n    float: right;\n    padding: 0;\n    margin-right: 10%;\n    line-height: 60px;\n    font-family: inherit;\n    background: transparent;\n    border: none;\n    text-transform: uppercase;\n    cursor: pointer;\n    transition: opacity 0.3s ease;\n    outline: none; }\n    .layout .to-subjects:hover {\n      opacity: 0.8; }\n    .layout .to-subjects img {\n      width: 40px;\n      margin-left: 10px;\n      vertical-align: middle; }\n  .layout .hint {\n    float: left;\n    margin-left: 10%;\n    text-transform: uppercase;\n    font-size: 20px; }\n  .layout .game-window {\n    position: relative;\n    width: 80vw;\n    height: 80vh;\n    border-radius: 20px;\n    margin: auto;\n    overflow: hidden; }\n\n.subjects {\n  overflow: hidden;\n  width: 90%;\n  margin: 40px auto; }\n  .subjects li {\n    position: relative;\n    list-style-type: none;\n    width: 27.85714285714286%;\n    /* = (100-2.5) / 3.5 */\n    padding-bottom: 32.16760145166612%;\n    /* =  width /0.866 */\n    float: left;\n    overflow: hidden;\n    visibility: hidden;\n    cursor: pointer;\n    transform: rotate(-60deg) skewY(30deg); }\n    .subjects li:hover div {\n      opacity: 0.7; }\n    .subjects li > div {\n      width: 100%;\n      height: 100%;\n      text-align: center;\n      color: #fff;\n      overflow: hidden;\n      transition: all 0.5s ease;\n      transform: skewY(-30deg) rotate(60deg);\n      -webkit-backface-visibility: hidden; }\n    .subjects li img {\n      left: -100%;\n      right: -100%;\n      width: auto;\n      height: 50%;\n      top: 40px;\n      margin: 0 auto;\n      transition: all 0.5s ease; }\n  .subjects h2 {\n    bottom: 20%;\n    font-size: 32px;\n    width: 100%; }\n  .subjects .letters {\n    cursor: auto; }\n    .subjects .letters h2 {\n      color: black;\n      top: 50%;\n      bottom: initial;\n      margin: 0;\n      transform: translateY(-50%); }\n    .subjects .letters img {\n      height: 86%;\n      top: 50%;\n      transform: translateY(-50%); }\n\n.clr:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.subjects li:nth-child(3n+2) {\n  margin: 0 1%; }\n\n.subjects li:nth-child(6n+4) {\n  margin-left: 0.5%; }\n\n.subjects li:nth-child(6n+4),\n.subjects li:nth-child(6n+5),\n.subjects li:nth-child(6n+6) {\n  margin-top: -6.9285714285%;\n  margin-bottom: -6.9285714285%;\n  transform: translateX(50%) rotate(-60deg) skewY(30deg); }\n\n.subjects li:nth-child(6n+4):last-child,\n.subjects li:nth-child(6n+5):last-child,\n.subjects li:nth-child(6n+6):last-child {\n  margin-bottom: 0%; }\n\n.subjects li * {\n  position: absolute;\n  visibility: visible; }\n\n.geography:hover img {\n  transform: rotate(-180deg); }\n\n.informatics:hover img {\n  animation: informatics 0.5s ease; }\n\n.math:hover img {\n  animation: math 0.5s ease; }\n\n.com:hover img {\n  animation: com 0.5s ease; }\n\n.physics:hover img {\n  animation: physics 0.5s ease; }\n\n.literature:hover img {\n  animation: literature 0.5s ease; }\n\n.ru:hover img {\n  animation: ru 0.5s ease; }\n\n.english:hover img {\n  animation: english 0.5s ease; }\n\n.biology:hover img {\n  animation: biology 0.5s ease; }\n\n.chemistry:hover img {\n  animation: chemistry 0.5s ease; }\n\n.history:hover img {\n  animation: history 0.5s ease; }\n\n@keyframes informatics {\n  30% {\n    transform: translateX(-10%); }\n  50% {\n    transform: translateX(20%); }\n  100% {\n    transform: translateX(0); } }\n\n@keyframes math {\n  10%, 40% {\n    transform: translate(-7%, -5%); }\n  25% {\n    transform: translate(-15%, -5%); }\n  55%, 100% {\n    transform: translateX(0); }\n  70% {\n    transform: translate(10%, -15%); }\n  85% {\n    transform: translate(15%, -15%); } }\n\n@keyframes com {\n  30% {\n    transform: rotate(-5deg); }\n  50% {\n    transform: rotate(10deg) scale(1.2); }\n  100% {\n    transform: rotate(0deg) scale(1); } }\n\n@keyframes physics {\n  30% {\n    transform: translate(12%, -12%); }\n  50% {\n    transform: translate(-10%, 10%); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes literature {\n  10% {\n    transform: rotate(5deg); }\n  30% {\n    transform: rotate(-5deg); }\n  50% {\n    transform: rotate(10deg); }\n  70% {\n    transform: rotate(-10deg); }\n  100% {\n    transform: rotate(0deg); } }\n\n@keyframes ru {\n  50% {\n    transform: skew(-20deg); }\n  100% {\n    transform: skew(0deg); } }\n\n@keyframes english {\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes biology {\n  70% {\n    transform: rotate(60deg) scale(1.2); }\n  100% {\n    transform: rotate(0deg) scale(1); } }\n\n@keyframes chemistry {\n  20% {\n    transform: translate(10%, 10%); }\n  40% {\n    transform: translate(-10%, 10%); }\n  65% {\n    transform: translate(-10%, -10%); }\n  80% {\n    transform: translate(10%, -10%); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes history {\n  50% {\n    transform: rotate(20deg); }\n  100% {\n    transform: rotate(0deg); } }\n\n@media (max-width: 1140px) {\n  .subjects h2 {\n    font-size: 24px;\n    bottom: 15%; } }\n\n@media (max-width: 840px) {\n  .subjects h2 {\n    display: none; }\n  .subjects div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    top: 0; }\n  .subjects li img {\n    position: static; }\n  .subjects .letters img {\n    position: absolute; } }\n\n.letter {\n  font-size: 52px;\n  text-transform: uppercase; }\n  .letter[data-subject=\"geography\"] {\n    top: 40px;\n    left: 146px; }\n  .letter[data-subject=\"informatics\"] {\n    top: 54px;\n    left: 228px; }\n  .letter[data-subject=\"math\"] {\n    top: 104px;\n    right: 48px; }\n  .letter[data-subject=\"com\"] {\n    top: 180px;\n    right: 30px; }\n  .letter[data-subject=\"physics\"] {\n    top: 258px;\n    right: 45px; }\n  .letter[data-subject=\"literature\"] {\n    top: 310px;\n    right: 110px; }\n  .letter[data-subject=\"ru\"] {\n    top: 320px;\n    right: 190px; }\n  .letter[data-subject=\"english\"] {\n    top: 288px;\n    left: 66px; }\n  .letter[data-subject=\"biology\"] {\n    top: 218px;\n    left: 26px; }\n  .letter[data-subject=\"chemistry\"] {\n    top: 148px;\n    left: 26px; }\n  .letter[data-subject=\"history\"] {\n    top: 76px;\n    left: 68px; }\n\n.geography-layout .mountains {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(#08b1da, #88eefa); }\n  .geography-layout .mountains g {\n    cursor: pointer;\n    transition: all 0.5s ease; }\n    .geography-layout .mountains g.is-hidden {\n      opacity: 0;\n      transform: translateY(100px); }\n\n.geography-layout .snow {\n  fill: white; }\n\n.geography-layout .phrase {\n  position: absolute;\n  top: 40%;\n  left: 47%;\n  margin-left: -158px;\n  padding: 0 60px;\n  font-size: 60px;\n  color: white;\n  font-family: Oswald;\n  animation: fade-in 1s ease forwards; }\n  .geography-layout .phrase mark {\n    color: #3183ad;\n    font-weight: 100;\n    background: transparent; }\n  @media (max-width: 600px) {\n    .geography-layout .phrase {\n      font-size: 50px; } }\n\n.geography-layout .sun {\n  position: absolute;\n  top: 40px;\n  right: 40px;\n  margin: auto;\n  width: 70px;\n  height: 70px;\n  border-radius: 50%;\n  background: white;\n  box-shadow: 0 0 40px 15px white;\n  animation: shine 2s ease infinite both; }\n\n@keyframes shine {\n  0% {\n    box-shadow: 0 0 40px 15px white; }\n  50% {\n    box-shadow: 0 0 40px 20px white; } }\n\n@keyframes fade-in {\n  0% {\n    opacity: 0;\n    transform: scale(0.8) translateY(0); }\n  70% {\n    opacity: 0.7;\n    transform: translateY(-200px); }\n  100% {\n    opacity: 1;\n    transform: translateY(-100px); } }\n\n.physics-layout .balls-container {\n  transition: all 2.5s ease-in-out 0.5s; }\n\n.physics-layout.is-finish .balls-container {\n  transform: scale(5); }\n\n.physics-layout .game-window {\n  overflow: visible; }\n\n.physics-layout .ball {\n  position: absolute;\n  border-radius: 50%;\n  cursor: pointer; }\n\n.physics-layout .phrase {\n  font-size: 60px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-top: -144px;\n  margin-left: -128px;\n  font-family: Comfortaa;\n  text-transform: uppercase;\n  color: #656565;\n  animation: phrase 2.5s ease 0.5s both; }\n  .physics-layout .phrase mark {\n    background: transparent;\n    color: #ffe827; }\n  .physics-layout .phrase div:nth-child(1) {\n    font-size: 27px;\n    animation: phrase 2.5s ease 0.5s both; }\n  .physics-layout .phrase div:nth-child(2) {\n    animation: phrase 1s ease 2s both; }\n  .physics-layout .phrase div:nth-child(3) {\n    font-size: 49px;\n    animation: phrase 1s ease 2.5s both; }\n  .physics-layout .phrase div:nth-child(4) {\n    font-size: 66px;\n    animation: phrase 1s ease 3s both; }\n  .physics-layout .phrase div:nth-child(5) {\n    font-size: 51px;\n    animation: phrase 1s ease 3.5s both; }\n\n@keyframes phrase {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n", ""]);
+exports.push([module.i, "body {\n  font-family: 'PT Sans Narrow'; }\n\n.layout {\n  position: relative;\n  text-align: center;\n  animation: fade-left 0.7s ease both; }\n  .layout .header {\n    height: 60px;\n    line-height: 60px; }\n    .layout .header button {\n      float: right;\n      padding: 0;\n      margin-right: 20px;\n      line-height: 60px;\n      font-family: inherit;\n      background: transparent;\n      border: none;\n      text-transform: uppercase;\n      cursor: pointer;\n      transition: opacity 0.3s ease;\n      outline: none; }\n      .layout .header button:hover {\n        opacity: 0.8; }\n      .layout .header button img {\n        width: 40px;\n        margin-left: 10px;\n        vertical-align: middle; }\n    .layout .header .to-subjects-btn {\n      margin-right: 10%; }\n  .layout .hint {\n    float: left;\n    margin-left: 10%;\n    text-transform: uppercase;\n    font-size: 20px; }\n  .layout .game-window {\n    position: relative;\n    width: 80vw;\n    height: 80vh;\n    border-radius: 20px;\n    margin: auto;\n    overflow: hidden; }\n\n@keyframes fade-left {\n  0% {\n    opacity: 0;\n    transform: translateX(-40%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0); } }\n\n.subjects {\n  overflow: hidden;\n  width: 90%;\n  margin: 40px auto;\n  animation: fade-right 0.7s ease both; }\n  .subjects li {\n    position: relative;\n    list-style-type: none;\n    width: 27.85714285714286%;\n    /* = (100-2.5) / 3.5 */\n    padding-bottom: 32.16760145166612%;\n    /* =  width /0.866 */\n    float: left;\n    overflow: hidden;\n    visibility: hidden;\n    cursor: pointer;\n    transform: rotate(-60deg) skewY(30deg); }\n    .subjects li:hover div {\n      opacity: 0.7; }\n    .subjects li > div {\n      width: 100%;\n      height: 100%;\n      text-align: center;\n      color: #fff;\n      overflow: hidden;\n      transition: all 0.5s ease;\n      transform: skewY(-30deg) rotate(60deg);\n      -webkit-backface-visibility: hidden; }\n    .subjects li img {\n      left: -100%;\n      right: -100%;\n      width: auto;\n      height: 50%;\n      top: 40px;\n      margin: 0 auto;\n      transition: all 0.5s ease; }\n  .subjects h2 {\n    bottom: 20%;\n    font-size: 32px;\n    width: 100%; }\n  .subjects .letters {\n    cursor: auto; }\n    .subjects .letters h2 {\n      color: black;\n      top: 50%;\n      bottom: initial;\n      margin: 0;\n      transform: translateY(-50%); }\n    .subjects .letters img {\n      height: 86%;\n      top: 50%;\n      transform: translateY(-50%); }\n\n.clr:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.subjects li:nth-child(3n+2) {\n  margin: 0 1%; }\n\n.subjects li:nth-child(6n+4) {\n  margin-left: 0.5%; }\n\n.subjects li:nth-child(6n+4),\n.subjects li:nth-child(6n+5),\n.subjects li:nth-child(6n+6) {\n  margin-top: -6.9285714285%;\n  margin-bottom: -6.9285714285%;\n  transform: translateX(50%) rotate(-60deg) skewY(30deg); }\n\n.subjects li:nth-child(6n+4):last-child,\n.subjects li:nth-child(6n+5):last-child,\n.subjects li:nth-child(6n+6):last-child {\n  margin-bottom: 0%; }\n\n.subjects li * {\n  position: absolute;\n  visibility: visible; }\n\n.geography:hover img {\n  transform: rotate(-180deg); }\n\n.informatics:hover img {\n  animation: informatics 0.5s ease; }\n\n.math:hover img {\n  animation: math 0.5s ease; }\n\n.com:hover img {\n  animation: com 0.5s ease; }\n\n.physics:hover img {\n  animation: physics 0.5s ease; }\n\n.literature:hover img {\n  animation: literature 0.5s ease; }\n\n.ru:hover img {\n  animation: ru 0.5s ease; }\n\n.english:hover img {\n  animation: english 0.5s ease; }\n\n.biology:hover img {\n  animation: biology 0.5s ease; }\n\n.chemistry:hover img {\n  animation: chemistry 0.5s ease; }\n\n.history:hover img {\n  animation: history 0.5s ease; }\n\n@keyframes informatics {\n  30% {\n    transform: translateX(-10%); }\n  50% {\n    transform: translateX(20%); }\n  100% {\n    transform: translateX(0); } }\n\n@keyframes math {\n  10%, 40% {\n    transform: translate(-7%, -5%); }\n  25% {\n    transform: translate(-15%, -5%); }\n  55%, 100% {\n    transform: translateX(0); }\n  70% {\n    transform: translate(10%, -15%); }\n  85% {\n    transform: translate(15%, -15%); } }\n\n@keyframes com {\n  30% {\n    transform: rotate(-5deg); }\n  50% {\n    transform: rotate(10deg) scale(1.2); }\n  100% {\n    transform: rotate(0deg) scale(1); } }\n\n@keyframes physics {\n  30% {\n    transform: translate(12%, -12%); }\n  50% {\n    transform: translate(-10%, 10%); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes literature {\n  10% {\n    transform: rotate(5deg); }\n  30% {\n    transform: rotate(-5deg); }\n  50% {\n    transform: rotate(10deg); }\n  70% {\n    transform: rotate(-10deg); }\n  100% {\n    transform: rotate(0deg); } }\n\n@keyframes ru {\n  50% {\n    transform: skew(-20deg); }\n  100% {\n    transform: skew(0deg); } }\n\n@keyframes english {\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes biology {\n  70% {\n    transform: rotate(60deg) scale(1.2); }\n  100% {\n    transform: rotate(0deg) scale(1); } }\n\n@keyframes chemistry {\n  20% {\n    transform: translate(10%, 10%); }\n  40% {\n    transform: translate(-10%, 10%); }\n  65% {\n    transform: translate(-10%, -10%); }\n  80% {\n    transform: translate(10%, -10%); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes history {\n  50% {\n    transform: rotate(20deg); }\n  100% {\n    transform: rotate(0deg); } }\n\n@media (max-width: 1140px) {\n  .subjects h2 {\n    font-size: 24px;\n    bottom: 15%; } }\n\n@media (max-width: 840px) {\n  .subjects h2 {\n    display: none; }\n  .subjects div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    top: 0; }\n  .subjects li img {\n    position: static; }\n  .subjects .letters img {\n    position: absolute; } }\n\n@keyframes fade-right {\n  0% {\n    opacity: 0;\n    transform: translateX(40%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0); } }\n\n.letter {\n  font-size: 50px;\n  text-transform: uppercase; }\n  .letter[data-subject=\"geography\"] {\n    top: 9.5%;\n    left: 40.4%; }\n  .letter[data-subject=\"informatics\"] {\n    top: 13%;\n    left: 63.2%; }\n  .letter[data-subject=\"math\"] {\n    top: 25%;\n    right: 13.3%; }\n  .letter[data-subject=\"com\"] {\n    top: 43.2%;\n    right: 8.3%; }\n  .letter[data-subject=\"physics\"] {\n    top: 61.9%;\n    right: 12.5%; }\n  .letter[data-subject=\"literature\"] {\n    top: 74.3%;\n    right: 30.5%; }\n  .letter[data-subject=\"ru\"] {\n    top: 76.7%;\n    right: 52.6%; }\n  .letter[data-subject=\"english\"] {\n    top: 69%;\n    left: 18.3%; }\n  .letter[data-subject=\"biology\"] {\n    top: 52.3%;\n    left: 7.2%; }\n  .letter[data-subject=\"chemistry\"] {\n    top: 34%;\n    left: 7.2%; }\n  .letter[data-subject=\"history\"] {\n    top: 18.2%;\n    left: 18.8%; }\n\n@media (max-width: 1250px) {\n  .letter {\n    font-size: 38px; } }\n\n@media (max-width: 900px) {\n  .letters {\n    opacity: 0;\n    cursor: default; } }\n\n.geography-layout .mountains {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(#08b1da, #88eefa); }\n  .geography-layout .mountains g {\n    cursor: pointer;\n    transition: all 0.5s ease; }\n    .geography-layout .mountains g.is-hidden {\n      opacity: 0;\n      transform: translateY(100px); }\n\n.geography-layout .snow {\n  fill: white; }\n\n.geography-layout .phrase {\n  position: absolute;\n  top: 40%;\n  left: 47%;\n  margin-left: -158px;\n  padding: 0 60px;\n  font-size: 60px;\n  color: white;\n  font-family: Oswald;\n  animation: fade-in 1s ease forwards; }\n  .geography-layout .phrase mark {\n    color: #3183ad;\n    font-weight: 100;\n    background: transparent; }\n  @media (max-width: 600px) {\n    .geography-layout .phrase {\n      font-size: 50px; } }\n\n.geography-layout .sun {\n  position: absolute;\n  top: 40px;\n  right: 40px;\n  margin: auto;\n  width: 70px;\n  height: 70px;\n  border-radius: 50%;\n  background: white;\n  box-shadow: 0 0 40px 15px white;\n  animation: shine 2s ease infinite both; }\n\n@keyframes shine {\n  0% {\n    box-shadow: 0 0 40px 15px white; }\n  50% {\n    box-shadow: 0 0 40px 20px white; } }\n\n@keyframes fade-in {\n  0% {\n    opacity: 0;\n    transform: scale(0.8) translateY(0); }\n  70% {\n    opacity: 0.7;\n    transform: translateY(-200px); }\n  100% {\n    opacity: 1;\n    transform: translateY(-100px); } }\n\n.physics-layout {\n  height: 100vh;\n  overflow: hidden; }\n  .physics-layout .balls-container {\n    transition: all 2.5s ease-in-out 0.5s; }\n  .physics-layout.is-finish .balls-container {\n    transform: scale(5); }\n  .physics-layout .game-window {\n    overflow: visible; }\n  .physics-layout .ball {\n    position: absolute;\n    border-radius: 50%;\n    cursor: pointer; }\n  .physics-layout .phrase {\n    font-size: 60px;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    margin-top: -144px;\n    margin-left: -128px;\n    font-family: Comfortaa;\n    text-transform: uppercase;\n    color: #656565;\n    animation: phrase 2.5s ease 0.5s both; }\n    .physics-layout .phrase mark {\n      background: transparent;\n      color: #ffe827; }\n    .physics-layout .phrase div:nth-child(1) {\n      font-size: 27px;\n      animation: phrase 2.5s ease 0.5s both; }\n    .physics-layout .phrase div:nth-child(2) {\n      animation: phrase 1s ease 2s both; }\n    .physics-layout .phrase div:nth-child(3) {\n      font-size: 49px;\n      animation: phrase 1s ease 2.5s both; }\n    .physics-layout .phrase div:nth-child(4) {\n      font-size: 66px;\n      animation: phrase 1s ease 3s both; }\n    .physics-layout .phrase div:nth-child(5) {\n      font-size: 51px;\n      animation: phrase 1s ease 3.5s both; }\n\n@keyframes phrase {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n", ""]);
 
 // exports
 

@@ -10,13 +10,17 @@ class Geography extends Component {
   constructor(props) {
     super(props);
 
-    const { innerWidth, innerHeight } = window;
-    this.state = {
-      mountains: geographyUtils.generateMountains(innerWidth, innerHeight, COUNT, COLORS)
-    };
-    
+    this.componentDidMount = () => this.init();
+    this.onReplay = () => this.init();
+    this.init = this.init.bind(this);
     this.onHide = this.onHide.bind(this);
     this.onClick = this.onClick.bind(this);
+  }
+  
+  init() {
+    const { innerWidth, innerHeight } = window;
+
+    this.setState({ mountains: geographyUtils.generateMountains(innerWidth, innerHeight, COUNT, COLORS) });
   }
 
   onHide(key) {
@@ -46,6 +50,8 @@ class Geography extends Component {
   }
 
   renderMountains() {
+    if (!this.state) return null;
+
     const { mountains } = this.state;
 
     return mountains.map(({ color, points, snowPoints, x, x2, y, middle, className, key }) => (
@@ -64,6 +70,8 @@ class Geography extends Component {
   }
 
   render() {
+    if (!this.state) return null;
+
     const { mountains } = this.state;
     const { onSubjectsClick } = this.props;
 
@@ -71,7 +79,12 @@ class Geography extends Component {
     for (let i = 0; i < 10; i++) rays.push(<div key={i} className="ray"></div>);
 
     return (
-      <GameLayout className="geography-layout" title="Кликалка по горам" onSubjectsClick={onSubjectsClick}>
+      <GameLayout
+        className="geography-layout"
+        title="Кликалка по горам"
+        onSubjectsClick={onSubjectsClick}
+        onReplay={this.onReplay}
+      >
         <svg className="mountains">
           {this.renderMountains()}
         </svg>
