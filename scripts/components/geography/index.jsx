@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import geographyUtils from '../../utils/geographyUtils';
+import GameLayout from '../gameLayout';
 import WinPhrase from './winPhrase';
 
 const COLORS = ["#397d69", "#11b8dd", "#696978", "#47654d", "#498c60", "#134351"];
@@ -70,20 +71,13 @@ class Geography extends Component {
     for (let i = 0; i < 10; i++) rays.push(<div key={i} className="ray"></div>);
 
     return (
-      <div className="geography-container">
-        <div className="header">
-          <div className="hint">Кликалка по горам</div>
-          <button className="to-subjects" onClick={onSubjectsClick}>
-            Предметы
-            <img src="../../../images/menu.svg" />
-          </button>
-        </div>
+      <GameLayout className="geography-layout" title="Кликалка по горам" onSubjectsClick={onSubjectsClick}>
         <svg className="mountains">
           {this.renderMountains()}
         </svg>
         <div className="sun" />
         {mountains.length !== 0 ? null : <WinPhrase />}
-      </div>
+      </GameLayout>
     );
   }
 }
