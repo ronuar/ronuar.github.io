@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { saveToLocalStorage } from '../../services/localStorageService';
 
 const DELAY = 100;
-const PHRASE = 'BECOME HARDER BETTER FASTER STRONGER CLEVERER';
+const PHRASE = 'ENJOY! BECOME HARDER BETTER FASTER STRONGER CLEVERER';
 
 class InformaticsWinPhrase extends Component {
   constructor(props) {

@@ -1,4 +1,8 @@
 .informatics-layout {
+  .game-window {
+    overflow: hidden;
+  }
+
   .macbook {
     width: 900px;
     margin: 50px auto;
@@ -120,6 +124,10 @@
       div {
         width: 170px;
         margin: 0 auto;
+
+        &:first-letter {
+          color: green;
+        }
 
         &::after {
           content: '_';
