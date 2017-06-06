@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import store from 'store';
 
 import Geography from './geography';
+import Physics from './physics';
 import LettersHendecagon from './lettersHendecagon';
 
 const subjectsContainers = {
-  geography: <Geography />
+  geography: <Geography />,
+  physics: <Physics />
 };
 
 const data = [
@@ -18,7 +19,7 @@ const data = [
   { key: 'pusher' },
   { key: 'com', color: '#fab218', title: 'Обществознание' },
   { key: 'pusher' },
-  { key: 'physics', color: '#25a6ef', title: 'Физика' },
+  { key: 'physics', color: '#25a6ef', title: 'Физика', letter: 'н' },
   { key: 'literature', color: '#01CC90', title: 'Литература' },
   { key: 'pusher' },
   { key: 'ru', color: '#FF642D', title: 'Русский язык' },
@@ -68,7 +69,5 @@ class SubjectsHexagon extends Component {
     );
   }
 }
-
-SubjectsHexagon.propTypes = {};
 
 export default SubjectsHexagon;

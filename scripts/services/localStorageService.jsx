@@ -5,7 +5,7 @@ const saveToLocalStorage = (Component, letter, subject) => class extends React.C
   componentDidMount() {
     const letters = store.get('letters') || [];
 
-    if (letters.indexOf(letter) === -1) letters.push({ name: letter, subject });
+    if (letters.map(l => l.name).indexOf(letter) === -1) letters.push({ name: letter, subject });
 
     store.set('letters', letters);
   }

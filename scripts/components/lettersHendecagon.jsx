@@ -5,7 +5,7 @@ const LettersHendecagon = ({ lettersSubjects }) => {
   const letters = store.get('letters') || [];
 
   return (
-    <li className="letters" key="letters">
+    <li className="letters">
       <div>
         <img src={`../../images/figure.png`} />
         <h2>Буквы</h2>
@@ -13,7 +13,7 @@ const LettersHendecagon = ({ lettersSubjects }) => {
           const { key, color } = lettersSubjects.filter(letterSubject => letterSubject.key === subject)[0];
 
           return (
-            <span key={key} className="letter" style={{ color }} data-subject={key}>{name}</span>
+            <span key={subject} className="letter" style={{ color }} data-subject={key}>{name}</span>
           );
         })}
       </div>
