@@ -21,8 +21,8 @@ export default {
         color: `rgba(${rand(0, 255, true)},${rand(0, 255, true)},${rand(0, 255, true)},${rand(0.1, 0.8)}`,
         y: rand(0, height - size),
         x: rand(0, width - size),
-        dx: rand(-7, 7),
-        dy: rand(-7, 7),
+        dx: rand(-1, 1),
+        dy: rand(-1, 1),
         id: i
       });
     }
