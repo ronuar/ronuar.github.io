@@ -22,7 +22,7 @@ module.exports = {
         loader: {
           loader: 'url-loader',
           query: {
-            limit: 1024,
+            limit: 300000,
             name: '[name].[ext]'
           }
         }

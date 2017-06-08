@@ -4,13 +4,15 @@ import Geography from './geography';
 import Physics from './physics';
 import Mathematics from './mathematics';
 import Informatics from './informatics';
+import Russian from './russian';
 import LettersHendecagon from './lettersHendecagon';
 
 const subjectsContainers = {
   geography: <Geography />,
   physics: <Physics />,
   math: <Mathematics />,
-  informatics: <Informatics />
+  informatics: <Informatics />,
+  ru: <Russian />
 };
 
 const data = [
@@ -26,7 +28,7 @@ const data = [
   { key: 'physics', color: '#25a6ef', title: 'Физика', letter: 'н' },
   { key: 'literature', color: '#01CC90', title: 'Литература' },
   { key: 'pusher' },
-  { key: 'ru', color: '#FF642D', title: 'Русский язык' },
+  { key: 'ru', color: '#FF642D', title: 'Русский язык', letter: 'у' },
   { key: 'letters' },
   { key: 'pusher' },
   { key: 'english', color: '#4371F4', title: 'Английский язык' },
