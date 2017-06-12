@@ -20,7 +20,7 @@ const data = [
   { key: 'geography', color: '#ed4941', title: 'География', letter: 'ь' },
   { key: 'informatics', color: '#02d565', title: 'Информатика', letter: 'е' },
   { key: 'pusher' },
-  { key: 'math', color: '#5c47d8', title: 'Математика' },
+  { key: 'math', color: '#5c47d8', title: 'Математика', letter: 'в' },
   { key: 'pusher' },
   { key: 'pusher' },
   { key: 'com', color: '#fab218', title: 'Обществознание' },

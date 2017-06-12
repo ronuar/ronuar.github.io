@@ -1,0 +1,142 @@
+.mathematics-layout {
+  .game-window {
+    margin-top: 60px;
+  }
+
+  .grid {
+    position: relative;
+    width: 541px;
+    margin: 0 auto;
+  }
+
+  .tip {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 50px;
+    text-align: center;
+    background: rgba(21, 115, 255, 0.7);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.1s ease, background 0.4s ease;
+
+    img {
+      width: 40px;
+      top: 18px;
+      position: relative;
+      margin-right: 4px;
+
+      &.top {
+        transform: rotate(-90deg);
+      }
+
+      &.bottom {
+        transform: rotate(90deg);
+      }
+
+      &.left {
+        transform: rotate(180deg);
+      }
+    }
+
+    .length {
+      position: relative;
+      top: 23px;
+      font-weight: bold;
+    }
+
+    &.is-clicked {
+      transform: scale(1.2);
+    }
+
+    &.is-error {
+      cursor: pointer;
+      transform: none;
+      background: rgba(255, 235, 59, 0.5);
+
+      .message {
+        font-size: 20px;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .phrase {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: white;
+
+    mark {
+      background: transparent;
+      color: #FF5722;
+    }
+
+    div {
+      position: absolute;
+      text-transform: uppercase;
+      padding: 0 10px;
+      box-shadow: 4px 4px 0 0 rgba(158, 158, 158, 0.4);
+
+      &:first-child {
+        background: #3949AB;
+        animation: first 0.5s ease 0.5s both;
+      }
+
+      &:nth-child(2) {
+        background: white;
+        color: #607D8B;
+        top: 40px;
+        left: 20px;
+        animation: second 0.5s ease 1s both;
+      }
+
+      &:last-child {
+        background: #76FF03;
+        top: 80px;
+        left: 40px;
+        animation: third 0.5s ease 1.5s both;
+      }
+    }
+  }
+
+  @keyframes first {
+    0% {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes second {
+    0% {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes third {
+    0% {
+      opacity: 0;
+      transform: translateY(200px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
