@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { saveToLocalStorage } from '../../services/localStorageService';
+import { SUBJECTS_INFO } from '../../constants/commonConstants';
 
 class MathematicsWinPhrase extends Component {
   render() {
@@ -13,4 +14,4 @@ class MathematicsWinPhrase extends Component {
   }
 }
 
-export default saveToLocalStorage(MathematicsWinPhrase, 'в', 'math');
+export default saveToLocalStorage(MathematicsWinPhrase, SUBJECTS_INFO.math);

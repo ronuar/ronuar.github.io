@@ -7,6 +7,8 @@ import Informatics from './informatics';
 import Russian from './russian';
 import LettersHendecagon from './lettersHendecagon';
 
+import { SUBJECTS_INFO } from '../constants/commonConstants';
+
 const subjectsContainers = {
   geography: <Geography />,
   physics: <Physics />,
@@ -17,25 +19,25 @@ const subjectsContainers = {
 
 const data = [
   { key: 'pusher' },
-  { key: 'geography', color: '#ed4941', title: 'География', letter: 'ь' },
-  { key: 'informatics', color: '#02d565', title: 'Информатика', letter: 'е' },
+  SUBJECTS_INFO.geography,
+  SUBJECTS_INFO.informatics,
   { key: 'pusher' },
-  { key: 'math', color: '#5c47d8', title: 'Математика', letter: 'в' },
+  SUBJECTS_INFO.math,
   { key: 'pusher' },
   { key: 'pusher' },
-  { key: 'com', color: '#fab218', title: 'Обществознание' },
+  SUBJECTS_INFO.com,
   { key: 'pusher' },
-  { key: 'physics', color: '#25a6ef', title: 'Физика', letter: 'н' },
-  { key: 'literature', color: '#01CC90', title: 'Литература' },
+  SUBJECTS_INFO.physics,
+  SUBJECTS_INFO.literature,
   { key: 'pusher' },
-  { key: 'ru', color: '#FF642D', title: 'Русский язык', letter: 'у' },
+  SUBJECTS_INFO.ru,
   { key: 'letters' },
   { key: 'pusher' },
-  { key: 'english', color: '#4371F4', title: 'Английский язык' },
-  { key: 'biology', color: '#78C82A', title: 'Биология' },
+  SUBJECTS_INFO.english,
+  SUBJECTS_INFO.biology,
   { key: 'pusher' },
-  { key: 'chemistry', color: '#ac46fb', title: 'Химия' },
-  { key: 'history', color: '#f53d6d', title: 'История' },
+  SUBJECTS_INFO.chemistry,
+  SUBJECTS_INFO.history,
 ];
 
 class SubjectsHexagon extends Component {
@@ -57,21 +59,34 @@ class SubjectsHexagon extends Component {
     const lettersSubjects = data.map(({ key, letter, color }) => ({ key, letter, color }));
 
     return (
-      <ul className="clr subjects">
-        {data.map(({ key, color, title }, index) => {
-          if (key === 'pusher') return <li key={index} className="pusher" />;
-          if (key === 'letters') return <LettersHendecagon key="letters" lettersSubjects={lettersSubjects} />;
-
-          return (
-            <li key={key} className={key} onClick={this.onSubjectSelect(key)}>
-              <div style={{ background: color }}>
-                <img src={`../../images/${key}.svg`} alt={key} />
-                <h2>{title}</h2>
+      <div className="parallax-layout">
+        <div className="parallax-layer layer-back">
+          <div className="hexagon geography">
+            <li>
+              <div style={{ background: 'red' }}>
+                <h2>Свернув горы сможешь покорить и ЕГЭ</h2>
               </div>
             </li>
-          );
-        })}
-      </ul>
+          </div>
+        </div>
+        <div className="parallax-layer layer-base">
+          <ul className="clr subjects">
+            {data.map(({ key, color, title }, index) => {
+              if (key === 'pusher') return <li key={index} className="pusher" />;
+              if (key === 'letters') return <LettersHendecagon key="letters" lettersSubjects={lettersSubjects} />;
+
+              return (
+                <li key={key} className={key} onClick={this.onSubjectSelect(key)}>
+                  <div style={{ background: color }}>
+                    <img src={`../../images/${key}.svg`} alt={key} />
+                    <h2>{title}</h2>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     );
   }
 }

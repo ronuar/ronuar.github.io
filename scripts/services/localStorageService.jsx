@@ -1,13 +1,13 @@
 import React from 'react';
 import store from 'store';
 
-const saveToLocalStorage = (Component, letter, subject) => class extends React.Component {
+const saveToLocalStorage = (Component, { key: name, letter, phrase }) => class extends React.Component {
   componentDidMount() {
-    const letters = store.get('letters') || [];
+    const progressInfo = store.get('progressInfo') || [];
 
-    if (letters.map(l => l.name).indexOf(letter) === -1) letters.push({ name: letter, subject });
+    if (progressInfo.map(l => l.subject).indexOf(name) === -1) progressInfo.push({ letter, name, phrase });
 
-    store.set('letters', letters);
+    store.set('progressInfo', progressInfo);
   }
 
   render() {

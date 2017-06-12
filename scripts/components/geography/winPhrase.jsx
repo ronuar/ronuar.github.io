@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { saveToLocalStorage } from '../../services/localStorageService';
+import { SUBJECTS_INFO } from '../../constants/commonConstants';
 
 class GeographyWinPhrase extends Component {
   render() {
@@ -13,4 +14,4 @@ class GeographyWinPhrase extends Component {
   }
 }
 
-export default saveToLocalStorage(GeographyWinPhrase, 'ь', 'geography');
+export default saveToLocalStorage(GeographyWinPhrase, SUBJECTS_INFO.geography);

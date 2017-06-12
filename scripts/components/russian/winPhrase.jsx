@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { saveToLocalStorage } from '../../services/localStorageService';
+import { SUBJECTS_INFO } from '../../constants/commonConstants';
 
 class RussianWinPhrase extends Component {
   render() {
@@ -19,4 +20,4 @@ class RussianWinPhrase extends Component {
   }
 }
 
-export default saveToLocalStorage(RussianWinPhrase, 'у', 'ru');
+export default saveToLocalStorage(RussianWinPhrase, SUBJECTS_INFO.ru);

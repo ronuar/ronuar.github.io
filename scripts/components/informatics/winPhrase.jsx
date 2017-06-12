@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { saveToLocalStorage } from '../../services/localStorageService';
+import { SUBJECTS_INFO } from '../../constants/commonConstants';
 
 const DELAY = 100;
 const PHRASE = 'ENJOY! BECOME HARDER BETTER FASTER STRONGER CLEVERER';
@@ -25,4 +26,4 @@ class InformaticsWinPhrase extends Component {
   }
 }
 
-export default saveToLocalStorage(InformaticsWinPhrase, 'е', 'informatics');
+export default saveToLocalStorage(InformaticsWinPhrase, SUBJECTS_INFO.informatics);

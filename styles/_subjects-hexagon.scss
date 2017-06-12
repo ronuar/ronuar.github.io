@@ -1,8 +1,44 @@
+.hexagon {
+  position: absolute;
+
+  li {
+    position: relative;
+    list-style-type: none;
+    width: 165px;
+    height: 188px;
+    overflow: hidden;
+    cursor: pointer;
+    transform: rotate(-60deg) skewY(30deg);
+
+    > div {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      transition: all 0.5s ease;
+
+      transform: skewY(-30deg) rotate(60deg);
+    }
+
+    h2 {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0 10px;
+    }
+  }
+
+  &.geography {
+    top: 100px;
+    left: 100px;
+  }
+}
+
 .subjects {
   overflow: hidden;
   width: 90%;
   margin: 40px auto;
-  animation: fade-right 0.7s ease both;
 
   li {
     position: relative;
