@@ -121,7 +121,7 @@ class Mathematics extends Component {
     return (
       <GameLayout
         className="mathematics-layout"
-        title="Самое первое задание"
+        title="Терпеливый художник"
         onSubjectsClick={onSubjectsClick}
         onReplay={this.onReplay}
       >

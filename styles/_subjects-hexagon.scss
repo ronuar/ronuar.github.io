@@ -33,6 +33,46 @@
     top: 100px;
     left: 100px;
   }
+  &.physics {
+    top: 700px;
+    left: 20px;
+  }
+  &.informatics {
+    right: 40px;
+    top: 380px;
+  }
+  &.math {
+    top: 400px;
+    left: 320px;
+  }
+  &.com {
+    top: 600px;
+    right: 200px;
+  }
+  &.literature {
+    right: 40px;
+    top: 900px;
+  }
+  &.ru {
+    top: 950px;
+    right: 375px;
+  }
+  &.english {
+    top: 1000px;
+    left: 60px;
+  }
+  &.chemistry {
+    top: 1400px;
+    left: 20px;
+  }
+  &.history {
+    top: 1300px;
+    right: 420px;
+  }
+  &.biology {
+    top: 1200px;
+    right: 120px;
+  }
 }
 
 .subjects {

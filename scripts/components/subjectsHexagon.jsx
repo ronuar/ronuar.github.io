@@ -6,7 +6,9 @@ import Mathematics from './mathematics';
 import Informatics from './informatics';
 import Russian from './russian';
 import LettersHendecagon from './lettersHendecagon';
+import Phrases from './phrases';
 
+import localStorageUtils from '../utils/localStorageUtils';
 import { SUBJECTS_INFO } from '../constants/commonConstants';
 
 const subjectsContainers = {
@@ -51,6 +53,11 @@ class SubjectsHexagon extends Component {
     this.onSubjectSelect = subject => () => this.setState({ subject });
   }
 
+  componentDidMount() {
+    localStorageUtils.defineProgressInfo();
+    this.forceUpdate();
+  }
+
   render() {
     const { subject } = this.state;
 
@@ -61,13 +68,7 @@ class SubjectsHexagon extends Component {
     return (
       <div className="parallax-layout">
         <div className="parallax-layer layer-back">
-          <div className="hexagon geography">
-            <li>
-              <div style={{ background: 'red' }}>
-                <h2>Свернув горы сможешь покорить и ЕГЭ</h2>
-              </div>
-            </li>
-          </div>
+          <Phrases />
         </div>
         <div className="parallax-layer layer-base">
           <ul className="clr subjects">
