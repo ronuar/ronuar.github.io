@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 225);
+/******/ 	return __webpack_require__(__webpack_require__.s = 227);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -550,7 +550,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 var _prodInvariant = __webpack_require__(3);
 
-var DOMProperty = __webpack_require__(14);
+var DOMProperty = __webpack_require__(17);
 var ReactDOMComponentFlags = __webpack_require__(68);
 
 var invariant = __webpack_require__(1);
@@ -1767,6 +1767,197 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
 
 /***/ }),
 /* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SUBJECTS_INFO; });
+var SUBJECTS_INFO = {
+  geography: {
+    key: 'geography',
+    color: '#ed4941',
+    title: 'География',
+    letter: 'ь',
+    phrase: 'Свернув горы, можно покорить и ЕГЭ'
+  },
+  informatics: {
+    key: 'informatics',
+    color: '#02d565',
+    title: 'Информатика',
+    letter: 'е',
+    phrase: 'Enjoy! Become harder, better, faster, stronger, cleverer'
+  },
+  math: {
+    key: 'math',
+    color: '#5c47d8',
+    title: 'Математика',
+    letter: 'в',
+    phrase: 'Самое светлое впереди'
+  },
+  com: {
+    key: 'com',
+    color: '#fab218',
+    title: 'Обществознание',
+    letter: 'е',
+    phrase: 'Собой будь, получится все у тебя'
+  },
+  physics: {
+    key: 'physics',
+    color: '#25a6ef',
+    title: 'Физика',
+    letter: 'н',
+    phrase: 'Что не убивает делает сильнее, ЕГЭ не убивает'
+  },
+  literature: {
+    key: 'literature',
+    color: '#01CC90',
+    title: 'Литература'
+  },
+  ru: {
+    key: 'ru',
+    color: '#FF642D',
+    title: 'Русский язык',
+    letter: 'у',
+    phrase: 'ЕГЭ длится не вечно, не унывай'
+  },
+  english: {
+    key: 'english',
+    color: '#4371F4',
+    title: 'Английский язык'
+  },
+  biology: {
+    key: 'biology',
+    color: '#78C82A',
+    title: 'Биология'
+  },
+  chemistry: {
+    key: 'chemistry',
+    color: '#ac46fb',
+    title: 'Химия'
+  },
+  history: {
+    key: 'history',
+    color: '#f53d6d',
+    title: 'История'
+  }
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return saveToLocalStorage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_store__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_store___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_store__);
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1_store___default.a; });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var saveToLocalStorage = function saveToLocalStorage(Component, _ref) {
+  var name = _ref.key,
+      letter = _ref.letter,
+      phrase = _ref.phrase;
+  return function (_React$Component) {
+    _inherits(_class, _React$Component);
+
+    function _class() {
+      _classCallCheck(this, _class);
+
+      return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    }
+
+    _createClass(_class, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        var progressInfo = __WEBPACK_IMPORTED_MODULE_1_store___default.a.get('progressInfo') || [];
+
+        if (progressInfo.map(function (l) {
+          return l.name;
+        }).indexOf(name) === -1) progressInfo.push({ letter: letter, name: name, phrase: phrase });
+
+        __WEBPACK_IMPORTED_MODULE_1_store___default.a.set('progressInfo', progressInfo);
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Component, null);
+      }
+    }]);
+
+    return _class;
+  }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+};
+
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/*!
+  Copyright (c) 2016 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				classes.push(classNames.apply(null, arg));
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if ("function" === 'function' && _typeof(__webpack_require__(95)) === 'object' && __webpack_require__(95)) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+			return classNames;
+		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {
+		window.classNames = classNames;
+	}
+})();
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1980,195 +2171,6 @@ var DOMProperty = {
 
 module.exports = DOMProperty;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SUBJECTS_INFO; });
-var SUBJECTS_INFO = {
-  geography: {
-    key: 'geography',
-    color: '#ed4941',
-    title: 'География',
-    letter: 'ь',
-    phrase: 'Свернув горы, можно покорить и ЕГЭ'
-  },
-  informatics: {
-    key: 'informatics',
-    color: '#02d565',
-    title: 'Информатика',
-    letter: 'е',
-    phrase: 'Enjoy! Become harder, better, faster, stronger, cleverer'
-  },
-  math: {
-    key: 'math',
-    color: '#5c47d8',
-    title: 'Математика',
-    letter: 'в',
-    phrase: 'Самое светлое впереди'
-  },
-  com: {
-    key: 'com',
-    color: '#fab218',
-    title: 'Обществознание'
-  },
-  physics: {
-    key: 'physics',
-    color: '#25a6ef',
-    title: 'Физика',
-    letter: 'н',
-    phrase: 'Что не убивает делает сильнее, ЕГЭ не убивает'
-  },
-  literature: {
-    key: 'literature',
-    color: '#01CC90',
-    title: 'Литература'
-  },
-  ru: {
-    key: 'ru',
-    color: '#FF642D',
-    title: 'Русский язык',
-    letter: 'у',
-    phrase: 'ЕГЭ длится не вечно, не унывай'
-  },
-  english: {
-    key: 'english',
-    color: '#4371F4',
-    title: 'Английский язык'
-  },
-  biology: {
-    key: 'biology',
-    color: '#78C82A',
-    title: 'Биология'
-  },
-  chemistry: {
-    key: 'chemistry',
-    color: '#ac46fb',
-    title: 'Химия'
-  },
-  history: {
-    key: 'history',
-    color: '#f53d6d',
-    title: 'История'
-  }
-};
-
-/***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return saveToLocalStorage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_store__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_store___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_store__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1_store___default.a; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var saveToLocalStorage = function saveToLocalStorage(Component, _ref) {
-  var name = _ref.key,
-      letter = _ref.letter,
-      phrase = _ref.phrase;
-  return function (_React$Component) {
-    _inherits(_class, _React$Component);
-
-    function _class() {
-      _classCallCheck(this, _class);
-
-      return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-    }
-
-    _createClass(_class, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
-        var progressInfo = __WEBPACK_IMPORTED_MODULE_1_store___default.a.get('progressInfo') || [];
-
-        if (progressInfo.map(function (l) {
-          return l.subject;
-        }).indexOf(name) === -1) progressInfo.push({ letter: letter, name: name, phrase: phrase });
-
-        __WEBPACK_IMPORTED_MODULE_1_store___default.a.set('progressInfo', progressInfo);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Component, null);
-      }
-    }]);
-
-    return _class;
-  }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
-};
-
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/*!
-  Copyright (c) 2016 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-	'use strict';
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames() {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(null, arg));
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if (typeof module !== 'undefined' && module.exports) {
-		module.exports = classNames;
-	} else if ("function" === 'function' && _typeof(__webpack_require__(95)) === 'object' && __webpack_require__(95)) {
-		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-			return classNames;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {
-		window.classNames = classNames;
-	}
-})();
 
 /***/ }),
 /* 18 */
@@ -3216,6 +3218,69 @@ function isObject(val) {
 
 /***/ }),
 /* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
+
+
+
+
+var GameLayout = function GameLayout(_ref) {
+  var title = _ref.title,
+      children = _ref.children,
+      className = _ref.className,
+      onSubjectsClick = _ref.onSubjectsClick,
+      onReplay = _ref.onReplay;
+  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+    'div',
+    { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()('layout', className) },
+    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+      'div',
+      { className: 'header' },
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'div',
+        { className: 'hint' },
+        title
+      ),
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'button',
+        { className: 'to-subjects-btn', onClick: onSubjectsClick },
+        '\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044B',
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/menu.svg' })
+      ),
+      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'button',
+        { className: 'refresh-btn', onClick: onReplay },
+        '\u0417\u0430\u043D\u043E\u0432\u043E',
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/refresh.svg' })
+      )
+    ),
+    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+      'div',
+      { className: 'game-window' },
+      children
+    )
+  );
+};
+
+GameLayout.propTypes = {
+  className: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string,
+  title: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string.isRequired,
+  children: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node.isRequired,
+  onSubjectsClick: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func.isRequired,
+  onReplay: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func.isRequired
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (GameLayout);
+
+/***/ }),
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3241,7 +3306,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3527,7 +3592,7 @@ module.exports = EventPluginHub;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3543,7 +3608,7 @@ module.exports = EventPluginHub;
 
 
 
-var EventPluginHub = __webpack_require__(26);
+var EventPluginHub = __webpack_require__(27);
 var EventPluginUtils = __webpack_require__(42);
 
 var accumulateInto = __webpack_require__(78);
@@ -3667,7 +3732,7 @@ module.exports = EventPropagators;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3720,7 +3785,7 @@ var ReactInstanceMap = {
 module.exports = ReactInstanceMap;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3782,69 +3847,6 @@ function SyntheticUIEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEve
 SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
-
-/***/ }),
-/* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
-
-
-
-
-var GameLayout = function GameLayout(_ref) {
-  var title = _ref.title,
-      children = _ref.children,
-      className = _ref.className,
-      onSubjectsClick = _ref.onSubjectsClick,
-      onReplay = _ref.onReplay;
-  return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-    'div',
-    { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()('layout', className) },
-    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-      'div',
-      { className: 'header' },
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'div',
-        { className: 'hint' },
-        title
-      ),
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'button',
-        { className: 'to-subjects-btn', onClick: onSubjectsClick },
-        '\u041F\u0440\u0435\u0434\u043C\u0435\u0442\u044B',
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/menu.svg' })
-      ),
-      __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        'button',
-        { className: 'refresh-btn', onClick: onReplay },
-        '\u0417\u0430\u043D\u043E\u0432\u043E',
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/refresh.svg' })
-      )
-    ),
-    __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-      'div',
-      { className: 'game-window' },
-      children
-    )
-  );
-};
-
-GameLayout.propTypes = {
-  className: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string,
-  title: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string.isRequired,
-  children: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node.isRequired,
-  onSubjectsClick: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func.isRequired,
-  onReplay: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func.isRequired
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (GameLayout);
 
 /***/ }),
 /* 31 */
@@ -4457,7 +4459,7 @@ module.exports = ReactBrowserEventEmitter;
 
 
 
-var SyntheticUIEvent = __webpack_require__(29);
+var SyntheticUIEvent = __webpack_require__(30);
 var ViewportMetrics = __webpack_require__(77);
 
 var getEventModifierState = __webpack_require__(50);
@@ -5958,7 +5960,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var _prodInvariant = __webpack_require__(3);
 
 var ReactCurrentOwner = __webpack_require__(12);
-var ReactInstanceMap = __webpack_require__(28);
+var ReactInstanceMap = __webpack_require__(29);
 var ReactInstrumentation = __webpack_require__(10);
 var ReactUpdates = __webpack_require__(11);
 
@@ -6881,7 +6883,7 @@ var _prodInvariant = __webpack_require__(20);
 var ReactNoopUpdateQueue = __webpack_require__(56);
 
 var canDefineProperty = __webpack_require__(37);
-var emptyObject = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
 
@@ -9236,7 +9238,7 @@ module.exports = PooledClass.addPoolingTo(CallbackQueue);
 
 
 
-var DOMProperty = __webpack_require__(14);
+var DOMProperty = __webpack_require__(17);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactInstrumentation = __webpack_require__(10);
 
@@ -9976,7 +9978,7 @@ module.exports = ReactInputSelection;
 var _prodInvariant = __webpack_require__(3);
 
 var DOMLazyTree = __webpack_require__(21);
-var DOMProperty = __webpack_require__(14);
+var DOMProperty = __webpack_require__(17);
 var React = __webpack_require__(23);
 var ReactBrowserEventEmitter = __webpack_require__(32);
 var ReactCurrentOwner = __webpack_require__(12);
@@ -9984,14 +9986,14 @@ var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMContainerInfo = __webpack_require__(131);
 var ReactDOMFeatureFlags = __webpack_require__(133);
 var ReactFeatureFlags = __webpack_require__(71);
-var ReactInstanceMap = __webpack_require__(28);
+var ReactInstanceMap = __webpack_require__(29);
 var ReactInstrumentation = __webpack_require__(10);
 var ReactMarkupChecksum = __webpack_require__(153);
 var ReactReconciler = __webpack_require__(22);
 var ReactUpdateQueue = __webpack_require__(47);
 var ReactUpdates = __webpack_require__(11);
 
-var emptyObject = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 var instantiateReactComponent = __webpack_require__(82);
 var invariant = __webpack_require__(1);
 var setInnerHTML = __webpack_require__(36);
@@ -12043,10 +12045,11 @@ module.exports = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mathematics__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__informatics__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__russian__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__lettersHendecagon__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__phrases__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__utils_localStorageUtils__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__social__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__lettersHendecagon__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__phrases__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__utils_localStorageUtils__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12068,15 +12071,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var subjectsContainers = {
   geography: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__geography__["a" /* default */], null),
   physics: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__physics__["a" /* default */], null),
   math: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__mathematics__["a" /* default */], null),
   informatics: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__informatics__["a" /* default */], null),
-  ru: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__russian__["a" /* default */], null)
+  ru: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__russian__["a" /* default */], null),
+  com: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__social__["a" /* default */], null)
 };
 
-var data = [{ key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].geography, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].informatics, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].math, { key: 'pusher' }, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].com, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].physics, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].literature, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].ru, { key: 'letters' }, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].english, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].biology, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].chemistry, __WEBPACK_IMPORTED_MODULE_9__constants_commonConstants__["a" /* SUBJECTS_INFO */].history];
+var data = [{ key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].geography, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].informatics, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].math, { key: 'pusher' }, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].com, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].physics, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].literature, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].ru, { key: 'letters' }, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].english, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].biology, { key: 'pusher' }, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].chemistry, __WEBPACK_IMPORTED_MODULE_10__constants_commonConstants__["a" /* SUBJECTS_INFO */].history];
 
 var SubjectsHexagon = function (_Component) {
   _inherits(SubjectsHexagon, _Component);
@@ -12101,7 +12106,7 @@ var SubjectsHexagon = function (_Component) {
   _createClass(SubjectsHexagon, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      __WEBPACK_IMPORTED_MODULE_8__utils_localStorageUtils__["a" /* default */].defineProgressInfo();
+      __WEBPACK_IMPORTED_MODULE_9__utils_localStorageUtils__["a" /* default */].defineProgressInfo();
       this.forceUpdate();
     }
   }, {
@@ -12127,7 +12132,7 @@ var SubjectsHexagon = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'parallax-layer layer-back' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__phrases__["a" /* default */], null)
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__phrases__["a" /* default */], null)
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
@@ -12141,7 +12146,7 @@ var SubjectsHexagon = function (_Component) {
                   title = _ref2.title;
 
               if (key === 'pusher') return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('li', { key: index, className: 'pusher' });
-              if (key === 'letters') return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__lettersHendecagon__["a" /* default */], { key: 'letters', lettersSubjects: lettersSubjects });
+              if (key === 'letters') return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__lettersHendecagon__["a" /* default */], { key: 'letters', lettersSubjects: lettersSubjects });
 
               return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'li',
@@ -12176,7 +12181,7 @@ var SubjectsHexagon = function (_Component) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(231);
+var content = __webpack_require__(234);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -12207,7 +12212,7 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(232);
+var content = __webpack_require__(235);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -13232,7 +13237,7 @@ module.exports = AutoFocusUtils;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var EventPropagators = __webpack_require__(27);
+var EventPropagators = __webpack_require__(28);
 var ExecutionEnvironment = __webpack_require__(7);
 var FallbackCompositionState = __webpack_require__(124);
 var SyntheticCompositionEvent = __webpack_require__(167);
@@ -13837,8 +13842,8 @@ module.exports = CSSPropertyOperations;
 
 
 
-var EventPluginHub = __webpack_require__(26);
-var EventPropagators = __webpack_require__(27);
+var EventPluginHub = __webpack_require__(27);
+var EventPropagators = __webpack_require__(28);
 var ExecutionEnvironment = __webpack_require__(7);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(11);
@@ -14273,7 +14278,7 @@ module.exports = DefaultEventPluginOrder;
 
 
 
-var EventPropagators = __webpack_require__(27);
+var EventPropagators = __webpack_require__(28);
 var ReactDOMComponentTree = __webpack_require__(5);
 var SyntheticMouseEvent = __webpack_require__(33);
 
@@ -14478,7 +14483,7 @@ module.exports = FallbackCompositionState;
 
 
 
-var DOMProperty = __webpack_require__(14);
+var DOMProperty = __webpack_require__(17);
 
 var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
 var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
@@ -14923,7 +14928,7 @@ var React = __webpack_require__(23);
 var ReactComponentEnvironment = __webpack_require__(45);
 var ReactCurrentOwner = __webpack_require__(12);
 var ReactErrorUtils = __webpack_require__(46);
-var ReactInstanceMap = __webpack_require__(28);
+var ReactInstanceMap = __webpack_require__(29);
 var ReactInstrumentation = __webpack_require__(10);
 var ReactNodeTypes = __webpack_require__(75);
 var ReactReconciler = __webpack_require__(22);
@@ -14932,7 +14937,7 @@ if (process.env.NODE_ENV !== 'production') {
   var checkReactTypeSpec = __webpack_require__(176);
 }
 
-var emptyObject = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 var invariant = __webpack_require__(1);
 var shallowEqual = __webpack_require__(38);
 var shouldUpdateReactComponent = __webpack_require__(53);
@@ -15952,9 +15957,9 @@ var AutoFocusUtils = __webpack_require__(117);
 var CSSPropertyOperations = __webpack_require__(119);
 var DOMLazyTree = __webpack_require__(21);
 var DOMNamespaces = __webpack_require__(41);
-var DOMProperty = __webpack_require__(14);
+var DOMProperty = __webpack_require__(17);
 var DOMPropertyOperations = __webpack_require__(67);
-var EventPluginHub = __webpack_require__(26);
+var EventPluginHub = __webpack_require__(27);
 var EventPluginRegistry = __webpack_require__(31);
 var ReactBrowserEventEmitter = __webpack_require__(32);
 var ReactDOMComponentFlags = __webpack_require__(68);
@@ -17408,7 +17413,7 @@ module.exports = ReactDOMInput;
 
 
 
-var DOMProperty = __webpack_require__(14);
+var DOMProperty = __webpack_require__(17);
 var ReactComponentTreeHook = __webpack_require__(8);
 
 var warning = __webpack_require__(2);
@@ -18380,7 +18385,7 @@ module.exports = {
 
 
 
-var DOMProperty = __webpack_require__(14);
+var DOMProperty = __webpack_require__(17);
 var EventPluginRegistry = __webpack_require__(31);
 var ReactComponentTreeHook = __webpack_require__(8);
 
@@ -19054,7 +19059,7 @@ module.exports = REACT_ELEMENT_TYPE;
 
 
 
-var EventPluginHub = __webpack_require__(26);
+var EventPluginHub = __webpack_require__(27);
 
 function runEventQueueInBatch(events) {
   EventPluginHub.enqueueEvents(events);
@@ -19291,8 +19296,8 @@ module.exports = ReactHostOperationHistoryHook;
 
 
 
-var DOMProperty = __webpack_require__(14);
-var EventPluginHub = __webpack_require__(26);
+var DOMProperty = __webpack_require__(17);
+var EventPluginHub = __webpack_require__(27);
 var EventPluginUtils = __webpack_require__(42);
 var ReactComponentEnvironment = __webpack_require__(45);
 var ReactEmptyComponent = __webpack_require__(70);
@@ -19431,7 +19436,7 @@ module.exports = ReactMarkupChecksum;
 var _prodInvariant = __webpack_require__(3);
 
 var ReactComponentEnvironment = __webpack_require__(45);
-var ReactInstanceMap = __webpack_require__(28);
+var ReactInstanceMap = __webpack_require__(29);
 var ReactInstrumentation = __webpack_require__(10);
 
 var ReactCurrentOwner = __webpack_require__(12);
@@ -20861,7 +20866,7 @@ module.exports = SVGDOMPropertyConfig;
 
 
 
-var EventPropagators = __webpack_require__(27);
+var EventPropagators = __webpack_require__(28);
 var ExecutionEnvironment = __webpack_require__(7);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactInputSelection = __webpack_require__(73);
@@ -21061,7 +21066,7 @@ module.exports = SelectEventPlugin;
 var _prodInvariant = __webpack_require__(3);
 
 var EventListener = __webpack_require__(58);
-var EventPropagators = __webpack_require__(27);
+var EventPropagators = __webpack_require__(28);
 var ReactDOMComponentTree = __webpack_require__(5);
 var SyntheticAnimationEvent = __webpack_require__(165);
 var SyntheticClipboardEvent = __webpack_require__(166);
@@ -21072,7 +21077,7 @@ var SyntheticMouseEvent = __webpack_require__(33);
 var SyntheticDragEvent = __webpack_require__(168);
 var SyntheticTouchEvent = __webpack_require__(172);
 var SyntheticTransitionEvent = __webpack_require__(173);
-var SyntheticUIEvent = __webpack_require__(29);
+var SyntheticUIEvent = __webpack_require__(30);
 var SyntheticWheelEvent = __webpack_require__(174);
 
 var emptyFunction = __webpack_require__(9);
@@ -21460,7 +21465,7 @@ module.exports = SyntheticDragEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(29);
+var SyntheticUIEvent = __webpack_require__(30);
 
 /**
  * @interface FocusEvent
@@ -21543,7 +21548,7 @@ module.exports = SyntheticInputEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(29);
+var SyntheticUIEvent = __webpack_require__(30);
 
 var getEventCharCode = __webpack_require__(49);
 var getEventKey = __webpack_require__(180);
@@ -21632,7 +21637,7 @@ module.exports = SyntheticKeyboardEvent;
 
 
 
-var SyntheticUIEvent = __webpack_require__(29);
+var SyntheticUIEvent = __webpack_require__(30);
 
 var getEventModifierState = __webpack_require__(50);
 
@@ -22018,7 +22023,7 @@ var _prodInvariant = __webpack_require__(3);
 
 var ReactCurrentOwner = __webpack_require__(12);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactInstanceMap = __webpack_require__(28);
+var ReactInstanceMap = __webpack_require__(29);
 
 var getHostComponentFromComposite = __webpack_require__(80);
 var invariant = __webpack_require__(1);
@@ -22941,7 +22946,7 @@ var ReactElement = __webpack_require__(19);
 var ReactPropTypeLocationNames = __webpack_require__(88);
 var ReactNoopUpdateQueue = __webpack_require__(56);
 
-var emptyObject = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
 
@@ -23888,7 +23893,7 @@ var _assign = __webpack_require__(4);
 var ReactComponent = __webpack_require__(55);
 var ReactNoopUpdateQueue = __webpack_require__(56);
 
-var emptyObject = __webpack_require__(25);
+var emptyObject = __webpack_require__(26);
 
 /**
  * Base class helpers for the updating state of a component.
@@ -25517,8 +25522,8 @@ module.exports = g;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_geographyUtils__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gameLayout__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_geographyUtils__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gameLayout__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__winPhrase__ = __webpack_require__(213);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -25679,8 +25684,8 @@ var Geography = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25739,12 +25744,12 @@ var GeographyWinPhrase = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_informaticsUtils__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gameLayout__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gameLayout__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__resultBlock__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__constants_informaticsConstants__ = __webpack_require__(90);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25937,7 +25942,7 @@ var Informatics = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
@@ -26017,8 +26022,8 @@ InformaticsResultBlock.propTypes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26084,7 +26089,7 @@ var InformaticsWinPhrase = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(15);
 
 
 
@@ -26105,7 +26110,7 @@ var LettersHendecagon = function LettersHendecagon(_ref) {
         null,
         '\u0411\u0443\u043A\u0432\u044B'
       ),
-      progressInfo.map(function (_ref2) {
+      progressInfo.map(function (_ref2, index) {
         var letter = _ref2.letter,
             name = _ref2.name;
         var _lettersSubjects$filt = lettersSubjects.filter(function (letterSubject) {
@@ -26117,7 +26122,7 @@ var LettersHendecagon = function LettersHendecagon(_ref) {
 
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'span',
-          { key: name, className: 'letter', style: { color: color }, 'data-subject': key },
+          { key: '' + (name + index), className: 'letter', style: { color: color }, 'data-subject': key },
           letter
         );
       })
@@ -26132,15 +26137,15 @@ var LettersHendecagon = function LettersHendecagon(_ref) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mousetrap__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mousetrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mousetrap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_mathematicsUtils__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_mathematicsUtils__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants_mathematicsConstants__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gameLayout__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gameLayout__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__winPhrase__ = __webpack_require__(219);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -26266,9 +26271,6 @@ var Mathematics = function (_Component) {
       });
     }
   }, {
-    key: 'renderFinish',
-    value: function renderFinish() {}
-  }, {
     key: 'renderTipBadge',
     value: function renderTipBadge(currentStay, error, clicked) {
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -26359,8 +26361,8 @@ var Mathematics = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26423,12 +26425,12 @@ var MathematicsWinPhrase = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_localStorageService__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants_commonConstants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_localStorageService__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants_commonConstants__ = __webpack_require__(14);
 
 
 
@@ -26472,12 +26474,12 @@ var Phrases = function Phrases() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_physicsUtils__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gameLayout__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_physicsUtils__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gameLayout__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__winPhrase__ = __webpack_require__(222);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -26619,8 +26621,8 @@ var Physics = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26693,14 +26695,14 @@ var PhysicsWinPhrase = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mousetrap__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mousetrap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mousetrap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_russianUtils__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gameLayout__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_russianUtils__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gameLayout__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__winPhrase__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__constants_russianConstants__ = __webpack_require__(92);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -26920,8 +26922,8 @@ var Russian = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(14);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26990,6 +26992,299 @@ var RussianWinPhrase = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_socialUtils__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gameLayout__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__winPhrase__ = __webpack_require__(226);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var Social = function (_Component) {
+  _inherits(Social, _Component);
+
+  function Social(props) {
+    _classCallCheck(this, Social);
+
+    var _this = _possibleConstructorReturn(this, (Social.__proto__ || Object.getPrototypeOf(Social)).call(this, props));
+
+    _this.componentDidMount = function () {
+      return _this.init();
+    };
+    _this.onReplay = function () {
+      return _this.init();
+    };
+    _this.progressReduce = function () {
+      return _this.setState(function (state) {
+        return { progress: __WEBPACK_IMPORTED_MODULE_2__utils_socialUtils__["a" /* default */].progressChange(state.progress - 5) };
+      });
+    };
+    _this.onHatAnimationEnd = function () {
+      return _this.setState({ hatHappy: null });
+    };
+
+    _this.init = _this.init.bind(_this);
+    return _this;
+  }
+
+  _createClass(Social, [{
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearInterval(this.intervalId);
+    }
+  }, {
+    key: 'init',
+    value: function init() {
+      this.intervalId = setInterval(this.progressReduce, 1500);
+      var children = [];
+
+      for (var i = 0; i < 4; i++) {
+        children.push(__WEBPACK_IMPORTED_MODULE_2__utils_socialUtils__["a" /* default */].getChild());
+      }
+
+      this.setState({ stopped: false, children: children, last: null, progress: 0, hatHappy: null });
+    }
+  }, {
+    key: 'onProfessionSelect',
+    value: function onProfessionSelect(professionId) {
+      var _this2 = this;
+
+      return function () {
+        var _state = _this2.state,
+            children = _state.children,
+            progress = _state.progress;
+
+        var newChildren = [].concat(children);
+
+        var last = newChildren.pop();
+        newChildren.unshift(__WEBPACK_IMPORTED_MODULE_2__utils_socialUtils__["a" /* default */].getChild());
+        var happy = professionId === last.professionId;
+        var newProgress = progress;
+        newProgress += happy ? 10 : -15;
+
+        if (newProgress === 100) clearInterval(_this2.intervalId);
+
+        _this2.setState({
+          last: _extends({}, last, {
+            happy: happy
+          }),
+          hatHappy: !happy,
+          progress: __WEBPACK_IMPORTED_MODULE_2__utils_socialUtils__["a" /* default */].progressChange(newProgress),
+          children: newChildren
+        });
+      };
+    }
+  }, {
+    key: 'renderProfessions',
+    value: function renderProfessions() {
+      var professions = [];
+
+      for (var i = 1; i <= 10; i++) {
+        professions.push(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'li',
+          { key: i, onClick: this.onProfessionSelect(i) },
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/social/prof' + i + '.svg' })
+        ));
+      }
+
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'ul',
+        { className: 'professions' },
+        professions
+      );
+    }
+  }, {
+    key: 'renderGame',
+    value: function renderGame() {
+      var _state2 = this.state,
+          children = _state2.children,
+          last = _state2.last,
+          progress = _state2.progress,
+          hatHappy = _state2.hatHappy;
+
+      var hasHatMood = typeof hatHappy === 'boolean';
+
+      var hatMood = {
+        'is-sad': hasHatMood && !hatHappy,
+        'is-happy': hasHatMood && hatHappy
+      };
+
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        'div',
+        null,
+        this.renderProfessions(),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'div',
+          { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()('hat', hatMood), onAnimationEnd: this.onHatAnimationEnd },
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/social/hat.svg' })
+        ),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'div',
+          { className: 'children' },
+          children.map(function (_ref, key) {
+            var id = _ref.id,
+                professionId = _ref.professionId;
+
+            return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+              'div',
+              { className: 'child', key: key },
+              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/social/child' + id + '.svg' }),
+              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                'div',
+                { className: 'comics-thought' },
+                __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                  'p',
+                  null,
+                  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+                    'strong',
+                    null,
+                    'THOUGHT'
+                  ),
+                  __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { className: 'profession', src: '../../images/social/prof' + professionId + '.svg' })
+                )
+              )
+            );
+          })
+        ),
+        last ? __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'div',
+          { className: 'last-child' },
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { src: '../../images/social/child' + last.id + '.svg' }),
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('img', { className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()('mouth', { 'is-sad': !last.happy }), src: '../../images/social/mouth.svg' })
+        ) : null,
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+          'div',
+          { className: 'progress' },
+          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('div', { className: 'current-progress', style: { width: progress + '%' } })
+        )
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (!this.state) return null;
+
+      var onSubjectsClick = this.props.onSubjectsClick;
+      var progress = this.state.progress;
+
+
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_3__gameLayout__["a" /* default */],
+        {
+          className: 'social-layout',
+          title: '\u0420\u0430\u0441\u043F\u0440\u0435\u0434\u0435\u043B\u044F\u044E\u0449\u0430\u044F \u0448\u043B\u044F\u043F\u0430',
+          onSubjectsClick: onSubjectsClick,
+          onReplay: this.onReplay
+        },
+        progress === 100 ? __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__winPhrase__["a" /* default */], null) : this.renderGame()
+      );
+    }
+  }]);
+
+  return Social;
+}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Social);
+
+/***/ }),
+/* 226 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localStorageService__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__ = __webpack_require__(14);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var SocialWinPhrase = function (_Component) {
+  _inherits(SocialWinPhrase, _Component);
+
+  function SocialWinPhrase() {
+    _classCallCheck(this, SocialWinPhrase);
+
+    return _possibleConstructorReturn(this, (SocialWinPhrase.__proto__ || Object.getPrototypeOf(SocialWinPhrase)).apply(this, arguments));
+  }
+
+  _createClass(SocialWinPhrase, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'phrase' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h1',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            '\u0421\u043E\u0431\u043E\u0439'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            '\u0411\u0443\u0434\u044C'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            '\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u0441\u044F'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            '\u0412\u0441',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'mark',
+              null,
+              '\u0435'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            null,
+            '\u0423\xA0\u0422\u0435\u0431\u044F'
+          )
+        )
+      );
+    }
+  }]);
+
+  return SocialWinPhrase;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__services_localStorageService__["b" /* saveToLocalStorage */])(SocialWinPhrase, __WEBPACK_IMPORTED_MODULE_2__constants_commonConstants__["a" /* SUBJECTS_INFO */].com));
+
+/***/ }),
+/* 227 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
@@ -27011,7 +27306,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_subjectsHexagon__["a" /* default */], null), document.getElementById('root'));
 
 /***/ }),
-/* 226 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27080,12 +27375,12 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPA
 });
 
 /***/ }),
-/* 227 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_localStorageService__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants_commonConstants__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_localStorageService__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants_commonConstants__ = __webpack_require__(14);
 
 
 
@@ -27111,7 +27406,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPA
 });
 
 /***/ }),
-/* 228 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27151,7 +27446,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPA
 });
 
 /***/ }),
-/* 229 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27233,7 +27528,7 @@ var BALL_MAX_SIZE = 125;
 });
 
 /***/ }),
-/* 230 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27276,7 +27571,36 @@ var id = 0;
 });
 
 /***/ }),
-/* 231 */
+/* 233 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  rand: function rand() {
+    var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    var num = Math.random() * (max - min) + min;
+
+    return Math.round(num);
+  },
+  getChild: function getChild() {
+    return {
+      id: this.rand(1, 20),
+      professionId: this.rand(1, 10)
+    };
+  },
+  progressChange: function progressChange(progress) {
+    var newProgress = progress;
+    newProgress = newProgress < 0 ? 0 : newProgress;
+    newProgress = newProgress > 100 ? 100 : newProgress;
+
+    return newProgress;
+  }
+});
+
+/***/ }),
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(57)(undefined);
@@ -27290,7 +27614,7 @@ exports.push([module.i, "/*! normalize.css v7.0.0 | MIT License | github.com/nec
 
 
 /***/ }),
-/* 232 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(57)(undefined);
@@ -27298,7 +27622,7 @@ exports = module.exports = __webpack_require__(57)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  font-family: 'PT Sans Narrow'; }\n\n.layout {\n  position: relative;\n  text-align: center;\n  animation: fade-left 0.7s ease both; }\n  .layout .header {\n    height: 60px;\n    line-height: 60px; }\n    .layout .header button {\n      float: right;\n      padding: 0;\n      margin-right: 20px;\n      line-height: 60px;\n      font-family: inherit;\n      background: transparent;\n      border: none;\n      text-transform: uppercase;\n      cursor: pointer;\n      transition: opacity 0.3s ease;\n      outline: none; }\n      .layout .header button:hover {\n        opacity: 0.8; }\n      .layout .header button img {\n        width: 40px;\n        margin-left: 10px;\n        vertical-align: middle; }\n    .layout .header .to-subjects-btn {\n      margin-right: 10%; }\n  .layout .hint {\n    float: left;\n    margin-left: 10%;\n    text-transform: uppercase;\n    font-size: 20px; }\n  .layout .game-window {\n    position: relative;\n    width: 80vw;\n    height: 80vh;\n    border-radius: 20px;\n    margin: auto;\n    overflow: hidden; }\n\n@keyframes fade-left {\n  0% {\n    opacity: 0;\n    transform: translateX(-40%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0); } }\n\n.parallax-layout {\n  perspective: 1px;\n  height: 100vh;\n  overflow-x: hidden;\n  overflow-y: auto;\n  animation: fade-right 0.7s ease both; }\n\n.parallax-layer {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0; }\n\n.layer-base {\n  transform: translateZ(0); }\n\n.layer-back {\n  transform: translateZ(-1px) scale(2); }\n\n.hexagon {\n  position: absolute; }\n  .hexagon li {\n    position: relative;\n    list-style-type: none;\n    width: 165px;\n    height: 188px;\n    overflow: hidden;\n    cursor: pointer;\n    transform: rotate(-60deg) skewY(30deg); }\n    .hexagon li > div {\n      width: 100%;\n      height: 100%;\n      text-align: center;\n      color: #fff;\n      overflow: hidden;\n      transition: all 0.5s ease;\n      transform: skewY(-30deg) rotate(60deg); }\n    .hexagon li h2 {\n      position: absolute;\n      top: 50%;\n      transform: translateY(-50%);\n      margin: 0 10px; }\n  .hexagon.geography {\n    top: 100px;\n    left: 100px; }\n  .hexagon.physics {\n    top: 700px;\n    left: 20px; }\n  .hexagon.informatics {\n    right: 40px;\n    top: 380px; }\n  .hexagon.math {\n    top: 400px;\n    left: 320px; }\n  .hexagon.com {\n    top: 600px;\n    right: 200px; }\n  .hexagon.literature {\n    right: 40px;\n    top: 900px; }\n  .hexagon.ru {\n    top: 950px;\n    right: 375px; }\n  .hexagon.english {\n    top: 1000px;\n    left: 60px; }\n  .hexagon.chemistry {\n    top: 1400px;\n    left: 20px; }\n  .hexagon.history {\n    top: 1300px;\n    right: 420px; }\n  .hexagon.biology {\n    top: 1200px;\n    right: 120px; }\n\n.subjects {\n  overflow: hidden;\n  width: 90%;\n  margin: 40px auto; }\n  .subjects li {\n    position: relative;\n    list-style-type: none;\n    width: 27.85714285714286%;\n    /* = (100-2.5) / 3.5 */\n    padding-bottom: 32.16760145166612%;\n    /* =  width /0.866 */\n    float: left;\n    overflow: hidden;\n    visibility: hidden;\n    cursor: pointer;\n    transform: rotate(-60deg) skewY(30deg); }\n    .subjects li:hover div {\n      opacity: 0.7; }\n    .subjects li > div {\n      width: 100%;\n      height: 100%;\n      text-align: center;\n      color: #fff;\n      overflow: hidden;\n      transition: all 0.5s ease;\n      transform: skewY(-30deg) rotate(60deg);\n      -webkit-backface-visibility: hidden; }\n    .subjects li img {\n      left: -100%;\n      right: -100%;\n      width: auto;\n      height: 50%;\n      top: 40px;\n      margin: 0 auto;\n      transition: all 0.5s ease; }\n  .subjects h2 {\n    bottom: 20%;\n    font-size: 32px;\n    width: 100%; }\n  .subjects .letters {\n    cursor: auto; }\n    .subjects .letters h2 {\n      color: black;\n      top: 50%;\n      bottom: initial;\n      margin: 0;\n      transform: translateY(-50%); }\n    .subjects .letters img {\n      height: 86%;\n      top: 50%;\n      transform: translateY(-50%); }\n\n.clr:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.subjects li:nth-child(3n+2) {\n  margin: 0 1%; }\n\n.subjects li:nth-child(6n+4) {\n  margin-left: 0.5%; }\n\n.subjects li:nth-child(6n+4),\n.subjects li:nth-child(6n+5),\n.subjects li:nth-child(6n+6) {\n  margin-top: -6.9285714285%;\n  margin-bottom: -6.9285714285%;\n  transform: translateX(50%) rotate(-60deg) skewY(30deg); }\n\n.subjects li:nth-child(6n+4):last-child,\n.subjects li:nth-child(6n+5):last-child,\n.subjects li:nth-child(6n+6):last-child {\n  margin-bottom: 0%; }\n\n.subjects li * {\n  position: absolute;\n  visibility: visible; }\n\n.geography:hover img {\n  transform: rotate(-180deg); }\n\n.informatics:hover img {\n  animation: informatics 0.5s ease; }\n\n.math:hover img {\n  animation: math 0.5s ease; }\n\n.com:hover img {\n  animation: com 0.5s ease; }\n\n.physics:hover img {\n  animation: physics 0.5s ease; }\n\n.literature:hover img {\n  animation: literature 0.5s ease; }\n\n.ru:hover img {\n  animation: ru 0.5s ease; }\n\n.english:hover img {\n  animation: english 0.5s ease; }\n\n.biology:hover img {\n  animation: biology 0.5s ease; }\n\n.chemistry:hover img {\n  animation: chemistry 0.5s ease; }\n\n.history:hover img {\n  animation: history 0.5s ease; }\n\n@keyframes informatics {\n  30% {\n    transform: translateX(-10%); }\n  50% {\n    transform: translateX(20%); }\n  100% {\n    transform: translateX(0); } }\n\n@keyframes math {\n  10%, 40% {\n    transform: translate(-7%, -5%); }\n  25% {\n    transform: translate(-15%, -5%); }\n  55%, 100% {\n    transform: translateX(0); }\n  70% {\n    transform: translate(10%, -15%); }\n  85% {\n    transform: translate(15%, -15%); } }\n\n@keyframes com {\n  30% {\n    transform: rotate(-5deg); }\n  50% {\n    transform: rotate(10deg) scale(1.2); }\n  100% {\n    transform: rotate(0deg) scale(1); } }\n\n@keyframes physics {\n  30% {\n    transform: translate(12%, -12%); }\n  50% {\n    transform: translate(-10%, 10%); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes literature {\n  10% {\n    transform: rotate(5deg); }\n  30% {\n    transform: rotate(-5deg); }\n  50% {\n    transform: rotate(10deg); }\n  70% {\n    transform: rotate(-10deg); }\n  100% {\n    transform: rotate(0deg); } }\n\n@keyframes ru {\n  50% {\n    transform: skew(-20deg); }\n  100% {\n    transform: skew(0deg); } }\n\n@keyframes english {\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes biology {\n  70% {\n    transform: rotate(60deg) scale(1.2); }\n  100% {\n    transform: rotate(0deg) scale(1); } }\n\n@keyframes chemistry {\n  20% {\n    transform: translate(10%, 10%); }\n  40% {\n    transform: translate(-10%, 10%); }\n  65% {\n    transform: translate(-10%, -10%); }\n  80% {\n    transform: translate(10%, -10%); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes history {\n  50% {\n    transform: rotate(20deg); }\n  100% {\n    transform: rotate(0deg); } }\n\n@media (max-width: 1140px) {\n  .subjects h2 {\n    font-size: 24px;\n    bottom: 15%; } }\n\n@media (max-width: 840px) {\n  .subjects h2 {\n    display: none; }\n  .subjects div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    top: 0; }\n  .subjects li img {\n    position: static; }\n  .subjects .letters img {\n    position: absolute; } }\n\n@keyframes fade-right {\n  0% {\n    opacity: 0;\n    transform: translateX(40%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0); } }\n\n.letter {\n  font-size: 50px;\n  text-transform: uppercase; }\n  .letter[data-subject=\"geography\"] {\n    top: 9.5%;\n    left: 40.4%; }\n  .letter[data-subject=\"informatics\"] {\n    top: 13%;\n    left: 63.2%; }\n  .letter[data-subject=\"math\"] {\n    top: 25%;\n    right: 13.3%; }\n  .letter[data-subject=\"com\"] {\n    top: 43.2%;\n    right: 8.3%; }\n  .letter[data-subject=\"physics\"] {\n    top: 61.9%;\n    right: 12.5%; }\n  .letter[data-subject=\"literature\"] {\n    top: 74.3%;\n    right: 30.5%; }\n  .letter[data-subject=\"ru\"] {\n    top: 76.7%;\n    right: 52.6%; }\n  .letter[data-subject=\"english\"] {\n    top: 69%;\n    left: 18.3%; }\n  .letter[data-subject=\"biology\"] {\n    top: 52.3%;\n    left: 7.2%; }\n  .letter[data-subject=\"chemistry\"] {\n    top: 34%;\n    left: 7.2%; }\n  .letter[data-subject=\"history\"] {\n    top: 18.2%;\n    left: 18.8%; }\n\n@media (max-width: 1250px) {\n  .letter {\n    font-size: 38px; } }\n\n@media (max-width: 900px) {\n  .letters {\n    opacity: 0;\n    cursor: default; } }\n\n.geography-layout .mountains {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(#08b1da, #88eefa); }\n  .geography-layout .mountains g {\n    cursor: pointer;\n    transition: all 0.5s ease; }\n    .geography-layout .mountains g.is-hidden {\n      opacity: 0;\n      transform: translateY(100px); }\n\n.geography-layout .snow {\n  fill: white; }\n\n.geography-layout .phrase {\n  position: absolute;\n  top: 40%;\n  left: 47%;\n  margin-left: -158px;\n  padding: 0 60px;\n  font-size: 60px;\n  color: white;\n  font-family: Oswald;\n  animation: geography-phrase 1s ease forwards; }\n  .geography-layout .phrase mark {\n    color: #3183ad;\n    font-weight: 100;\n    background: transparent; }\n  @media (max-width: 600px) {\n    .geography-layout .phrase {\n      font-size: 50px; } }\n\n.geography-layout .sun {\n  position: absolute;\n  top: 40px;\n  right: 40px;\n  margin: auto;\n  width: 70px;\n  height: 70px;\n  border-radius: 50%;\n  background: white;\n  box-shadow: 0 0 40px 15px white;\n  animation: shine 2s ease infinite both; }\n\n@keyframes shine {\n  0% {\n    box-shadow: 0 0 40px 15px white; }\n  50% {\n    box-shadow: 0 0 40px 20px white; } }\n\n@keyframes geography-phrase {\n  0% {\n    opacity: 0;\n    transform: scale(0.8) translateY(0); }\n  70% {\n    opacity: 0.7;\n    transform: translateY(-200px); }\n  100% {\n    opacity: 1;\n    transform: translateY(-100px); } }\n\n.physics-layout {\n  height: 100vh;\n  overflow: hidden; }\n  .physics-layout .balls-container {\n    transition: all 2.5s ease-in-out 0.5s; }\n  .physics-layout.is-finish .balls-container {\n    transform: scale(5); }\n  .physics-layout .game-window {\n    overflow: visible; }\n  .physics-layout .ball {\n    position: absolute;\n    border-radius: 50%;\n    cursor: pointer; }\n  .physics-layout .phrase {\n    font-size: 60px;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    margin-top: -144px;\n    margin-left: -128px;\n    font-family: Comfortaa;\n    text-transform: uppercase;\n    color: #656565;\n    animation: phrase 2.5s ease 0.5s both; }\n    .physics-layout .phrase mark {\n      background: transparent;\n      color: #ffe827; }\n    .physics-layout .phrase div:nth-child(1) {\n      font-size: 27px;\n      animation: phrase 2.5s ease 0.5s both; }\n    .physics-layout .phrase div:nth-child(2) {\n      animation: phrase 1s ease 2s both; }\n    .physics-layout .phrase div:nth-child(3) {\n      font-size: 49px;\n      animation: phrase 1s ease 2.5s both; }\n    .physics-layout .phrase div:nth-child(4) {\n      font-size: 66px;\n      animation: phrase 1s ease 3s both; }\n    .physics-layout .phrase div:nth-child(5) {\n      font-size: 51px;\n      animation: phrase 1s ease 3.5s both; }\n\n@keyframes phrase {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n\n.informatics-layout .game-window {\n  overflow: hidden; }\n\n.informatics-layout .macbook {\n  width: 900px;\n  margin: 50px auto;\n  perspective: 2250px;\n  perspective-origin: 50% bottom;\n  transform-style: preserve-3d;\n  cursor: pointer;\n  font-family: 'Share Tech Mono';\n  color: white; }\n\n.informatics-layout .macbook-lid {\n  width: 80%;\n  margin: 0 auto;\n  transform-origin: 50% bottom;\n  transform-style: preserve-3d;\n  transition: all 1s; }\n  .informatics-layout .macbook-lid::before {\n    display: block;\n    content: '';\n    width: 92%;\n    margin: 0 auto;\n    padding: 1% 3% 0 3%;\n    background: transparent;\n    border: none;\n    border-radius: 10px 10px 0 0;\n    transform-origin: 50% bottom;\n    transform: rotate3d(1, 0, 0, 90deg);\n    transition: all 1s; }\n\n.informatics-layout .macbook-screen {\n  position: relative;\n  background-color: #353535;\n  margin: 0 auto;\n  padding: 3%;\n  border-radius: 24px 24px 0 0;\n  transform-style: preserve-3d;\n  transition: all 1s; }\n  .informatics-layout .macbook-screen::before {\n    display: block;\n    content: '';\n    position: absolute;\n    top: 2%;\n    left: 49%;\n    width: 1%;\n    padding-top: 1%;\n    background-color: #000;\n    border-radius: 50%; }\n\n.informatics-layout .macbook-content {\n  position: relative;\n  overflow: hidden;\n  background-color: #272727; }\n  .informatics-layout .macbook-content::before {\n    display: block;\n    content: '';\n    width: 1px;\n    padding-top: 60%;\n    float: left; }\n  .informatics-layout .macbook-content::after {\n    display: block;\n    content: '';\n    clear: both; }\n  .informatics-layout .macbook-content .hack-message {\n    text-align: left;\n    margin-left: 20px; }\n    .informatics-layout .macbook-content .hack-message .blink {\n      animation: blink 0.8s steps(1, start) infinite alternate; }\n  .informatics-layout .macbook-content .password {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    font-size: 72px;\n    letter-spacing: 8px;\n    text-transform: uppercase; }\n    .informatics-layout .macbook-content .password span:hover {\n      text-decoration: underline; }\n  .informatics-layout .macbook-content .result-block {\n    position: absolute;\n    bottom: 80px;\n    left: 50%;\n    transform: translateX(-50%); }\n    .informatics-layout .macbook-content .result-block.is-win {\n      width: 100%;\n      height: 100%;\n      top: 0;\n      bottom: 0;\n      right: 0;\n      left: 0;\n      transform: none; }\n  .informatics-layout .macbook-content .phrase {\n    height: 100%;\n    background: #272727;\n    font-size: 40px;\n    text-align: left;\n    padding: 20px; }\n    .informatics-layout .macbook-content .phrase div {\n      width: 170px;\n      margin: 0 auto; }\n      .informatics-layout .macbook-content .phrase div:first-letter {\n        color: green; }\n      .informatics-layout .macbook-content .phrase div::after {\n        content: '_';\n        position: absolute;\n        animation: blink 0.4s steps(1, start) infinite alternate; }\n\n.informatics-layout .macbook:not(.is-open) .macbook-lid {\n  transform: rotate3d(-1, 0, 0, 91deg); }\n\n.informatics-layout .macbook:not(.is-open) .macbook-lid:before {\n  width: 94%;\n  background-color: #D3D1D2;\n  border-bottom: 1px solid #bdbdbd; }\n\n.informatics-layout .macbook-base {\n  width: 100%;\n  overflow: hidden;\n  background-color: #D3D1D2;\n  border-radius: 2px 2px 10px 10px; }\n  .informatics-layout .macbook-base::before {\n    display: block;\n    content: '';\n    width: 30%;\n    margin: 0 auto 0.7% auto;\n    padding-top: 1.2%;\n    background: #B0B0B0;\n    border-radius: 0 0 10px 10px; }\n  .informatics-layout .macbook-base::after {\n    display: block;\n    content: '';\n    padding-top: 1%;\n    background-color: #B3B3B3; }\n\n.informatics-layout #macbook-container {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%); }\n\n@keyframes blink {\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n.mathematics-layout .game-window {\n  margin-top: 60px; }\n\n.mathematics-layout .grid {\n  position: relative;\n  width: 541px;\n  margin: 0 auto; }\n\n.mathematics-layout .tip {\n  position: absolute;\n  top: 20px;\n  left: 20px;\n  font-size: 50px;\n  text-align: center;\n  background: rgba(21, 115, 255, 0.7);\n  border-radius: 50%;\n  width: 100px;\n  height: 100px;\n  transition: transform 0.1s ease, background 0.4s ease; }\n  .mathematics-layout .tip img {\n    width: 40px;\n    top: 18px;\n    position: relative;\n    margin-right: 4px; }\n    .mathematics-layout .tip img.top {\n      transform: rotate(-90deg); }\n    .mathematics-layout .tip img.bottom {\n      transform: rotate(90deg); }\n    .mathematics-layout .tip img.left {\n      transform: rotate(180deg); }\n  .mathematics-layout .tip .length {\n    position: relative;\n    top: 23px;\n    font-weight: bold; }\n  .mathematics-layout .tip.is-clicked {\n    transform: scale(1.2); }\n  .mathematics-layout .tip.is-error {\n    cursor: pointer;\n    transform: none;\n    background: rgba(255, 235, 59, 0.5); }\n    .mathematics-layout .tip.is-error .message {\n      font-size: 20px;\n      margin-top: 8px; }\n\n.mathematics-layout .phrase {\n  position: absolute;\n  top: 10px;\n  left: 10px;\n  font-size: 40px;\n  font-weight: bold;\n  letter-spacing: 4px;\n  color: white; }\n  .mathematics-layout .phrase mark {\n    background: transparent;\n    color: #FF5722; }\n  .mathematics-layout .phrase div {\n    position: absolute;\n    text-transform: uppercase;\n    padding: 0 10px;\n    box-shadow: 4px 4px 0 0 rgba(158, 158, 158, 0.4); }\n    .mathematics-layout .phrase div:first-child {\n      background: #3949AB;\n      animation: first 0.5s ease 0.5s both; }\n    .mathematics-layout .phrase div:nth-child(2) {\n      background: white;\n      color: #607D8B;\n      top: 40px;\n      left: 20px;\n      animation: second 0.5s ease 1s both; }\n    .mathematics-layout .phrase div:last-child {\n      background: #76FF03;\n      top: 80px;\n      left: 40px;\n      animation: third 0.5s ease 1.5s both; }\n\n@keyframes first {\n  0% {\n    opacity: 0;\n    transform: translateY(-100px); }\n  100% {\n    opacity: 1;\n    transform: translateY(0); } }\n\n@keyframes second {\n  0% {\n    opacity: 0;\n    transform: translateX(100px); }\n  100% {\n    opacity: 1;\n    transform: translateX(0); } }\n\n@keyframes third {\n  0% {\n    opacity: 0;\n    transform: translateY(200px); }\n  100% {\n    opacity: 1;\n    transform: translateY(0); } }\n\n.russian-layout .backpack {\n  position: absolute;\n  z-index: 100;\n  bottom: 0;\n  width: 170px;\n  height: 180px;\n  left: 0;\n  padding-top: 80px;\n  background-color: #d84736;\n  box-shadow: inset 0 6px 0 2px #c1382e, 0 -93px 0 -69px white, 0 -93px 0 -60px #d84736;\n  background-image: linear-gradient(to right, transparent 5px, transparent 20px, transparent 1px, transparent 25px, transparent 5px, transparent 20px, transparent 20px, transparent 86px, #c1382e 45px, #c1382e 230px, transparent 25px, transparent 172px);\n  border-radius: 85px 85px 30px 30px;\n  transform: scale(0.2);\n  transform-origin: 50% 100%;\n  transition: all 0.3s ease; }\n  .russian-layout .backpack::before, .russian-layout .backpack::after {\n    display: block;\n    content: '';\n    position: absolute; }\n  .russian-layout .backpack::before {\n    height: 75px;\n    width: 118px;\n    background-image: radial-gradient(circle closest-corner at 13px 29px, #af342c, #af342c 2px, transparent 2px, transparent), radial-gradient(circle closest-corner at 13px 29px, #491033, #491033 4px, transparent 4px, transparent), linear-gradient(to bottom, transparent 10px, transparent 15px, #491033 5px, #491033 18px, transparent 18px, transparent 100px), linear-gradient(to right, #af342c 10px, #af342c 10px, transparent 10px, transparent 16px, #af342c 9px, #af342c 50px), linear-gradient(to bottom, #af342c 8px, #af342c 16px, #491033 8px, #491033 30px, #af342c 20px, #af342c 72px, #af342c 10px, #af342c 57px, #af342c 5%);\n    margin-left: 22px;\n    margin-top: 58px;\n    border: 4px solid #491033;\n    border-radius: 11px;\n    content: '||';\n    color: transparent;\n    font-family: 'Comic Sans MS';\n    font-weight: bold;\n    z-index: 1;\n    text-shadow: black -2px -86px 0px;\n    font-size: 14px; }\n  .russian-layout .backpack::after {\n    margin-left: 67px;\n    margin-top: -30px;\n    background: #cca16a;\n    width: 26px;\n    height: 26px;\n    border: 3px solid #491033;\n    border-radius: 3px;\n    transform: rotate(45deg); }\n  .russian-layout .backpack.line-1 {\n    left: 0; }\n  .russian-layout .backpack.line-2 {\n    left: 20%; }\n  .russian-layout .backpack.line-3 {\n    left: 40%; }\n  .russian-layout .backpack.line-4 {\n    left: 60%; }\n  .russian-layout .backpack.line-5 {\n    left: 80%; }\n  .russian-layout .backpack.is-finished {\n    top: 50%;\n    left: 50%;\n    bottom: initial;\n    transform-origin: initial;\n    margin-left: -60px;\n    margin-top: -91px;\n    animation: fly 1.5s ease 1.7s both; }\n\n.russian-layout .letter {\n  position: absolute;\n  width: 26px;\n  height: 26px;\n  left: 65px;\n  font-size: 26px;\n  color: gray;\n  border-radius: 50%;\n  background: white; }\n  .russian-layout .letter img {\n    width: 40px;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    z-index: -1; }\n  .russian-layout .letter.line-1 {\n    left: 88px; }\n  .russian-layout .letter.line-2 {\n    left: calc(20% + 88px); }\n  .russian-layout .letter.line-3 {\n    left: calc(40% + 88px); }\n  .russian-layout .letter.line-4 {\n    left: calc(60% + 88px); }\n  .russian-layout .letter.line-5 {\n    left: calc(80% + 88px); }\n\n@keyframes letter {\n  0% {\n    top: 10px; }\n  100% {\n    top: 100%; } }\n\n.russian-layout .frame {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 400px;\n  height: 400px;\n  margin-top: -200px;\n  margin-left: -200px; }\n\n.russian-layout .floor {\n  position: absolute;\n  top: 244px;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: #232323; }\n\n.russian-layout .invisible-men {\n  animation: fade-in .8s ease-out;\n  animation-fill-mode: both; }\n\n.russian-layout .leg {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 151px;\n  height: 245px;\n  transform-origin: 50% 0; }\n\n.russian-layout .shoe {\n  position: absolute;\n  width: 151px;\n  height: 128px;\n  left: 0;\n  bottom: 0;\n  background: url(\"/images/boot.svg\") center center no-repeat;\n  transform-origin: 0 95%; }\n\n.russian-layout .left {\n  animation: leg-swing 2s ease-in-out both; }\n  .russian-layout .left .shoe {\n    animation: shoe-turn 2s ease-in-out both; }\n\n@keyframes leg-swing {\n  0%, 100% {\n    transform: rotate(-22deg); }\n  50% {\n    transform: rotate(40deg); } }\n\n@keyframes shoe-turn {\n  0%, 100% {\n    transform: rotate(-10deg) translateY(-5px) translateX(10px); }\n  25% {\n    transform: rotate(0deg) translateY(0px) translateX(0); }\n  50% {\n    transform: rotate(10deg) translateY(-10px) translateX(10px); }\n  75% {\n    transform: rotate(0deg) translateY(-30px) translateX(0); } }\n\n@keyframes fade-in {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fly {\n  0% {\n    transform: translate(0) rotate(0deg) scale(0.7); }\n  100% {\n    transform: translate(650px, -200px) rotate(30deg) scale(0.5); } }\n\n.russian-layout .phrase {\n  position: absolute;\n  width: 400px;\n  height: 400px;\n  top: 50%;\n  left: 50%;\n  margin-left: -200px;\n  margin-top: -200px;\n  transform: scale(1.5); }\n  .russian-layout .phrase mark {\n    background: transparent;\n    color: #3595ff; }\n  .russian-layout .phrase .circle {\n    position: absolute;\n    z-index: 10;\n    height: 50px;\n    width: 50px;\n    top: 175px;\n    left: 175px;\n    background: #adadad;\n    border-radius: 50%;\n    animation: circle 1s ease-in-out;\n    animation-fill-mode: forwards; }\n  .russian-layout .phrase .line {\n    position: absolute;\n    z-index: 10;\n    width: 150px;\n    height: 4px;\n    top: 198px;\n    background: #adadad;\n    transform: scaleX(0); }\n    .russian-layout .phrase .line.left {\n      left: 50px;\n      transform-origin: 100% 50%;\n      animation: lines 1s ease-in-out 0.8s, line-left 1s steps(1) 0.8s; }\n    .russian-layout .phrase .line.right {\n      right: 50px;\n      transform-origin: 0% 50%;\n      animation: lines 1s ease-in-out 0.8s, line-right 1s steps(1) 0.8s; }\n  .russian-layout .phrase .bracket {\n    position: absolute;\n    z-index: 10;\n    height: 70px;\n    width: 4px;\n    top: 165px;\n    background: #adadad;\n    animation: bracket .4s ease-out 1.7s;\n    animation-fill-mode: both; }\n    .russian-layout .phrase .bracket:before, .russian-layout .phrase .bracket:after {\n      position: absolute;\n      display: block;\n      content: '';\n      width: 25px;\n      height: 4px;\n      background: #adadad; }\n    .russian-layout .phrase .bracket.left {\n      left: 50px; }\n      .russian-layout .phrase .bracket.left:before {\n        top: 0;\n        left: 0;\n        transform-origin: 0% 50%;\n        animation: bracket-line .2s ease-out 2.1s;\n        animation-fill-mode: both; }\n      .russian-layout .phrase .bracket.left:after {\n        bottom: 0;\n        left: 0;\n        transform-origin: 0% 50%;\n        animation: bracket-line .2s ease-out 2.1s;\n        animation-fill-mode: both; }\n    .russian-layout .phrase .bracket.right {\n      right: 50px; }\n      .russian-layout .phrase .bracket.right:before {\n        top: 0;\n        right: 0;\n        transform-origin: 100% 50%;\n        animation: bracket-line .2s ease-out 2.1s;\n        animation-fill-mode: both; }\n      .russian-layout .phrase .bracket.right:after {\n        bottom: 0;\n        right: 0;\n        transform-origin: 100% 50%;\n        animation: bracket-line .2s ease-out 2.1s;\n        animation-fill-mode: both; }\n  .russian-layout .phrase .big {\n    position: absolute;\n    z-index: 5;\n    top: 173px;\n    width: 400px;\n    text-align: center;\n    font-weight: 800;\n    font-size: 50px;\n    color: #adadad;\n    line-height: 50px;\n    text-transform: uppercase; }\n  .russian-layout .phrase .hide {\n    position: absolute;\n    z-index: 7;\n    width: 400px;\n    height: 50px;\n    background: white;\n    left: 0;\n    animation: reveal .4s ease-out 1.7s;\n    animation-fill-mode: both; }\n    .russian-layout .phrase .hide.top {\n      bottom: 49%;\n      transform-origin: 50% 0%; }\n    .russian-layout .phrase .hide.bottom {\n      top: 49%;\n      transform-origin: 50% 100%; }\n  .russian-layout .phrase .small {\n    position: absolute;\n    z-index: 10;\n    width: 400px;\n    text-align: center;\n    left: 0;\n    font-weight: 300;\n    font-size: 30px;\n    color: #adadad;\n    line-height: 30px;\n    text-transform: uppercase; }\n    .russian-layout .phrase .small.top {\n      top: 140px;\n      animation: small-top .5s ease-out 2.2s;\n      animation-fill-mode: both; }\n    .russian-layout .phrase .small.bottom {\n      bottom: 140px;\n      animation: small-bottom .5s ease-out 2.2s;\n      animation-fill-mode: both; }\n\n@keyframes lines {\n  0% {\n    transform: scaleX(0); }\n  50% {\n    transform: scaleX(1); }\n  100% {\n    transform: scaleX(0); } }\n\n@keyframes line-left {\n  0% {\n    transform-origin: 100% 50%; }\n  50%, 100% {\n    transform-origin: 0% 50%; } }\n\n@keyframes line-right {\n  0% {\n    transform-origin: 0% 50%; }\n  50%, 100% {\n    transform-origin: 100% 50%; } }\n\n@keyframes bracket {\n  0% {\n    transform: scaleY(0); }\n  100% {\n    transform: scaleY(1); } }\n\n@keyframes bracket-line {\n  0% {\n    transform: scaleX(0); }\n  100% {\n    transform: scaleX(1); } }\n\n@keyframes reveal {\n  0% {\n    transform: scaleY(1); }\n  100% {\n    transform: scaleY(0); } }\n\n@keyframes small-top {\n  0% {\n    transform: translateX(-20px);\n    opacity: 0; }\n  100% {\n    transform: translateX(0);\n    opacity: 1; } }\n\n@keyframes small-bottom {\n  0% {\n    transform: translateX(20px);\n    opacity: 0; }\n  100% {\n    transform: translateX(0);\n    opacity: 1; } }\n", ""]);
+exports.push([module.i, "body {\n  font-family: 'PT Sans Narrow'; }\n\n.layout {\n  position: relative;\n  text-align: center;\n  animation: fade-left 0.7s ease both; }\n  .layout .header {\n    height: 60px;\n    line-height: 60px; }\n    .layout .header button {\n      float: right;\n      padding: 0;\n      margin-right: 20px;\n      line-height: 60px;\n      font-family: inherit;\n      background: transparent;\n      border: none;\n      text-transform: uppercase;\n      cursor: pointer;\n      transition: opacity 0.3s ease;\n      outline: none; }\n      .layout .header button:hover {\n        opacity: 0.8; }\n      .layout .header button img {\n        width: 40px;\n        margin-left: 10px;\n        vertical-align: middle; }\n    .layout .header .to-subjects-btn {\n      margin-right: 10%; }\n  .layout .hint {\n    float: left;\n    margin-left: 10%;\n    text-transform: uppercase;\n    font-size: 20px; }\n  .layout .game-window {\n    position: relative;\n    width: 80vw;\n    height: 80vh;\n    border-radius: 20px;\n    margin: auto;\n    overflow: hidden; }\n\n@keyframes fade-left {\n  0% {\n    opacity: 0;\n    transform: translateX(-40%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0); } }\n\n.parallax-layout {\n  perspective: 1px;\n  height: 100vh;\n  overflow-x: hidden;\n  overflow-y: auto;\n  animation: fade-right 0.7s ease both; }\n\n.parallax-layer {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0; }\n\n.layer-base {\n  transform: translateZ(0); }\n\n.layer-back {\n  transform: translateZ(-1px) scale(2); }\n\n.hexagon {\n  position: absolute; }\n  .hexagon li {\n    position: relative;\n    list-style-type: none;\n    width: 165px;\n    height: 188px;\n    overflow: hidden;\n    cursor: pointer;\n    transform: rotate(-60deg) skewY(30deg); }\n    .hexagon li > div {\n      width: 100%;\n      height: 100%;\n      text-align: center;\n      color: #fff;\n      overflow: hidden;\n      transition: all 0.5s ease;\n      transform: skewY(-30deg) rotate(60deg); }\n    .hexagon li h2 {\n      position: absolute;\n      top: 50%;\n      transform: translateY(-50%);\n      margin: 0 10px; }\n  .hexagon.geography {\n    top: 100px;\n    left: 100px; }\n  .hexagon.physics {\n    top: 700px;\n    left: 20px; }\n  .hexagon.informatics {\n    right: 40px;\n    top: 380px; }\n  .hexagon.math {\n    top: 400px;\n    left: 320px; }\n  .hexagon.com {\n    top: 600px;\n    right: 200px; }\n  .hexagon.literature {\n    right: 40px;\n    top: 900px; }\n  .hexagon.ru {\n    top: 950px;\n    right: 375px; }\n  .hexagon.english {\n    top: 1000px;\n    left: 60px; }\n  .hexagon.chemistry {\n    top: 1400px;\n    left: 20px; }\n  .hexagon.history {\n    top: 1300px;\n    right: 420px; }\n  .hexagon.biology {\n    top: 1200px;\n    right: 120px; }\n\n.subjects {\n  overflow: hidden;\n  width: 90%;\n  margin: 40px auto; }\n  .subjects li {\n    position: relative;\n    list-style-type: none;\n    width: 27.85714285714286%;\n    /* = (100-2.5) / 3.5 */\n    padding-bottom: 32.16760145166612%;\n    /* =  width /0.866 */\n    float: left;\n    overflow: hidden;\n    visibility: hidden;\n    cursor: pointer;\n    transform: rotate(-60deg) skewY(30deg); }\n    .subjects li:hover div {\n      opacity: 0.7; }\n    .subjects li > div {\n      width: 100%;\n      height: 100%;\n      text-align: center;\n      color: #fff;\n      overflow: hidden;\n      transition: all 0.5s ease;\n      transform: skewY(-30deg) rotate(60deg);\n      -webkit-backface-visibility: hidden; }\n    .subjects li img {\n      left: -100%;\n      right: -100%;\n      width: auto;\n      height: 50%;\n      top: 40px;\n      margin: 0 auto;\n      transition: all 0.5s ease; }\n  .subjects h2 {\n    bottom: 20%;\n    font-size: 32px;\n    width: 100%; }\n  .subjects .letters {\n    cursor: auto; }\n    .subjects .letters h2 {\n      color: black;\n      top: 50%;\n      bottom: initial;\n      margin: 0;\n      transform: translateY(-50%); }\n    .subjects .letters img {\n      height: 86%;\n      top: 50%;\n      transform: translateY(-50%); }\n\n.clr:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.subjects li:nth-child(3n+2) {\n  margin: 0 1%; }\n\n.subjects li:nth-child(6n+4) {\n  margin-left: 0.5%; }\n\n.subjects li:nth-child(6n+4),\n.subjects li:nth-child(6n+5),\n.subjects li:nth-child(6n+6) {\n  margin-top: -6.9285714285%;\n  margin-bottom: -6.9285714285%;\n  transform: translateX(50%) rotate(-60deg) skewY(30deg); }\n\n.subjects li:nth-child(6n+4):last-child,\n.subjects li:nth-child(6n+5):last-child,\n.subjects li:nth-child(6n+6):last-child {\n  margin-bottom: 0%; }\n\n.subjects li * {\n  position: absolute;\n  visibility: visible; }\n\n.geography:hover img {\n  transform: rotate(-180deg); }\n\n.informatics:hover img {\n  animation: informatics 0.5s ease; }\n\n.math:hover img {\n  animation: math 0.5s ease; }\n\n.com:hover img {\n  animation: com 0.5s ease; }\n\n.physics:hover img {\n  animation: physics 0.5s ease; }\n\n.literature:hover img {\n  animation: literature 0.5s ease; }\n\n.ru:hover img {\n  animation: ru 0.5s ease; }\n\n.english:hover img {\n  animation: english 0.5s ease; }\n\n.biology:hover img {\n  animation: biology 0.5s ease; }\n\n.chemistry:hover img {\n  animation: chemistry 0.5s ease; }\n\n.history:hover img {\n  animation: history 0.5s ease; }\n\n@keyframes informatics {\n  30% {\n    transform: translateX(-10%); }\n  50% {\n    transform: translateX(20%); }\n  100% {\n    transform: translateX(0); } }\n\n@keyframes math {\n  10%, 40% {\n    transform: translate(-7%, -5%); }\n  25% {\n    transform: translate(-15%, -5%); }\n  55%, 100% {\n    transform: translateX(0); }\n  70% {\n    transform: translate(10%, -15%); }\n  85% {\n    transform: translate(15%, -15%); } }\n\n@keyframes com {\n  30% {\n    transform: rotate(-5deg); }\n  50% {\n    transform: rotate(10deg) scale(1.2); }\n  100% {\n    transform: rotate(0deg) scale(1); } }\n\n@keyframes physics {\n  30% {\n    transform: translate(12%, -12%); }\n  50% {\n    transform: translate(-10%, 10%); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes literature {\n  10% {\n    transform: rotate(5deg); }\n  30% {\n    transform: rotate(-5deg); }\n  50% {\n    transform: rotate(10deg); }\n  70% {\n    transform: rotate(-10deg); }\n  100% {\n    transform: rotate(0deg); } }\n\n@keyframes ru {\n  50% {\n    transform: skew(-20deg); }\n  100% {\n    transform: skew(0deg); } }\n\n@keyframes english {\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes biology {\n  70% {\n    transform: rotate(60deg) scale(1.2); }\n  100% {\n    transform: rotate(0deg) scale(1); } }\n\n@keyframes chemistry {\n  20% {\n    transform: translate(10%, 10%); }\n  40% {\n    transform: translate(-10%, 10%); }\n  65% {\n    transform: translate(-10%, -10%); }\n  80% {\n    transform: translate(10%, -10%); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes history {\n  50% {\n    transform: rotate(20deg); }\n  100% {\n    transform: rotate(0deg); } }\n\n@media (max-width: 1140px) {\n  .subjects h2 {\n    font-size: 24px;\n    bottom: 15%; } }\n\n@media (max-width: 840px) {\n  .subjects h2 {\n    display: none; }\n  .subjects div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    top: 0; }\n  .subjects li img {\n    position: static; }\n  .subjects .letters img {\n    position: absolute; } }\n\n@keyframes fade-right {\n  0% {\n    opacity: 0;\n    transform: translateX(40%); }\n  100% {\n    opacity: 1;\n    transform: translateX(0); } }\n\n.letter {\n  font-size: 50px;\n  text-transform: uppercase; }\n  .letter[data-subject=\"geography\"] {\n    top: 9.5%;\n    left: 40.4%; }\n  .letter[data-subject=\"informatics\"] {\n    top: 13%;\n    left: 63.2%; }\n  .letter[data-subject=\"math\"] {\n    top: 25%;\n    right: 13.3%; }\n  .letter[data-subject=\"com\"] {\n    top: 43.2%;\n    right: 8.3%; }\n  .letter[data-subject=\"physics\"] {\n    top: 61.9%;\n    right: 12.5%; }\n  .letter[data-subject=\"literature\"] {\n    top: 74.3%;\n    right: 30.5%; }\n  .letter[data-subject=\"ru\"] {\n    top: 76.7%;\n    right: 52.6%; }\n  .letter[data-subject=\"english\"] {\n    top: 69%;\n    left: 18.3%; }\n  .letter[data-subject=\"biology\"] {\n    top: 52.3%;\n    left: 7.2%; }\n  .letter[data-subject=\"chemistry\"] {\n    top: 34%;\n    left: 7.2%; }\n  .letter[data-subject=\"history\"] {\n    top: 18.2%;\n    left: 18.8%; }\n\n@media (max-width: 1250px) {\n  .letter {\n    font-size: 38px; } }\n\n@media (max-width: 900px) {\n  .letters {\n    opacity: 0;\n    cursor: default; } }\n\n.geography-layout .mountains {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background: linear-gradient(#08b1da, #88eefa); }\n  .geography-layout .mountains g {\n    cursor: pointer;\n    transition: all 0.5s ease; }\n    .geography-layout .mountains g.is-hidden {\n      opacity: 0;\n      transform: translateY(100px); }\n\n.geography-layout .snow {\n  fill: white; }\n\n.geography-layout .phrase {\n  position: absolute;\n  top: 40%;\n  left: 47%;\n  margin-left: -158px;\n  padding: 0 60px;\n  font-size: 60px;\n  color: white;\n  font-family: Oswald;\n  animation: geography-phrase 1s ease forwards; }\n  .geography-layout .phrase mark {\n    color: #3183ad;\n    font-weight: 100;\n    background: transparent; }\n  @media (max-width: 600px) {\n    .geography-layout .phrase {\n      font-size: 50px; } }\n\n.geography-layout .sun {\n  position: absolute;\n  top: 40px;\n  right: 40px;\n  margin: auto;\n  width: 70px;\n  height: 70px;\n  border-radius: 50%;\n  background: white;\n  box-shadow: 0 0 40px 15px white;\n  animation: shine 2s ease infinite both; }\n\n@keyframes shine {\n  0% {\n    box-shadow: 0 0 40px 15px white; }\n  50% {\n    box-shadow: 0 0 40px 20px white; } }\n\n@keyframes geography-phrase {\n  0% {\n    opacity: 0;\n    transform: scale(0.8) translateY(0); }\n  70% {\n    opacity: 0.7;\n    transform: translateY(-200px); }\n  100% {\n    opacity: 1;\n    transform: translateY(-100px); } }\n\n.physics-layout {\n  height: 100vh;\n  overflow: hidden; }\n  .physics-layout .balls-container {\n    transition: all 2.5s ease-in-out 0.5s; }\n  .physics-layout.is-finish .balls-container {\n    transform: scale(5); }\n  .physics-layout .game-window {\n    overflow: visible; }\n  .physics-layout .ball {\n    position: absolute;\n    border-radius: 50%;\n    cursor: pointer; }\n  .physics-layout .phrase {\n    font-size: 60px;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    margin-top: -144px;\n    margin-left: -128px;\n    font-family: Comfortaa;\n    text-transform: uppercase;\n    color: #656565;\n    animation: phrase 2.5s ease 0.5s both; }\n    .physics-layout .phrase mark {\n      background: transparent;\n      color: #ffe827; }\n    .physics-layout .phrase div:nth-child(1) {\n      font-size: 27px;\n      animation: phrase 2.5s ease 0.5s both; }\n    .physics-layout .phrase div:nth-child(2) {\n      animation: phrase 1s ease 2s both; }\n    .physics-layout .phrase div:nth-child(3) {\n      font-size: 49px;\n      animation: phrase 1s ease 2.5s both; }\n    .physics-layout .phrase div:nth-child(4) {\n      font-size: 66px;\n      animation: phrase 1s ease 3s both; }\n    .physics-layout .phrase div:nth-child(5) {\n      font-size: 51px;\n      animation: phrase 1s ease 3.5s both; }\n\n@keyframes phrase {\n  0% {\n    transform: scale(0); }\n  100% {\n    transform: scale(1); } }\n\n.informatics-layout .game-window {\n  overflow: hidden; }\n\n.informatics-layout .macbook {\n  width: 900px;\n  margin: 50px auto;\n  perspective: 2250px;\n  perspective-origin: 50% bottom;\n  transform-style: preserve-3d;\n  cursor: pointer;\n  font-family: 'Share Tech Mono';\n  color: white; }\n\n.informatics-layout .macbook-lid {\n  width: 80%;\n  margin: 0 auto;\n  transform-origin: 50% bottom;\n  transform-style: preserve-3d;\n  transition: all 1s; }\n  .informatics-layout .macbook-lid::before {\n    display: block;\n    content: '';\n    width: 92%;\n    margin: 0 auto;\n    padding: 1% 3% 0 3%;\n    background: transparent;\n    border: none;\n    border-radius: 10px 10px 0 0;\n    transform-origin: 50% bottom;\n    transform: rotate3d(1, 0, 0, 90deg);\n    transition: all 1s; }\n\n.informatics-layout .macbook-screen {\n  position: relative;\n  background-color: #353535;\n  margin: 0 auto;\n  padding: 3%;\n  border-radius: 24px 24px 0 0;\n  transform-style: preserve-3d;\n  transition: all 1s; }\n  .informatics-layout .macbook-screen::before {\n    display: block;\n    content: '';\n    position: absolute;\n    top: 2%;\n    left: 49%;\n    width: 1%;\n    padding-top: 1%;\n    background-color: #000;\n    border-radius: 50%; }\n\n.informatics-layout .macbook-content {\n  position: relative;\n  overflow: hidden;\n  background-color: #272727; }\n  .informatics-layout .macbook-content::before {\n    display: block;\n    content: '';\n    width: 1px;\n    padding-top: 60%;\n    float: left; }\n  .informatics-layout .macbook-content::after {\n    display: block;\n    content: '';\n    clear: both; }\n  .informatics-layout .macbook-content .hack-message {\n    text-align: left;\n    margin-left: 20px; }\n    .informatics-layout .macbook-content .hack-message .blink {\n      animation: blink 0.8s steps(1, start) infinite alternate; }\n  .informatics-layout .macbook-content .password {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    font-size: 72px;\n    letter-spacing: 8px;\n    text-transform: uppercase; }\n    .informatics-layout .macbook-content .password span:hover {\n      text-decoration: underline; }\n  .informatics-layout .macbook-content .result-block {\n    position: absolute;\n    bottom: 80px;\n    left: 50%;\n    transform: translateX(-50%); }\n    .informatics-layout .macbook-content .result-block.is-win {\n      width: 100%;\n      height: 100%;\n      top: 0;\n      bottom: 0;\n      right: 0;\n      left: 0;\n      transform: none; }\n  .informatics-layout .macbook-content .phrase {\n    height: 100%;\n    background: #272727;\n    font-size: 40px;\n    text-align: left;\n    padding: 20px; }\n    .informatics-layout .macbook-content .phrase div {\n      width: 170px;\n      margin: 0 auto; }\n      .informatics-layout .macbook-content .phrase div:first-letter {\n        color: green; }\n      .informatics-layout .macbook-content .phrase div::after {\n        content: '_';\n        position: absolute;\n        animation: blink 0.4s steps(1, start) infinite alternate; }\n\n.informatics-layout .macbook:not(.is-open) .macbook-lid {\n  transform: rotate3d(-1, 0, 0, 91deg); }\n\n.informatics-layout .macbook:not(.is-open) .macbook-lid:before {\n  width: 94%;\n  background-color: #D3D1D2;\n  border-bottom: 1px solid #bdbdbd; }\n\n.informatics-layout .macbook-base {\n  width: 100%;\n  overflow: hidden;\n  background-color: #D3D1D2;\n  border-radius: 2px 2px 10px 10px; }\n  .informatics-layout .macbook-base::before {\n    display: block;\n    content: '';\n    width: 30%;\n    margin: 0 auto 0.7% auto;\n    padding-top: 1.2%;\n    background: #B0B0B0;\n    border-radius: 0 0 10px 10px; }\n  .informatics-layout .macbook-base::after {\n    display: block;\n    content: '';\n    padding-top: 1%;\n    background-color: #B3B3B3; }\n\n.informatics-layout #macbook-container {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%); }\n\n@keyframes blink {\n  50% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n\n.mathematics-layout .game-window {\n  margin-top: 60px; }\n\n.mathematics-layout .grid {\n  position: relative;\n  width: 541px;\n  margin: 0 auto; }\n\n.mathematics-layout .tip {\n  position: absolute;\n  top: 20px;\n  left: 20px;\n  font-size: 50px;\n  text-align: center;\n  background: rgba(21, 115, 255, 0.7);\n  border-radius: 50%;\n  width: 100px;\n  height: 100px;\n  transition: transform 0.1s ease, background 0.4s ease; }\n  .mathematics-layout .tip img {\n    width: 40px;\n    top: 18px;\n    position: relative;\n    margin-right: 4px; }\n    .mathematics-layout .tip img.top {\n      transform: rotate(-90deg); }\n    .mathematics-layout .tip img.bottom {\n      transform: rotate(90deg); }\n    .mathematics-layout .tip img.left {\n      transform: rotate(180deg); }\n  .mathematics-layout .tip .length {\n    position: relative;\n    top: 23px;\n    font-weight: bold; }\n  .mathematics-layout .tip.is-clicked {\n    transform: scale(1.2); }\n  .mathematics-layout .tip.is-error {\n    cursor: pointer;\n    transform: none;\n    background: rgba(255, 235, 59, 0.5); }\n    .mathematics-layout .tip.is-error .message {\n      font-size: 20px;\n      margin-top: 8px; }\n\n.mathematics-layout .phrase {\n  position: absolute;\n  top: 10px;\n  left: 10px;\n  font-size: 40px;\n  font-weight: bold;\n  letter-spacing: 4px;\n  color: white; }\n  .mathematics-layout .phrase mark {\n    background: transparent;\n    color: #FF5722; }\n  .mathematics-layout .phrase div {\n    position: absolute;\n    text-transform: uppercase;\n    padding: 0 10px;\n    box-shadow: 4px 4px 0 0 rgba(158, 158, 158, 0.4); }\n    .mathematics-layout .phrase div:first-child {\n      background: #3949AB;\n      animation: first 0.5s ease 0.5s both; }\n    .mathematics-layout .phrase div:nth-child(2) {\n      background: white;\n      color: #607D8B;\n      top: 40px;\n      left: 20px;\n      animation: second 0.5s ease 1s both; }\n    .mathematics-layout .phrase div:last-child {\n      background: #76FF03;\n      top: 80px;\n      left: 40px;\n      animation: third 0.5s ease 1.5s both; }\n\n@keyframes first {\n  0% {\n    opacity: 0;\n    transform: translateY(-100px); }\n  100% {\n    opacity: 1;\n    transform: translateY(0); } }\n\n@keyframes second {\n  0% {\n    opacity: 0;\n    transform: translateX(100px); }\n  100% {\n    opacity: 1;\n    transform: translateX(0); } }\n\n@keyframes third {\n  0% {\n    opacity: 0;\n    transform: translateY(200px); }\n  100% {\n    opacity: 1;\n    transform: translateY(0); } }\n\n.russian-layout .backpack {\n  position: absolute;\n  z-index: 100;\n  bottom: 0;\n  width: 170px;\n  height: 180px;\n  left: 0;\n  padding-top: 80px;\n  background-color: #d84736;\n  box-shadow: inset 0 6px 0 2px #c1382e, 0 -93px 0 -69px white, 0 -93px 0 -60px #d84736;\n  background-image: linear-gradient(to right, transparent 5px, transparent 20px, transparent 1px, transparent 25px, transparent 5px, transparent 20px, transparent 20px, transparent 86px, #c1382e 45px, #c1382e 230px, transparent 25px, transparent 172px);\n  border-radius: 85px 85px 30px 30px;\n  transform: scale(0.2);\n  transform-origin: 50% 100%;\n  transition: all 0.3s ease; }\n  .russian-layout .backpack::before, .russian-layout .backpack::after {\n    display: block;\n    content: '';\n    position: absolute; }\n  .russian-layout .backpack::before {\n    height: 75px;\n    width: 118px;\n    background-image: radial-gradient(circle closest-corner at 13px 29px, #af342c, #af342c 2px, transparent 2px, transparent), radial-gradient(circle closest-corner at 13px 29px, #491033, #491033 4px, transparent 4px, transparent), linear-gradient(to bottom, transparent 10px, transparent 15px, #491033 5px, #491033 18px, transparent 18px, transparent 100px), linear-gradient(to right, #af342c 10px, #af342c 10px, transparent 10px, transparent 16px, #af342c 9px, #af342c 50px), linear-gradient(to bottom, #af342c 8px, #af342c 16px, #491033 8px, #491033 30px, #af342c 20px, #af342c 72px, #af342c 10px, #af342c 57px, #af342c 5%);\n    margin-left: 22px;\n    margin-top: 58px;\n    border: 4px solid #491033;\n    border-radius: 11px;\n    content: '||';\n    color: transparent;\n    font-family: 'Comic Sans MS';\n    font-weight: bold;\n    z-index: 1;\n    text-shadow: black -2px -86px 0px;\n    font-size: 14px; }\n  .russian-layout .backpack::after {\n    margin-left: 67px;\n    margin-top: -30px;\n    background: #cca16a;\n    width: 26px;\n    height: 26px;\n    border: 3px solid #491033;\n    border-radius: 3px;\n    transform: rotate(45deg); }\n  .russian-layout .backpack.line-1 {\n    left: 0; }\n  .russian-layout .backpack.line-2 {\n    left: 20%; }\n  .russian-layout .backpack.line-3 {\n    left: 40%; }\n  .russian-layout .backpack.line-4 {\n    left: 60%; }\n  .russian-layout .backpack.line-5 {\n    left: 80%; }\n  .russian-layout .backpack.is-finished {\n    top: 50%;\n    left: 50%;\n    bottom: initial;\n    transform-origin: initial;\n    margin-left: -60px;\n    margin-top: -91px;\n    animation: fly 1.5s ease 1.7s both; }\n\n.russian-layout .letter {\n  position: absolute;\n  width: 26px;\n  height: 26px;\n  left: 65px;\n  font-size: 26px;\n  color: gray;\n  border-radius: 50%;\n  background: white; }\n  .russian-layout .letter img {\n    width: 40px;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    z-index: -1; }\n  .russian-layout .letter.line-1 {\n    left: 88px; }\n  .russian-layout .letter.line-2 {\n    left: calc(20% + 88px); }\n  .russian-layout .letter.line-3 {\n    left: calc(40% + 88px); }\n  .russian-layout .letter.line-4 {\n    left: calc(60% + 88px); }\n  .russian-layout .letter.line-5 {\n    left: calc(80% + 88px); }\n\n@keyframes letter {\n  0% {\n    top: 10px; }\n  100% {\n    top: 100%; } }\n\n.russian-layout .frame {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 400px;\n  height: 400px;\n  margin-top: -200px;\n  margin-left: -200px; }\n\n.russian-layout .floor {\n  position: absolute;\n  top: 244px;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: #232323; }\n\n.russian-layout .invisible-men {\n  animation: fade-in .8s ease-out;\n  animation-fill-mode: both; }\n\n.russian-layout .leg {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 151px;\n  height: 245px;\n  transform-origin: 50% 0; }\n\n.russian-layout .shoe {\n  position: absolute;\n  width: 151px;\n  height: 128px;\n  left: 0;\n  bottom: 0;\n  background: url(\"/images/boot.svg\") center center no-repeat;\n  transform-origin: 0 95%; }\n\n.russian-layout .left {\n  animation: leg-swing 2s ease-in-out both; }\n  .russian-layout .left .shoe {\n    animation: shoe-turn 2s ease-in-out both; }\n\n@keyframes leg-swing {\n  0%, 100% {\n    transform: rotate(-22deg); }\n  50% {\n    transform: rotate(40deg); } }\n\n@keyframes shoe-turn {\n  0%, 100% {\n    transform: rotate(-10deg) translateY(-5px) translateX(10px); }\n  25% {\n    transform: rotate(0deg) translateY(0px) translateX(0); }\n  50% {\n    transform: rotate(10deg) translateY(-10px) translateX(10px); }\n  75% {\n    transform: rotate(0deg) translateY(-30px) translateX(0); } }\n\n@keyframes fade-in {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fly {\n  0% {\n    transform: translate(0) rotate(0deg) scale(0.7); }\n  100% {\n    transform: translate(650px, -200px) rotate(30deg) scale(0.5); } }\n\n.russian-layout .phrase {\n  position: absolute;\n  width: 400px;\n  height: 400px;\n  top: 50%;\n  left: 50%;\n  margin-left: -200px;\n  margin-top: -200px;\n  transform: scale(1.5); }\n  .russian-layout .phrase mark {\n    background: transparent;\n    color: #3595ff; }\n  .russian-layout .phrase .circle {\n    position: absolute;\n    z-index: 10;\n    height: 50px;\n    width: 50px;\n    top: 175px;\n    left: 175px;\n    background: #adadad;\n    border-radius: 50%;\n    animation: circle 1s ease-in-out;\n    animation-fill-mode: forwards; }\n  .russian-layout .phrase .line {\n    position: absolute;\n    z-index: 10;\n    width: 150px;\n    height: 4px;\n    top: 198px;\n    background: #adadad;\n    transform: scaleX(0); }\n    .russian-layout .phrase .line.left {\n      left: 50px;\n      transform-origin: 100% 50%;\n      animation: lines 1s ease-in-out 0.8s, line-left 1s steps(1) 0.8s; }\n    .russian-layout .phrase .line.right {\n      right: 50px;\n      transform-origin: 0% 50%;\n      animation: lines 1s ease-in-out 0.8s, line-right 1s steps(1) 0.8s; }\n  .russian-layout .phrase .bracket {\n    position: absolute;\n    z-index: 10;\n    height: 70px;\n    width: 4px;\n    top: 165px;\n    background: #adadad;\n    animation: bracket .4s ease-out 1.7s;\n    animation-fill-mode: both; }\n    .russian-layout .phrase .bracket:before, .russian-layout .phrase .bracket:after {\n      position: absolute;\n      display: block;\n      content: '';\n      width: 25px;\n      height: 4px;\n      background: #adadad; }\n    .russian-layout .phrase .bracket.left {\n      left: 50px; }\n      .russian-layout .phrase .bracket.left:before {\n        top: 0;\n        left: 0;\n        transform-origin: 0% 50%;\n        animation: bracket-line .2s ease-out 2.1s;\n        animation-fill-mode: both; }\n      .russian-layout .phrase .bracket.left:after {\n        bottom: 0;\n        left: 0;\n        transform-origin: 0% 50%;\n        animation: bracket-line .2s ease-out 2.1s;\n        animation-fill-mode: both; }\n    .russian-layout .phrase .bracket.right {\n      right: 50px; }\n      .russian-layout .phrase .bracket.right:before {\n        top: 0;\n        right: 0;\n        transform-origin: 100% 50%;\n        animation: bracket-line .2s ease-out 2.1s;\n        animation-fill-mode: both; }\n      .russian-layout .phrase .bracket.right:after {\n        bottom: 0;\n        right: 0;\n        transform-origin: 100% 50%;\n        animation: bracket-line .2s ease-out 2.1s;\n        animation-fill-mode: both; }\n  .russian-layout .phrase .big {\n    position: absolute;\n    z-index: 5;\n    top: 173px;\n    width: 400px;\n    text-align: center;\n    font-weight: 800;\n    font-size: 50px;\n    color: #adadad;\n    line-height: 50px;\n    text-transform: uppercase; }\n  .russian-layout .phrase .hide {\n    position: absolute;\n    z-index: 7;\n    width: 400px;\n    height: 50px;\n    background: white;\n    left: 0;\n    animation: reveal .4s ease-out 1.7s;\n    animation-fill-mode: both; }\n    .russian-layout .phrase .hide.top {\n      bottom: 49%;\n      transform-origin: 50% 0%; }\n    .russian-layout .phrase .hide.bottom {\n      top: 49%;\n      transform-origin: 50% 100%; }\n  .russian-layout .phrase .small {\n    position: absolute;\n    z-index: 10;\n    width: 400px;\n    text-align: center;\n    left: 0;\n    font-weight: 300;\n    font-size: 30px;\n    color: #adadad;\n    line-height: 30px;\n    text-transform: uppercase; }\n    .russian-layout .phrase .small.top {\n      top: 140px;\n      animation: small-top .5s ease-out 2.2s;\n      animation-fill-mode: both; }\n    .russian-layout .phrase .small.bottom {\n      bottom: 140px;\n      animation: small-bottom .5s ease-out 2.2s;\n      animation-fill-mode: both; }\n\n@keyframes lines {\n  0% {\n    transform: scaleX(0); }\n  50% {\n    transform: scaleX(1); }\n  100% {\n    transform: scaleX(0); } }\n\n@keyframes line-left {\n  0% {\n    transform-origin: 100% 50%; }\n  50%, 100% {\n    transform-origin: 0% 50%; } }\n\n@keyframes line-right {\n  0% {\n    transform-origin: 0% 50%; }\n  50%, 100% {\n    transform-origin: 100% 50%; } }\n\n@keyframes bracket {\n  0% {\n    transform: scaleY(0); }\n  100% {\n    transform: scaleY(1); } }\n\n@keyframes bracket-line {\n  0% {\n    transform: scaleX(0); }\n  100% {\n    transform: scaleX(1); } }\n\n@keyframes reveal {\n  0% {\n    transform: scaleY(1); }\n  100% {\n    transform: scaleY(0); } }\n\n@keyframes small-top {\n  0% {\n    transform: translateX(-20px);\n    opacity: 0; }\n  100% {\n    transform: translateX(0);\n    opacity: 1; } }\n\n@keyframes small-bottom {\n  0% {\n    transform: translateX(20px);\n    opacity: 0; }\n  100% {\n    transform: translateX(0);\n    opacity: 1; } }\n\n.social-layout .game-window {\n  overflow: visible; }\n\n.social-layout .phrase h1 {\n  margin: 10% 50%;\n  position: relative;\n  background: #80DEEA;\n  padding: 11px;\n  color: #006064;\n  font-size: 40pt;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.2em; }\n\n.social-layout .phrase mark {\n  background: transparent;\n  color: #FF9800; }\n\n.social-layout .phrase div:nth-child(1) {\n  animation: div 0.5s ease 2s both; }\n\n.social-layout .phrase div:nth-child(2) {\n  animation: div 0.5s ease 1.5s both; }\n\n.social-layout .phrase div:nth-child(3) {\n  animation: div 0.5s ease 1s both; }\n\n.social-layout .phrase div:nth-child(4) {\n  animation: div 0.5s ease 0.5s both; }\n\n.social-layout .phrase div:nth-child(5) {\n  animation: div 0.5s ease 0s both; }\n\n.social-layout .hat {\n  position: absolute;\n  bottom: 400px;\n  right: 300px;\n  z-index: 300;\n  width: 150px;\n  animation: hat 2s ease infinite; }\n  .social-layout .hat.is-sad {\n    animation: sadHat 0.5s ease; }\n  .social-layout .hat.is-happy {\n    animation: happyHat 0.5s ease both; }\n\n.social-layout .progress {\n  position: absolute;\n  bottom: 100px;\n  right: 50%;\n  margin-right: -300px;\n  width: 600px;\n  height: 20px;\n  border-radius: 4px;\n  border: 1px solid #81C784; }\n  .social-layout .progress .current-progress {\n    position: absolute;\n    bottom: 0;\n    height: 20px;\n    background: #81C784;\n    box-shadow: inset 0 6px #66BB6A;\n    overflow: visible;\n    border-radius: 4px;\n    transition: all 0.3s ease; }\n\n.social-layout .professions {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n  .social-layout .professions li {\n    display: inline-block;\n    margin: 0 10px; }\n  .social-layout .professions img {\n    display: block;\n    width: 70px;\n    cursor: pointer;\n    transition: all 0.3s ease; }\n    .social-layout .professions img:hover {\n      transform: scale(1.2) translateY(10px); }\n\n.social-layout .children {\n  position: absolute;\n  right: 285px;\n  bottom: 200px;\n  white-space: nowrap;\n  transition: all 1s ease; }\n  .social-layout .children.no-selected {\n    padding-right: 150px; }\n    .social-layout .children.no-selected .comics-thought {\n      opacity: 0; }\n\n.social-layout .child {\n  display: inline-block;\n  width: 150px;\n  margin: 0 15px;\n  transition: 1s ease;\n  position: relative; }\n\n.social-layout .last-child {\n  position: absolute;\n  bottom: 200px;\n  right: 40px; }\n  .social-layout .last-child .mouth {\n    position: absolute;\n    right: 0; }\n    .social-layout .last-child .mouth.is-sad {\n      transform: rotate(180deg); }\n  .social-layout .last-child img {\n    width: 150px; }\n\n.social-layout .comics-thought {\n  display: block;\n  vertical-align: top;\n  position: absolute;\n  bottom: 170px;\n  right: 100px;\n  z-index: 200;\n  opacity: 1;\n  background-color: #e8eaff;\n  margin: 0 2em 2em 4em;\n  font-size: 1.1em;\n  text-align: center;\n  width: 53px;\n  padding: 2em;\n  border-radius: 50%;\n  box-shadow: -41px -29px 0 -20px #e8eaff, 58px -25px 0 -40px #e8eaff;\n  animation: cloud 1.5s linear infinite alternate;\n  transition: opacity 0.5s ease 1s; }\n  .social-layout .comics-thought::after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    z-index: -1;\n    width: 65%;\n    height: 63%;\n    right: -2.15em;\n    bottom: 0.425em;\n    background: #e8eaff;\n    border-radius: 50%;\n    animation: cloud-after 1s ease infinite alternate;\n    box-shadow: -105px 0px 0 #e8eaff, -24px 29px 0 -12px #e8eaff, -19px 61px 0 -24px #e8eaff, -2px 90px 0 -30px #e8eaff, 13px 105px 0 -35px #e8eaff; }\n  .social-layout .comics-thought > p {\n    color: transparent; }\n  .social-layout .comics-thought .profession {\n    position: absolute;\n    width: 100px;\n    top: 0;\n    left: 0; }\n\n@keyframes div {\n  0% {\n    opacity: 0;\n    transform: translateY(-200px); }\n  50% {\n    opacity: 1; }\n  100% {\n    transform: translate(0); } }\n\n@keyframes hat {\n  0% {\n    transform: translate(0, 0); }\n  50% {\n    transform: translate(2px, 7px); }\n  100% {\n    transform: translate(0, 0); } }\n\n@keyframes sadHat {\n  0% {\n    transform: translateY(40px); }\n  100% {\n    transform: translateY(0); } }\n\n@keyframes happyHat {\n  0% {\n    transform: translateX(-20px); }\n  25% {\n    transform: translateX(20px); }\n  50% {\n    transform: translateX(-30px); }\n  75% {\n    transform: translateX(30px); }\n  100% {\n    transform: translateX(0); } }\n\n@keyframes cloud {\n  0% {\n    box-shadow: -41px -29px 0 -20px #e8eaff, 58px -25px 0 -40px #e8eaff; }\n  100% {\n    box-shadow: -34px -25px 0 -10px #e8eaff, 46px -32px 0 -45px #e8eaff; } }\n\n@keyframes cloud-after {\n  0% {\n    box-shadow: -105px -4px 2px #e8eaff, -24px 29px 0 -12px #e8eaff, -19px 61px 0 -24px #e8eaff, -2px 90px 0 -30px #e8eaff, 13px 105px 0 -35px #e8eaff; }\n  100% {\n    box-shadow: -105px 0px 0 #e8eaff, -24px 29px 0 -12px #e8eaff, -24px 58px 0 -24px #e8eaff, -5px 89px 0 -30px #e8eaff, 10px 105px 0 -35px #e8eaff; } }\n", ""]);
 
 // exports
 
