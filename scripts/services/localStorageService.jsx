@@ -5,7 +5,7 @@ const saveToLocalStorage = (Component, { key: name, letter, phrase }) => class e
   componentDidMount() {
     const progressInfo = store.get('progressInfo') || [];
 
-    if (progressInfo.map(l => l.subject).indexOf(name) === -1) progressInfo.push({ letter, name, phrase });
+    if (progressInfo.map(l => l.name).indexOf(name) === -1) progressInfo.push({ letter, name, phrase });
 
     store.set('progressInfo', progressInfo);
   }

@@ -87,10 +87,6 @@ class Mathematics extends Component {
     );
   }
 
-  renderFinish() {
-
-  }
-
   renderTipBadge(currentStay, error, clicked) {
     return (
       <span

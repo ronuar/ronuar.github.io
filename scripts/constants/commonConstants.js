@@ -23,7 +23,9 @@ export const SUBJECTS_INFO = {
   com: {
     key: 'com',
     color: '#fab218',
-    title: 'Обществознание'
+    title: 'Обществознание',
+    letter: 'е',
+    phrase: 'Собой будь, получится все у тебя'
   },
   physics: {
     key: 'physics',

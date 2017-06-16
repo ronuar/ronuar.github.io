@@ -9,11 +9,11 @@ const LettersHendecagon = ({ lettersSubjects }) => {
       <div>
         <img src={`../../images/figure.png`} />
         <h2>Буквы</h2>
-        {progressInfo.map(({ letter, name }) => {
+        {progressInfo.map(({ letter, name }, index) => {
           const { key, color } = lettersSubjects.filter(letterSubject => letterSubject.key === name)[0];
 
           return (
-            <span key={name} className="letter" style={{ color }} data-subject={key}>{letter}</span>
+            <span key={`${name+index}`} className="letter" style={{ color }} data-subject={key}>{letter}</span>
           );
         })}
       </div>
