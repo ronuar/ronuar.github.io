@@ -88,7 +88,7 @@ class English extends Component {
     return (
       <GameLayout
         className="english-layout"
-        title="Кликалка по горам"
+        title="Переводчик"
         onSubjectsClick={onSubjectsClick}
         onReplay={this.onReplay}
       >
