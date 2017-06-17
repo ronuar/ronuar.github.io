@@ -24,7 +24,7 @@ export const SUBJECTS_INFO = {
     key: 'com',
     color: '#fab218',
     title: 'Обществознание',
-    letter: 'е',
+    letter: 'с',
     phrase: 'Собой будь, получится все у тебя'
   },
   physics: {
@@ -49,7 +49,9 @@ export const SUBJECTS_INFO = {
   english: {
     key: 'english',
     color: '#4371F4',
-    title: 'Английский язык'
+    title: 'Английский язык',
+    letter: 'е',
+    phrase: 'ЕГЭ = USE. Use every chance'
   },
   biology: {
     key: 'biology',

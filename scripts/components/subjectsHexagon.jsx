@@ -6,6 +6,8 @@ import Mathematics from './mathematics';
 import Informatics from './informatics';
 import Russian from './russian';
 import Social from './social';
+import English from './english';
+
 import LettersHendecagon from './lettersHendecagon';
 import Phrases from './phrases';
 
@@ -18,7 +20,8 @@ const subjectsContainers = {
   math: <Mathematics />,
   informatics: <Informatics />,
   ru: <Russian />,
-  com: <Social />
+  com: <Social />,
+  english: <English />
 };
 
 const data = [

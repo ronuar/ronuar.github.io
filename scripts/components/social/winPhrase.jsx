@@ -10,7 +10,7 @@ class SocialWinPhrase extends Component {
           <div>Собой</div>
           <div>Будь</div>
           <div>Получится</div>
-          <div>Вс<mark>е</mark></div>
+          <div>В<mark>с</mark>е</div>
           <div>У&nbsp;Тебя</div>
         </h1>
       </div>
