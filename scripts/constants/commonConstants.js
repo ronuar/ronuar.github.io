@@ -66,6 +66,8 @@ export const SUBJECTS_INFO = {
   history: {
     key: 'history',
     color: '#f53d6d',
-    title: 'История'
+    title: 'История',
+    letter: 'т',
+    phrase: 'Следуй за мечтой'
   },
 };
