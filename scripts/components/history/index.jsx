@@ -82,7 +82,7 @@ class History extends Component {
     return (
       <GameLayout
         className="history-layout"
-        title="Переводчик"
+        title="Великие открытия"
         onSubjectsClick={onSubjectsClick}
         onReplay={this.onReplay}
       >
