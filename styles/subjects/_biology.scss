@@ -1,0 +1,304 @@
+.biology-layout {
+  * {
+    box-sizing: border-box;
+  }
+
+  .game-window {
+    width: 100vw;
+    overflow: auto;
+  }
+
+  .flowers {
+    width: 820px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .flower {
+    .petal {
+      display: block;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 10px 500px;
+      transform-origin: 0% 0%;
+      transition: all 1.25s ease;
+
+      &.in-word {
+        transform: rotate(45deg);
+        cursor: default;
+
+        &:hover .pet {
+          transform: none;
+        }
+      }
+    }
+  }
+
+  .flower1 {
+    .petal {
+      left: 0px;
+      bottom: 400px;
+    }
+
+    .mid {
+      left: -15px;
+      bottom: 425px;
+    }
+  }
+
+  .flower2 {
+    .petal {
+      left: 700px;
+      bottom: 450px;
+    }
+
+    .mid {
+      left: 686px;
+      bottom: 474px;
+    }
+  }
+
+  .flower3 {
+    .petal {
+      left: 100px;
+      bottom: 50px;
+    }
+
+    .mid {
+      left: 85px;
+      bottom: 72px;
+    }
+  }
+
+  .flower4 {
+    .petal {
+      left: 750px;
+      bottom: 20px;
+    }
+
+    .mid {
+      left: 736px;
+      bottom: 43px;
+    }
+  }
+
+  .flower5 {
+    .petal {
+      left: 500px;
+      bottom: 60px;
+    }
+
+    .mid {
+      left: 485px;
+      bottom: 84px;
+    }
+  }
+
+  .flower6 {
+    .petal {
+      left: 400px;
+      bottom: 420px;
+    }
+
+    .mid {
+      left: 385px;
+      bottom: 444px;
+    }
+  }
+
+  .pet {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px 500px;
+    box-shadow: 2px 2px 8px rgba(50, 50, 50, 0.3);
+    box-shadow: inset 10px 8px 0px rgba(50, 50, 50, 0.12);
+    transition: all 1.25s ease;
+
+    &:hover {
+      transform: translate(5px, 5px);
+    }
+  }
+
+  .f9 .p0 {
+    transform: rotate(40deg);
+  }
+
+  .f9 .p1 {
+    transform: rotate(-0deg);
+  }
+
+  .f9 .p2 {
+    transform: rotate(-40deg);
+  }
+
+  .f9 .p3 {
+    transform: rotate(-80deg);
+  }
+
+  .f9 .p4 {
+    transform: rotate(-120deg);
+  }
+
+  .f9 .p5 {
+    transform: rotate(-160deg);
+  }
+
+  .f9 .p6 {
+    transform: rotate(-200deg);
+  }
+
+  .f9 .p7 {
+    transform: rotate(-240deg);
+  }
+
+  .f9 .p8 {
+    transform: rotate(-280deg);
+  }
+
+  .f7 .p0 {
+    transform: rotate(0deg);
+  }
+
+  .f7 .p1 {
+    transform: rotate(51.5deg);
+  }
+
+  .f7 .p2 {
+    transform: rotate(103deg);
+  }
+
+  .f7 .p3 {
+    transform: rotate(154.5deg);
+  }
+
+  .f7 .p4 {
+    transform: rotate(206deg);
+  }
+
+  .f7 .p5 {
+    transform: rotate(257.5deg);
+  }
+
+  .f7 .p6 {
+    transform: rotate(309deg);
+  }
+
+  .mid {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50px 50px;
+    transform-origin: 30% 190%;
+
+    .hea {
+      display: block;
+      position: absolute;
+      left: 13px;
+      top: 2px;
+      width: 7px;
+      height: 7px;
+      cursor: pointer;
+      border-radius: 50px 5px;
+      background: #fefcea;
+      transform-origin: 30% 190%;
+    }
+  }
+
+  .is-finish {
+    .flower1 .mid {
+      background: url(/images/biology/1.svg);
+    }
+    .flower2 .mid {
+      background: url(/images/biology/2.svg);
+    }
+    .flower3 .mid {
+      background: url(/images/biology/3.svg);
+    }
+    .flower4 .mid {
+      background: url(/images/biology/4.svg);
+    }
+    .flower5 .mid {
+      background: url(/images/biology/5.svg);
+    }
+    .flower6 .mid {
+      background: url(/images/biology/6.svg);
+    }
+
+    .mid {
+      border-radius: 0;
+      animation: flowerGrow 2s ease 2s both;
+    }
+    .hea {
+      display: none;
+    }
+  }
+
+  .c1 {
+    .pet,
+    .mid {
+      background: #F44336;
+    }
+  }
+
+  .c2 {
+    .pet,
+    .mid {
+      background: #E91E63;
+    }
+  }
+
+  .c3 {
+    .pet,
+    .mid {
+      background: #9C27B0;
+    }
+  }
+
+  .c4 {
+    .pet,
+    .mid {
+      background: #673AB7;
+    }
+  }
+
+  .c5 {
+    .pet,
+    .mid {
+      background: #00BCD4;
+    }
+  }
+
+  .c6 {
+    .pet,
+    .mid {
+      background: #FF9800;
+    }
+  }
+
+  @keyframes flowerGrow {
+    0% {
+      transform: scale(1);
+    }
+
+    25% {
+      transform: scale(1.2);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      transform: scale(1.5);
+    }
+  }
+}

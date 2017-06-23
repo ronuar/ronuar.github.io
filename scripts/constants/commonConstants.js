@@ -56,7 +56,9 @@ export const SUBJECTS_INFO = {
   biology: {
     key: 'biology',
     color: '#78C82A',
-    title: 'Биология'
+    title: 'Биология',
+    letter: 'о',
+    phrase: 'Отрывайся'
   },
   chemistry: {
     key: 'chemistry',

@@ -8,6 +8,7 @@ import Russian from './russian';
 import Social from './social';
 import English from './english';
 import History from './history';
+import Biology from './biology';
 
 import LettersHendecagon from './lettersHendecagon';
 import Phrases from './phrases';
@@ -23,7 +24,8 @@ const subjectsContainers = {
   ru: <Russian />,
   com: <Social />,
   english: <English />,
-  history: <History />
+  history: <History />,
+  biology: <Biology />
 };
 
 const data = [
