@@ -9,6 +9,7 @@ import Social from './social';
 import English from './english';
 import History from './history';
 import Biology from './biology';
+import Chemistry from './chemistry';
 
 import LettersHendecagon from './lettersHendecagon';
 import Phrases from './phrases';
@@ -25,7 +26,8 @@ const subjectsContainers = {
   com: <Social />,
   english: <English />,
   history: <History />,
-  biology: <Biology />
+  biology: <Biology />,
+  chemistry: <Chemistry />
 };
 
 const data = [

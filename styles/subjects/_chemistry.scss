@@ -1,0 +1,325 @@
+.chemistry-layout {
+  .game-window {
+    width: 100vw;
+    overflow: auto;
+    border-radius: 0;
+  }
+
+  #flask {
+    width: 197px;
+    height: 230px;
+    position: absolute;
+    left: 700px;
+    top: 300px;
+
+    svg {
+      width: 200px;
+      height: 230px;
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .background {
+      width: 190px;
+      height: 100px;
+      position: absolute;
+      z-index: 0;
+      bottom: 2px;
+      left: 5px;
+      transition: all 0.5s ease;
+    }
+  }
+
+  .bubble {
+    width: 40px;
+    height: 40px;
+    background: inherit;
+    border-radius: 40px;
+    position: absolute;
+    top: 180px;
+    transition: all 0.5s ease;
+  }
+
+  @keyframes bubble {
+    0% {
+      top: 200px;
+    }
+    100% {
+      top: -200px;
+      opacity: 0;
+    }
+  }
+  @keyframes side {
+    0% {
+      margin-right: 0px;
+    }
+    100% {
+      margin-right: 35px;
+    }
+  }
+
+  .b1, .b2, .b3 {
+    right: 60px;
+    transform: scale(0.4);
+    opacity: 0.6;
+    animation: bubble 8s linear infinite, side 2s ease-in-out infinite alternate;
+  }
+  .b2 {
+    right: 65px;
+    transform: scale(0.5);
+    animation-delay: 2s, 0s, 2s;
+  }
+  .b3 {
+    right: 70px;
+    animation-delay: 5s, 0s, 5s;
+    animation: bubble 10s linear infinite, side 3s ease-in-out infinite alternate;
+  }
+  .b4, .b5 {
+    right: 65px;
+    transform: scale(0.5);
+    opacity: 0.8;
+    animation: bubble 16s linear infinite, side 5s ease-in-out infinite alternate;
+    animation-delay: 4s, 0s, 4s;
+  }
+  .b5 {
+    right: 55px;
+    animation-delay: 5s, 0s, 5s;
+  }
+  .b6, .b7, .b8 {
+    right: 65px;
+    transform: scale(0.6);
+    opacity: 0.4;
+    animation: bubble 14s linear infinite, side 3s ease-in-out infinite alternate;
+    animation-delay: 9s, 0s, 9s;
+  }
+  .b7 {
+    right: 70px;
+    transform: scale(0.7);
+    animation-delay: 3s, 0s, 3s;
+  }
+  .b8 {
+    right: 65px;
+    animation-delay: 7s, 0s, 7s;
+  }
+  .b9, .b0 {
+    right: 70px;
+    transform: scale(0.65);
+    opacity: 0.7;
+    animation: bubble 20s linear infinite, side 5s ease-in-out infinite alternate;
+  }
+  .b0 {
+    right: 60px;
+    animation-delay: 13s, 0s, 13s;
+  }
+
+  .small-flask {
+    position: absolute;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) scale(0.2);
+
+    &.is-created {
+      animation: createdColor 2s ease both;
+    }
+  }
+
+  .color-flasks {
+    position: absolute;
+    left: 100px;
+    top: 50%;
+    margin-top: -100px;
+  }
+
+  .color-flask {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    position: relative;
+
+    #up {
+      border-radius: 2px;
+      width: 80px;
+      height: 4px;
+      margin: 0 auto;
+      background: #dedbd3;
+    }
+
+    #hold {
+      position: relative;
+      top: -4px;
+      display: inline-block;
+      width: 50px;
+      height: 200px;
+      border: 4px solid #dedbd3;
+      border-bottom-left-radius: 70px;
+      border-bottom-right-radius: 70px;
+      overflow: hidden;
+    }
+
+    #liquid {
+      margin-top: 0;
+      display: inline-block;
+      width: 100%;
+      height: 69%;
+      left: 0;
+      bottom: 0;
+      position: absolute;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+
+      transition: all 0.5s ease;
+    }
+
+    &.red #liquid {
+      background: red;
+    }
+    &.green #liquid {
+      background: green;
+    }
+    &.blue #liquid {
+      background: blue;
+    }
+  }
+
+  input[type="range"] {
+    position: absolute;
+    bottom: 50%;
+    left: -40px;
+    transform: rotate(-90deg);
+    cursor: pointer;
+
+    & {
+      -webkit-appearance: none;
+      width: 160px;
+      height: 10px;
+      background: transparent;
+      outline: none;
+      display: block;
+      margin-bottom: -5px;
+      border-radius: 20px;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: relative;
+      z-index: 3;
+    }
+
+    &::-webkit-slider-thumb:after {
+      content: " ";
+      width: 160px;
+      height: 10px;
+      position: absolute;
+      z-index: 1;
+      right: 20px;
+      top: 5px;
+    }
+
+    &.red {
+      background: red;
+
+      &::-webkit-slider-thumb {
+        border: 2px solid red;
+        background: white;
+      }
+
+      &::-webkit-slider-thumb:after {
+        border: 2px solid red;
+        background: white;
+      }
+    }
+
+    &.green {
+      background: green;
+
+      &::-webkit-slider-thumb {
+        border: 2px solid green;
+        background: white;
+      }
+
+      &::-webkit-slider-thumb:after {
+        border: 2px solid green;
+        background: white;
+      }
+    }
+
+    &.blue {
+      background: blue;
+
+      &::-webkit-slider-thumb {
+        border: 2px solid blue;
+        background: white;
+      }
+
+      &::-webkit-slider-thumb:after {
+        border: 2px solid blue;
+        background: white;
+      }
+    }
+  }
+
+  .value {
+    position: absolute;
+    bottom: -10px;
+    left: 32px;
+    font-size: 20px;
+  }
+
+  .tips {
+    position: absolute;
+    width: 100%;
+  }
+
+  .color-components {
+    width: 100px;
+    position: relative;
+    height: 100px;
+    display: inline-block;
+
+    .color {
+      display: inline-block;
+      vertical-align: bottom;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      color: white;
+      position: absolute;
+      font-size: 12px;
+
+      &.red {
+        background: red;
+        left: 25px;
+        bottom: 0;
+      }
+      &.green {
+        background: green;
+        left: 49px;
+        bottom: 0;
+      }
+      &.blue {
+        background: blue;
+        left: 38px;
+        bottom: -14px;
+      }
+    }
+  }
+
+  @keyframes createdColor {
+    0% {
+      transform: translate(-50%, -50%) scale(0.2) rotate(20deg);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(0.2) rotate(-20deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+    }
+  }
+}
