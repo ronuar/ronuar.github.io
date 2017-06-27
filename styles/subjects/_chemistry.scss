@@ -1,6 +1,7 @@
 .chemistry-layout {
   .game-window {
     width: 100vw;
+    height: 100vh;
     overflow: auto;
     border-radius: 0;
   }
@@ -310,6 +311,132 @@
       }
     }
   }
+
+  .phrase {
+    font-family: Pangolin;
+    color: white;
+    font-size: 70px;
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      height: 320px;
+      width: 320px;
+    }
+    .content {
+      position: relative;
+      top: 50px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease 0.5s both;
+    }
+    .splatter {
+      position: absolute;
+    }
+
+    mark {
+      background: transparent;
+      color: #5685ff;
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+
+    @keyframes zoomIn {
+      0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    @keyframes zoomIn2 {
+      0% {
+        opacity: 0;
+        transform: rotate(160deg) scale3d(.3, .3, .3);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(160deg);
+      }
+    }
+    @keyframes zoomIn3 {
+      0% {
+        opacity: 0;
+        transform: rotate(-45deg) scale3d(.3, .3, .3);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(-45deg);
+      }
+    }
+
+    div {
+      &:nth-child(1) {
+        .circle {
+          top: 100px;
+          left: 100px;
+          background: #f49b21;
+          z-index: 100;
+          animation: zoomIn 0.3s ease 0.5s both;
+        }
+        .splatter {
+          top: 90px;
+          left: 50px;
+          z-index: 99;
+          animation: zoomIn 0.2s ease 0.6s both;
+        }
+        .content {
+          transform: rotate(12deg);
+        }
+      }
+      &:nth-child(2) {
+        .circle {
+          top: 256px;
+          left: 482px;
+          background: #68b92d;
+          z-index: 200;
+          animation: zoomIn 0.3s ease 1.5s both;
+        }
+        .splatter {
+          animation: zoomIn2 0.2s ease 1.6s both;
+          top: 140px;
+          left: 350px;
+          z-index: 199;
+        }
+        .content {
+          transform: rotate(-4deg);
+        }
+      }
+      &:nth-child(3) {
+        .circle {
+          top: 100px;
+          left: 768px;
+          background: #b12385;
+          z-index: 300;
+          animation: zoomIn 0.3s ease 2.5s both;
+        }
+        .splatter {
+          animation: zoomIn3 0.2s ease 2.6s both;
+          top: 40px;
+          left: 750px;
+          z-index: 299;
+          transform: rotate(-45deg);
+        }
+        .content {
+          transform: rotate(2deg);
+        }
+      }
+    }
+  }
+
 
   @keyframes createdColor {
     0% {

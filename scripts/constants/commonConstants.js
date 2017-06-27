@@ -37,7 +37,9 @@ export const SUBJECTS_INFO = {
   literature: {
     key: 'literature',
     color: '#01CC90',
-    title: 'Литература'
+    title: 'Литература',
+    letter: 'н',
+    phrase: 'Никогда не сдавайся'
   },
   ru: {
     key: 'ru',
@@ -57,13 +59,15 @@ export const SUBJECTS_INFO = {
     key: 'biology',
     color: '#78C82A',
     title: 'Биология',
-    letter: 'о',
+    letter: 'р',
     phrase: 'Отрывайся'
   },
   chemistry: {
     key: 'chemistry',
     color: '#ac46fb',
-    title: 'Химия'
+    title: 'Химия',
+    letter: 'о',
+    phrase: 'Миксуй только лучшее'
   },
   history: {
     key: 'history',

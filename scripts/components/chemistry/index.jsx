@@ -5,6 +5,7 @@ import GameLayout from '../gameLayout';
 import Flask from './flask';
 import ColorFlask from './colorFlask';
 import ColorComponents from './colorComponents';
+import WinPhrase from './winPhrase';
 
 class Chemistry extends Component {
   constructor(props) {
@@ -46,17 +47,19 @@ class Chemistry extends Component {
         onSubjectsClick={onSubjectsClick}
         onReplay={this.onReplay}
       >
-        <div className="color-flasks">
-          <ColorFlask color="red" onChange={this.onColorChange('red')} />
-          <ColorFlask color="green" onChange={this.onColorChange('green')} />
-          <ColorFlask color="blue" onChange={this.onColorChange('blue')} />
-        </div>
-        <div className="tips">
-          {COLORS.map(color => (
-            <ColorComponents {...color} created={created.includes(color.key)} />
-          ))}
-        </div>
-        <Flask color={color} />
+        {created.length === 1 ? <WinPhrase /> : [
+          <div className="color-flasks" key="flasks">
+            <ColorFlask color="red" onChange={this.onColorChange('red')} />
+            <ColorFlask color="green" onChange={this.onColorChange('green')} />
+            <ColorFlask color="blue" onChange={this.onColorChange('blue')} />
+          </div>,
+          <div className="tips" key="tips">
+            {COLORS.map(color => (
+              <ColorComponents {...color} created={created.includes(color.key)} />
+            ))}
+          </div>,
+          <Flask color={color} key="flask" />
+        ]}
       </GameLayout>
     );
   }
