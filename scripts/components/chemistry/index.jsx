@@ -24,20 +24,20 @@ class Chemistry extends Component {
       const newColor = { ...oldColor, [component]: value };
       const newCreated = [].concat(oldCreated);
       const colorKey = chemistryUtils.getColorKey(newColor);
-      if (colorKey) newCreated.push(colorKey);
+      if (colorKey && !oldCreated.includes(colorKey)) newCreated.push(colorKey);
 
-      this.setState(state => ({ color: newColor, created: newCreated }));
+      this.setState(state => ({ color: newColor, created: newCreated, hasNewGame: false }));
     }
   }
 
   init() {
-    this.setState({ color: { red: 0, green: 0, blue: 0 }, created: [] });
+    this.setState({ color: { red: 0, green: 0, blue: 0 }, created: [], hasNewGame: true });
   }
 
   render() {
     if (!this.state) return null;
 
-    const { color, created } = this.state;
+    const { color, created, hasNewGame } = this.state;
     const { onSubjectsClick } = this.props;
 
     return (
@@ -47,11 +47,11 @@ class Chemistry extends Component {
         onSubjectsClick={onSubjectsClick}
         onReplay={this.onReplay}
       >
-        {created.length === 1 ? <WinPhrase /> : [
+        {created.length === COLORS.length ? <WinPhrase /> : [
           <div className="color-flasks" key="flasks">
-            <ColorFlask color="red" onChange={this.onColorChange('red')} />
-            <ColorFlask color="green" onChange={this.onColorChange('green')} />
-            <ColorFlask color="blue" onChange={this.onColorChange('blue')} />
+            <ColorFlask color="red" hasNewGame={hasNewGame} onChange={this.onColorChange('red')} />
+            <ColorFlask color="green" hasNewGame={hasNewGame} onChange={this.onColorChange('green')} />
+            <ColorFlask color="blue" hasNewGame={hasNewGame} onChange={this.onColorChange('blue')} />
           </div>,
           <div className="tips" key="tips">
             {COLORS.map(color => (

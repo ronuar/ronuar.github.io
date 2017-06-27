@@ -13,13 +13,19 @@ class ColorFlask extends Component {
     this.onChange = e => { this.setState({ value: e.target.value }); props.onChange(Number(e.target.value)); };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.hasNewGame) {
+      this.setState({ value: 0 });
+    }
+  }
+
   render() {
     const { color } = this.props;
     const { value } = this.state;
 
     return (
       <div className={classNames("color-flask", color)}>
-        <div id="up"></div>
+        <div id="up" />
         <div id="hold">
           <div id="liquid" style={{ height: `${value}%` }}></div>
         </div>
@@ -32,6 +38,7 @@ class ColorFlask extends Component {
 
 ColorFlask.propTypes = {
   color: PropTypes.string,
+  finished: PropTypes.bool,
   onChange: PropTypes.func
 };
 
