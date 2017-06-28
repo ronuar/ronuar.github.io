@@ -10,6 +10,7 @@ import English from './english';
 import History from './history';
 import Biology from './biology';
 import Chemistry from './chemistry';
+import Literature from './literature';
 
 import LettersHendecagon from './lettersHendecagon';
 import Phrases from './phrases';
@@ -27,7 +28,8 @@ const subjectsContainers = {
   english: <English />,
   history: <History />,
   biology: <Biology />,
-  chemistry: <Chemistry />
+  chemistry: <Chemistry />,
+  literature: <Literature />,
 };
 
 const data = [

@@ -1,0 +1,83 @@
+.literature-layout {
+  .game-window {
+    width: 100vw;
+    overflow: auto;
+  }
+
+  .paper-wrap {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -350px;
+    width: 700px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .poem {
+    position: absolute;
+    top: 0;
+    margin: 140px 40px;
+    letter-spacing: -1px;
+    font-family: "Marck Script";
+    font-size: 36px;
+    white-space: pre;
+    
+    .is-hidden {
+      visibility: hidden;
+    }
+
+    > span:not(.is-hidden) {
+      animation: poemLetter 1s ease both;
+    }
+  }
+
+  .letters {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .info {
+      display: inline-block;
+      width: 40px;
+      transition: all 0.3s ease;
+
+      &.is-empty {
+        color: #a5a5a5;
+      }
+      &.is-pressed .letter {
+        transform: scale(1.2);
+        color: red;
+      }
+    }
+
+    .letter {
+      display: block;
+      font-family: "Marck Script";
+      margin-bottom: 10px;
+      font-size: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .count {
+      display: block;
+      font-size: 26px;
+    }
+  }
+
+  @keyframes poemLetter {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+      text-shadow: 0 0 8px;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      text-shadow: 0 0 0;
+    }
+  }
+}
