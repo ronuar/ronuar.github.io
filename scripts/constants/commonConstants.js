@@ -39,7 +39,7 @@ export const SUBJECTS_INFO = {
     color: '#01CC90',
     title: 'Литература',
     letter: 'н',
-    phrase: 'Никогда не сдавайся'
+    phrase: 'Никогда не сдавайся, чаще улыбайся'
   },
   ru: {
     key: 'ru',

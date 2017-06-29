@@ -10,9 +10,15 @@
     left: 50%;
     margin-left: -350px;
     width: 700px;
+    transition: all 1s ease;
 
     img {
       width: 100%;
+    }
+
+    &.is-finished {
+      transform: scale(0.7);
+      left: 400px;
     }
   }
 
@@ -68,6 +74,40 @@
     }
   }
 
+  mark {
+    background: transparent;
+    color: #42cd3a;
+  }
+
+  .phrase {
+    position: absolute;
+    top: 250px;
+    font-family: "Marck Script";
+    font-size: 40px;
+    z-index: -1;
+    animation: literaturePhrase 1s ease 0.5s both;
+
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      height: 2px;
+      background: #42cd3a;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: line 0.5s ease 1.5s both;
+    }
+
+    &::after {
+      bottom: -40px;
+    }
+
+    &::before {
+      top: -40px;
+    }
+  }
+
   @keyframes poemLetter {
     0% {
       opacity: 0;
@@ -78,6 +118,26 @@
       opacity: 1;
       transform: scale(1);
       text-shadow: 0 0 0;
+    }
+  }
+
+  @keyframes literaturePhrase {
+    0% {
+      left: 300px;
+      opacity: 0;
+    }
+    100% {
+      left: 750px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes line {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 80px;
     }
   }
 }

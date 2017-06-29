@@ -1,8 +1,10 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
 import Mousetrap from 'mousetrap';
-import { LETTERS, LETTERS_COUNT, SYMBOLS_REGEXP } from '../../constants/literatureConstants';
+import { LETTERS } from '../../constants/literatureConstants';
+import literatureUtils from '../../utils/literatureUtils';
 import GameLayout from '../gameLayout';
+import WinPhrase from './winPhrase';
 
 class Literature extends Component {
   constructor(props) {
@@ -18,53 +20,59 @@ class Literature extends Component {
   }
 
   init() {
-    Mousetrap.bind(LETTERS_COUNT.map(({ letter }) => letter), this.onKeyPress);
+    const lettersInfo = literatureUtils.defineLettersInfo();
+    Mousetrap.bind(lettersInfo.map(({ letter }) => letter), this.onKeyPress);
 
-    this.setState({ letters: LETTERS_COUNT, pressed: null, showedLetters: [] });
+    this.setState({ letters: lettersInfo, pressed: null, showedLetters: [], finished: false });
   }
 
   unbind() {
-    Mousetrap.unbind(LETTERS_COUNT.map(({ letter }) => letter));
+    Mousetrap.unbind(literatureUtils.defineLettersInfo().map(({ letter }) => letter));
   }
 
   onKeyPress(e) {
     const { letters, showedLetters } = this.state;
+    const eventKey = e.key || String.fromCharCode(e.keyCode);
 
-    const newShowedLetters = [].concat(showedLetters);
-    const newLetters = [].concat(letters);
-    const index = newLetters.map(({ letter }) => letter).indexOf(e.key);
+    const newShowedLetters = [...showedLetters];
+    const newLetters = [...letters];
+    const index = newLetters.map(({ letter }) => letter).indexOf(eventKey);
     const hasUpdateCount = newLetters[index].count !== 0;
     newLetters[index].count += hasUpdateCount ? -1 : 0;
-    newShowedLetters.push(e.key);
+    newShowedLetters.push(eventKey);
+
+    const hasFinished = newShowedLetters.length === literatureUtils.getLettersCount();
+    if (hasFinished) newShowedLetters.push('.', '.', '-', '?', '!');
 
     this.setState({
       letters: newLetters,
-      pressed: hasUpdateCount ? e.key : null,
-      showedLetters: hasUpdateCount ? newShowedLetters : showedLetters
+      pressed: hasUpdateCount ? eventKey : null,
+      showedLetters: hasUpdateCount ? newShowedLetters : showedLetters,
+      finished: hasFinished
     });
   }
 
   render() {
     if (!this.state) return null;
 
-    const { letters, pressed, showedLetters } = this.state;
+    const { letters, pressed, showedLetters, finished } = this.state;
     const { onSubjectsClick } = this.props;
     const workShowedLetters = [].concat(showedLetters);
 
     return (
       <GameLayout
         className="literature-layout"
-        title="Создатель рифм"
+        title="Создание рифм"
         onSubjectsClick={onSubjectsClick}
         onReplay={this.onReplay}
       >
-        <div className="paper-wrap">
+        <div className={classNames("paper-wrap", { 'is-finished': finished })}>
           <img src="../../images/literature/paper.png" />
           <div className="poem">
             {LETTERS.map((symbol, key) => {
               const index = workShowedLetters.indexOf(symbol.toLowerCase());
-              const hasShowSymbol = index !== -1 || SYMBOLS_REGEXP.test(symbol);
-              if (index !== -1) workShowedLetters.splice(index, 1);
+              const hasShowSymbol = index !== -1;
+              if (hasShowSymbol) workShowedLetters.splice(index, 1);
 
               return (
                 <span
@@ -77,27 +85,27 @@ class Literature extends Component {
             })}
           </div>
         </div>
-        <div className="letters">
-          {letters.map(({ letter, count }) => {
-            return (
-              <span
-                key={letter}
-                className={classNames('info', {
-                  'is-empty': count === 0,
-                  'is-pressed': pressed === letter
-                })}
-              >
+        {finished ? <WinPhrase /> : (
+          <div className="letters">
+            {letters.map(({ letter, count }) => {
+              return (
+                <span
+                  key={letter}
+                  className={classNames('info', {
+                    'is-empty': count === 0,
+                    'is-pressed': pressed === letter
+                  })}
+                >
                 <span className="letter" onTransitionEnd={this.onPressedClear}>{letter}</span>
                 <span className="count">{count}</span>
               </span>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </GameLayout>
     );
   }
 }
 
 export default Literature;
-
-//className={classNames({ 'is-hidden': !SYMBOLS_REGEXP.test(symbol) })}
