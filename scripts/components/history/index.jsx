@@ -50,7 +50,7 @@ class History extends Component {
                 className="attraction" style={{ top: `${top}px`, right: `${right}px` }}
                 onClick={this.onAttractionClick(key)}
               >
-                <img src={`../../images/history/${key}.svg`} />
+                <img src={`../../images/USE/history/${key}.svg`} />
               </div>
             );
           })}
@@ -62,8 +62,8 @@ class History extends Component {
 
             return [
               <div className="picture">
-                <img src={`../../images/history/${key}.svg`} />
-                {hasFound ? <img className="found-mark" src="../../images/history/check-mark.svg" /> : null}
+                <img src={`../../images/USE/history/${key}.svg`} />
+                {hasFound ? <img className="found-mark" src="../../images/USE/history/check-mark.svg" /> : null}
               </div>,
               <div className={classNames("arrow", { 'is-found': hasFound })} />
             ];

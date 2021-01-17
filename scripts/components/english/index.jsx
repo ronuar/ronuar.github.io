@@ -60,12 +60,12 @@ class English extends Component {
           >
             <div className="front">
               {type === CARD_TYPE.picture
-                ? <img src={`../../images/english/${key}.svg`} />
+                ? <img src={`../../images/USE/english/${key}.svg`} />
                 : <span>{key}</span>
               }
             </div>
             <div className="back">
-              <img src="../../images/english/paw.jpg"/>
+              <img src="../../images/USE/english/paw.jpg"/>
             </div>
           </div>
         </div>

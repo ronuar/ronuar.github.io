@@ -96,11 +96,11 @@ class Mathematics extends Component {
       >
         {error ? (
           <span>
-            <img src="../../images/refresh.svg"/>
+            <img src="../../images/USE/refresh.svg"/>
             <div className="message">Заново</div>
           </span>) : (
           <span>
-            <img src="../../images/arrow.svg" className={DIRECTIONS_NAMES[currentStay.direction]}/>
+            <img src="../../images/USE/arrow.svg" className={DIRECTIONS_NAMES[currentStay.direction]}/>
             <span className="length">{currentStay.length}</span>
           </span>)
         }

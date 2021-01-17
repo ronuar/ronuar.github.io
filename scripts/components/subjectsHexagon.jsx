@@ -92,7 +92,7 @@ class SubjectsHexagon extends Component {
               return (
                 <li key={key} className={key} onClick={this.onSubjectSelect(key)}>
                   <div style={{ background: color }}>
-                    <img src={`../../images/${key}.svg`} alt={key} />
+                    <img src={`../../images/USE/${key}.svg`} alt={key} />
                     <h2>{title}</h2>
                   </div>
                 </li>

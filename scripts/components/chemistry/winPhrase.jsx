@@ -12,7 +12,7 @@ class ChemistryWinPhrase extends Component {
               <p>Миксуй</p>
             </div>
           </div>
-          <img className="splatter" src="../../images/chemistry/orange-blot.png" />
+          <img className="splatter" src="../../images/USE/chemistry/orange-blot.png" />
         </div>
         <div>
           <div className="circle">
@@ -20,7 +20,7 @@ class ChemistryWinPhrase extends Component {
               <p>Т<mark>о</mark>лько</p>
             </div>
           </div>
-          <img className="splatter" src="../../images/chemistry/green-blot.png" />
+          <img className="splatter" src="../../images/USE/chemistry/green-blot.png" />
         </div>
         <div>
           <div className="circle">
@@ -28,7 +28,7 @@ class ChemistryWinPhrase extends Component {
               <p>Лучшее</p>
             </div>
           </div>
-          <img className="splatter" src="../../images/chemistry/pink-blot.png" />
+          <img className="splatter" src="../../images/USE/chemistry/pink-blot.png" />
         </div>
       </div>
     );
