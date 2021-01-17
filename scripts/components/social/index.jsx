@@ -62,7 +62,7 @@ class Social extends Component {
     for (let i = 1; i <= 10; i++) {
       professions.push(
         <li key={i} onClick={this.onProfessionSelect(i)}>
-          <img src={`../../images/USE/social/prof${i}.svg`}/>
+          <img src={`../../USE/images/social/prof${i}.svg`}/>
         </li>
       );
     }
@@ -87,17 +87,17 @@ class Social extends Component {
       <div>
         {this.renderProfessions()}
         <div className={classNames('hat', hatMood)} onAnimationEnd={this.onHatAnimationEnd}>
-          <img src="../../images/USE/social/hat.svg" />
+          <img src="../../USE/images/social/hat.svg" />
         </div>
         <div className="children">
           {children.map(({ id, professionId }, key) => {
             return (
               <div className="child" key={key}>
-                <img src={`../../images/USE/social/child${id}.svg`}/>
+                <img src={`../../USE/images/social/child${id}.svg`}/>
                 <div className="comics-thought">
                   <p>
                     <strong>THOUGHT</strong>
-                    <img className="profession" src={`../../images/USE/social/prof${professionId}.svg`}/>
+                    <img className="profession" src={`../../USE/images/social/prof${professionId}.svg`}/>
                   </p>
                 </div>
               </div>
@@ -106,8 +106,8 @@ class Social extends Component {
         </div>
         {last ? (
           <div className="last-child">
-            <img src={`../../images/USE/social/child${last.id}.svg`}/>
-            <img className={classNames('mouth', { 'is-sad': !last.happy })} src={`../../images/USE/social/mouth.svg`}/>
+            <img src={`../../USE/images/social/child${last.id}.svg`}/>
+            <img className={classNames('mouth', { 'is-sad': !last.happy })} src={`../../USE/images/social/mouth.svg`}/>
           </div>
         ) : null}
         <div className="progress">

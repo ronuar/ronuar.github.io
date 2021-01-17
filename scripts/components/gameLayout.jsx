@@ -8,11 +8,11 @@ const GameLayout = ({ title, children, className, onSubjectsClick, onReplay }) =
       <div className="hint">{title}</div>
       <button className="to-subjects-btn" onClick={onSubjectsClick}>
         Предметы
-        <img src="../../images/USE/menu.svg" />
+        <img src="../../USE/images/menu.svg" />
       </button>
       <button className="refresh-btn" onClick={onReplay}>
         Заново
-        <img src="../../images/USE/refresh.svg" />
+        <img src="../../USE/images/refresh.svg" />
       </button>
     </div>
     <div className="game-window">

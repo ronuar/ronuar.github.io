@@ -137,7 +137,7 @@ class Russian extends Component {
               className={classNames('letter', `line-${line}`)}
             >
               {name}
-              <img src={`../../images/USE/${mood}.png`} className={mood} />
+              <img src={`../../USE/images/${mood}.png`} className={mood} />
             </div>
           );
         })}

@@ -67,7 +67,7 @@ class Literature extends Component {
         onReplay={this.onReplay}
       >
         <div className={classNames("paper-wrap", { 'is-finished': finished })}>
-          <img src="../../images/USE/literature/paper.png" />
+          <img src="../../USE/images/literature/paper.png" />
           <div className="poem">
             {LETTERS.map((symbol, key) => {
               const index = workShowedLetters.indexOf(symbol.toLowerCase());

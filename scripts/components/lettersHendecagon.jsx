@@ -7,7 +7,7 @@ const LettersHendecagon = ({ lettersSubjects }) => {
   return (
     <li className="letters">
       <div>
-        <img src={`../../images/USE/figure.png`} />
+        <img src={`../../USE/images/figure.png`} />
         <h2>Буквы</h2>
         {progressInfo.map(({ letter, name }, index) => {
           const { key, color } = lettersSubjects.filter(letterSubject => letterSubject.key === name)[0];
